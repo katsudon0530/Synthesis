@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95f359ba17d92a642aa2d30fdfb5f2af, type: 3}
+  m_Name: 101_Sword
+  m_EditorClassIdentifier: 
+  displayName: "\u5263"
+  cardName: Sword
+  synthesisType: 0
+  type: 0
+  id: 101
+  icon: {fileID: 21300000, guid: d7d3e2169b005864a95c27edc05164ad, type: 3}
+  color: {r: 1, g: 1, b: 1, a: 1}
+  playCondition: 1
+  description: "\u7269\u7406\u653B\u6483"
+  explanation: "\u5263\u3067\u76F8\u624B\u3092\u5207\u308A\u3064\u3051\u308B\n\u76F8\u624B\u306E\u7269\u7406\u9632\u5FA1\u306B\u3088\u3063\u3066\u30C0\u30E1\u30FC\u30B8\u304C\u5909\u308F\u308B"
+  cardStatus:
+    attack_Status: 30
+    magic_Status: 0
+    defense_Status: 0
+    heal_Status: 0
+  uniqueEffect: {fileID: 11400000, guid: e1a616e4577627942acbf513371c6a80, type: 2}
+  flontBuff:
+  - buff: 1.5
+    flontCard: Sword
+  - buff: 0.9
+    flontCard: Magic
+  - buff: 1.5
+    flontCard: Shield
+  - buff: 1.5
+    flontCard: Potion

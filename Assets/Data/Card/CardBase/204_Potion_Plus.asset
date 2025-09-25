@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95f359ba17d92a642aa2d30fdfb5f2af, type: 3}
+  m_Name: 204_Potion_Plus
+  m_EditorClassIdentifier: 
+  displayName: "\u30DD\u30FC\u30B7\u30E7\u30F3\uFF0B"
+  cardName: Potion_Plus
+  synthesisType: 1
+  type: 2
+  id: 204
+  icon: {fileID: 21300000, guid: c1e43fb0bb601644f8d5de01ccff0da4, type: 3}
+  color: {r: 1, g: 0, b: 0, a: 1}
+  playCondition: 1
+  description: "\u8D85\u518D\u751F"
+  explanation: "\u30EC\u30B7\u30D4\uFF1A\u30DD\u30FC\u30B7\u30E7\u30F3\uFF0B\u30DD\u30FC\u30B7\u30E7\u30F3\n\u9AD8\u6027\u80FD\u306A\u30DD\u30FC\u30B7\u30E7\u30F3\u3092\u98F2\u3080\n\u901A\u5E38\u3088\u308A\u56DE\u5FA9\u529B\u304C\u4E0A\u304C\u3063\u3066\u3044\u308B"
+  cardStatus:
+    attack_Status: 0
+    magic_Status: 0
+    defense_Status: 0
+    heal_Status: 50
+  uniqueEffect: {fileID: 11400000, guid: fe9294e39c184fc4cbffa2406d7df451, type: 2}
+  flontBuff:
+  - buff: 1.25
+    flontCard: Sword
+  - buff: 1.25
+    flontCard: Magic
+  - buff: 1.5
+    flontCard: Shield
+  - buff: 1
+    flontCard: Potion

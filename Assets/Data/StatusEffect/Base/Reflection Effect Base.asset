@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35475d0052c925949b8a6cd6045a3ca5, type: 3}
+  m_Name: Reflection Effect Base
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: 0766871e2837ffa4090368615ea3fc18, type: 3}
+  displayName: "\u53CD\u5C04"
+  effectName: Reflection
+  type: 0
+  effectCount: 1
+  description: "\u53D7\u3051\u305F\u30C0\u30E1\u30FC\u30B8\u3092\u53CD\u5C04\u3059\u308B\n\u3053\u306E\u52B9\u679C\u306F\u91CD\u8907\u3057\u306A\u3044\n"
+  effectDetails: {fileID: 11400000, guid: 70ef63b17aa1ed042be1f8145a0be93c, type: 2}
