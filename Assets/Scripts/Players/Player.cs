@@ -74,20 +74,20 @@ public class Player : Singleton<Player>
 
     }
 
-    public void PlayConditionCheck(Enemy enemy, Deck deck, int TurnCount)
+    public void PlayConditionCheck(Enemy enemy, Deck deck)
     {
 
         for (int i = 0; i < Hand.Instance.List.Count; i++)
         {
-            Hand.Instance.List[i].Base.UniqueEffect.PlayCondition(Hand.Instance.List[i], this, enemy, deck, TurnCount);
+            Hand.Instance.List[i].Base.UniqueEffect.PlayCondition(Hand.Instance.List[i], this, enemy, deck, GameMaster.TurnCount);
         }
         
     }
 
 
-    public IEnumerator PlayerEffectBoot(Enemy enemy, GameUI gameUI)
+    public IEnumerator PlayerEffectBoot(Enemy enemy)
     {
-        gameUI.OnMassegePanel();
+        MessageText.Panel(true);
 
 
         if (effects.Count == 0)
@@ -103,7 +103,7 @@ public class Player : Singleton<Player>
                 yield return StartCoroutine(effect.Base.EffectDetails.Execute(effect, enemy));
             }
         }
-        gameUI.OffMassegePanel();
+        MessageText.Panel(false);
         yield return new WaitForSeconds(1.0f);
 
         yield break;

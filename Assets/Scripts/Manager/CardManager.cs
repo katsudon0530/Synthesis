@@ -5,9 +5,10 @@ using UnityEngine.UI;
 public class CardManager : MonoBehaviour
 {
     //カードバトル・勝敗判定
-    public IEnumerator CardBattle(Enemy enemy, GameUI gameUI)
+    public IEnumerator CardBattle(Enemy enemy)
     {
-        gameUI.OnMassegePanel();
+        MessageText.Panel(true);
+
         Hand.Instance.gameObject.SetActive(false);
         Player player = Player.Instance;
 
@@ -33,6 +34,6 @@ public class CardManager : MonoBehaviour
         yield return StartCoroutine(enemy.EnemySituation());
 
         player.PastLife = player.Life;
-        gameUI.OffMassegePanel();
+        MessageText.Panel(false);
     }
 }

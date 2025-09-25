@@ -15,9 +15,9 @@ public class SynthesisManager : MonoBehaviour
     }
 
     //カードを合成する
-    public IEnumerator CardSynthesis(GameUI gameUI)
+    public IEnumerator CardSynthesis()
     {
-        gameUI.OnMassegePanel();
+        MessageText.Panel(true);
         Hand.Instance.gameObject.SetActive(false);
         SubmitPosition feild = SubmitPosition.Instance;
 
@@ -36,6 +36,6 @@ public class SynthesisManager : MonoBehaviour
         yield return StartCoroutine(synthesis.Close(feild.Submitlist[0]));
         yield return new WaitForSeconds(1f);
 
-        gameUI.OffMassegePanel();
+        MessageText.Panel(false);
     }
 }

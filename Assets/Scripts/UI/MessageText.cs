@@ -4,11 +4,13 @@ using UnityEngine.UI;
 
 public class MessageText : MonoBehaviour
 {
-    public static Text message;
+    static Text message;
+    static GameObject messagePanel;
 
     public void Awake()
     {
         message = GetComponent<Text>();
+        messagePanel = transform.parent.gameObject;
     }
 
     public static void TextIn(string nowText)
@@ -19,7 +21,10 @@ public class MessageText : MonoBehaviour
     {
         message.text = "";
     }
-    public static void Set(bool aa)
+
+    public static void Panel(bool condition)
     {
+        ReSet();
+        messagePanel.SetActive(condition);
     }
 }

@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class GameMaster : MonoBehaviour
 {
-    [SerializeField] Player player;
     [SerializeField] CardGenerator cardGenerator;
     [SerializeField] Deck deck;
     [SerializeField] GameUI gameUI;
@@ -96,7 +95,7 @@ public class GameMaster : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         while (!cardSet)
         {
-            Player.Instance.PlayConditionCheck(enemy, deck, TurnCount); 
+            Player.Instance.PlayConditionCheck(enemy, deck); 
             yield return null; 
         }
 
@@ -109,24 +108,24 @@ public class GameMaster : MonoBehaviour
         {
             case 0:
                 //決定ボタンが押された場合
-                yield return StartCoroutine(cardManager.CardBattle(enemy,gameUI));
+                yield return StartCoroutine(cardManager.CardBattle(enemy));
                 break;
             case 1:
                 //合成ボタンが押された場合
-                yield return StartCoroutine(synthesisManager.CardSynthesis(gameUI));
+                yield return StartCoroutine(synthesisManager.CardSynthesis());
                 break;
         }
         yield return new WaitForSeconds(0.7f);
         //敵に付与されている状態の処理
-        yield return StartCoroutine(enemyManager.EnemyEffectBoot(enemy, gameUI));
+        yield return StartCoroutine(enemyManager.EnemyEffectBoot(enemy));
 
 
         //エネミーの行動を行う
-        yield return StartCoroutine(enemyManager.EnemyTurn(enemy, gameUI, TurnCount));
+        yield return StartCoroutine(enemyManager.EnemyTurn(enemy));
 
 
         //自分に付与されている状態の処理
-        yield return StartCoroutine(player.PlayerEffectBoot(enemy, gameUI));
+        yield return StartCoroutine(Player.Instance.PlayerEffectBoot(enemy));
 
         //次のターンに向けてセットアップを行う
         SetupNextTurn();
@@ -169,7 +168,7 @@ public class GameMaster : MonoBehaviour
         {
 
         }
-        else if (player.Life <= 0 || enemy.Base.EnemyLife <= 0)
+        else if (Player.Instance.Life <= 0 || enemy.Base.EnemyLife <= 0)
         {
             StopCoroutine(nowTurn);
             StartCoroutine(Result());
@@ -178,7 +177,7 @@ public class GameMaster : MonoBehaviour
 
     IEnumerator Result()
     {
-        if(player.Life <= 0)
+        if(Player.Instance.Life <= 0)
         {
             MessageText.TextIn("アナタは力尽きた");
         }
