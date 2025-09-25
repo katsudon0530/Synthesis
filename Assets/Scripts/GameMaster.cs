@@ -15,10 +15,10 @@ public class GameMaster : MonoBehaviour
     EnemyManager enemyManager;
     SynthesisManager synthesisManager;
     CardManager cardManager;
+    Coroutine nowTurn;
 
     public int enemyNum;
     public static bool cardSet { get; private set; }
-    private int cardsum;
     public static int TurnCount;
 
     private void Start()
@@ -47,13 +47,15 @@ public class GameMaster : MonoBehaviour
         TurnCount = 1;
         gameUI.StartGameUI(enemy);
 
-        StartCoroutine(turn());
+        nowTurn = StartCoroutine(turn());
 
     }
 
     //手札を生成
     void SendCardTo()
     {
+        int cardsum;
+
         if(deck.cardDeck.Count != 0)
         {
             cardsum = handMax - Hand.Instance.List.Count;
@@ -71,7 +73,7 @@ public class GameMaster : MonoBehaviour
                 cardsum = deck.cardDeck.Count;
             }
         }
-        else if(deck.cardDeck.Count == 0)
+        else
         {
             cardsum = 0;
         }
@@ -107,34 +109,29 @@ public class GameMaster : MonoBehaviour
         {
             case 0:
                 //決定ボタンが押された場合
-                yield return StartCoroutine(cardManager.CardBattle(player,enemy,gameUI));
-                if (gameUI.Result(TurnCount))
-                    yield break;
+                yield return StartCoroutine(cardManager.CardBattle(enemy,gameUI));
                 break;
             case 1:
                 //合成ボタンが押された場合
-                yield return StartCoroutine(synthesisManager.CardSynthesis(player,gameUI));
+                yield return StartCoroutine(synthesisManager.CardSynthesis(gameUI));
                 break;
         }
         yield return new WaitForSeconds(0.7f);
         //敵に付与されている状態の処理
-        yield return StartCoroutine(enemyManager.EnemyEffectBoot(player, enemy, gameUI));
-        if (gameUI.Result(TurnCount))
-            yield break;
+        yield return StartCoroutine(enemyManager.EnemyEffectBoot(enemy, gameUI));
+
 
         //エネミーの行動を行う
-        yield return StartCoroutine(enemyManager.EnemyTurn(player,enemy, gameUI, TurnCount));
-        if (gameUI.Result(TurnCount))
-            yield break;
+        yield return StartCoroutine(enemyManager.EnemyTurn(enemy, gameUI, TurnCount));
+
 
         //自分に付与されている状態の処理
-        yield return StartCoroutine(player.PlayerEffectBoot(player, enemy, gameUI));
-        if (gameUI.Result(TurnCount))
-            yield break;
+        yield return StartCoroutine(player.PlayerEffectBoot(enemy, gameUI));
+
         //次のターンに向けてセットアップを行う
         SetupNextTurn();
         //ターンの始めに戻る
-        StartCoroutine(turn());
+        nowTurn = StartCoroutine(turn());
     }
 
     //次ターンに向けてのリセットと準備
@@ -164,6 +161,29 @@ public class GameMaster : MonoBehaviour
     bool CardSet()
     {
         return cardSet;
+    }
+
+    private void Update()
+    {
+        if(enemy == null)
+        {
+
+        }
+        else if (player.Life <= 0 || enemy.Base.EnemyLife <= 0)
+        {
+            StopCoroutine(nowTurn);
+            StartCoroutine(Result());
+        }
+    }
+
+    IEnumerator Result()
+    {
+        if(player.Life <= 0)
+        {
+            MessageText.TextIn("アナタは力尽きた");
+        }
+        yield return new WaitForSeconds(1f);
+        gameUI.GameResult();
     }
 
 }

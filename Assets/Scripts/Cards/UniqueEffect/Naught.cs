@@ -16,7 +16,7 @@ public class NaughtEffect : UniqueEffect
     {
         int naughtValue = (int)FlontBuff(card, flontCard);
 
-        MessageText.message.text = "何も起こらない";
+        MessageText.TextIn("何も起こらない");
 
         yield break;
     }

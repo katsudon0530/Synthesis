@@ -14,17 +14,17 @@ public class Result : MonoBehaviour
     }
 
     //ゲームの結果を表示する
-    public void ShowResult(int playerLife, int TurnCount)
+    public void ShowResult(int playerLife)
     {
         if (playerLife <= 0)
-            ShowGameResult("LOSE", TurnCount);
+            ShowGameResult("LOSE");
 
         else if (playerLife >= 0)
-            ShowGameResult("WIN", TurnCount);
+            ShowGameResult("WIN");
     }
 
     //ゲームの勝敗をパネルで表示
-    public void ShowGameResult(string result, int turnCount)
+    public void ShowGameResult(string result)
     {
         resultPanel.SetActive(true);
         //resultPanel.GetComponentInChildren<Text>().text = result ;
@@ -32,7 +32,7 @@ public class Result : MonoBehaviour
         if (result == "WIN")
         {
             TurnResultText.gameObject.SetActive(true);
-            TurnResultText.text = $"経過ターン：{turnCount}";
+            TurnResultText.text = $"経過ターン：{GameMaster.TurnCount}";
         }
         else
         {

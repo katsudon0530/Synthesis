@@ -20,7 +20,7 @@ public class HealEffect : UniqueEffect
             healValue = player.LifeMax - player.Life;
         }
         player.Life += healValue;
-        MessageText.message.text = $"{healValue}HPかいふくした";
+        MessageText.TextIn($"{healValue}HPかいふくした");
 
         yield break;
     }

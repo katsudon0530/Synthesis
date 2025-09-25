@@ -21,7 +21,7 @@ public class ShieldEffect : UniqueEffect
         {
             player.Defens = 100;
         }
-        MessageText.message.text = $"{player.Defens}ぼうぎょがあがった";
+        MessageText.TextIn($"{player.Defens}ぼうぎょがあがった");
 
         yield break;
     }

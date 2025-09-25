@@ -5,10 +5,11 @@ using UnityEngine.UI;
 public class CardManager : MonoBehaviour
 {
     //カードバトル・勝敗判定
-    public IEnumerator CardBattle(Player player, Enemy enemy, GameUI gameUI)
+    public IEnumerator CardBattle(Enemy enemy, GameUI gameUI)
     {
         gameUI.OnMassegePanel();
         Hand.Instance.gameObject.SetActive(false);
+        Player player = Player.Instance;
 
         yield return new WaitForSeconds(1.2f);
         for (int i = 0; i < player.SubmitList.Count; i++)
@@ -29,7 +30,7 @@ public class CardManager : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
         //敵の状態表示
-        yield return StartCoroutine(enemy.EnemySituation(MessageText.message));
+        yield return StartCoroutine(enemy.EnemySituation());
 
         player.PastLife = player.Life;
         gameUI.OffMassegePanel();

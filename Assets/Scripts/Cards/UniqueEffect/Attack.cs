@@ -18,7 +18,7 @@ public class AttackEffect : UniqueEffect
         float defense = 1f - enemy.Base.EnemyDefense / 100f;
         int damage = (int)(Hit * defense);
         enemy.Base.EnemyLife -= damage;
-        MessageText.message.text = $"{damage}ダメージ与えた";
+        MessageText.TextIn($"{damage}ダメージ与えた");
         if (enemy.Base.EnemyLife < 0)
         {
             enemy.Base.EnemyLife = 0;

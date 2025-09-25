@@ -20,7 +20,7 @@ public class MagicEffect : UniqueEffect
         float defense = 1f - enemy.Base.EnemyMagicDefense / 100f;
         int damage = (int)(Hit * defense);
         enemy.Base.EnemyLife -= damage;
-        MessageText.message.text = $"{damage}魔法ダメージあたえた";
+        MessageText.TextIn($"{damage}魔法ダメージあたえた");
         if (enemy.Base.EnemyLife < 0)
         {
             enemy.Base.EnemyLife = 0;

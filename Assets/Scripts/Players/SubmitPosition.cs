@@ -14,15 +14,15 @@ public class SubmitPosition : Singleton<SubmitPosition>
     //カードをフィールドにセットする
     public void Set(Card card)
     {
-        if (Submitlist.Count < 2 )
+        if (submitlist.Count < 2 )
         {
             Add(card);
-            if (Submitlist.Count > 1)
+            if (submitlist.Count > 1)
             {
                 synthesis.OnSynthesisButton();
             }
         }
-        else if (Submitlist.Count == 2 )
+        else if (submitlist.Count == 2 )
         {
             Add(card);
             SubmitCard = card;
@@ -31,24 +31,24 @@ public class SubmitPosition : Singleton<SubmitPosition>
         {
             return;
         }
-        effectSwitch(Submitlist);
+        effectSwitch(submitlist);
     }
 
     //場のカードを消去する
     public void DeleteCard()
     {
-        for (int i = 0; i < Submitlist.Count; i++)
+        for (int i = 0; i < submitlist.Count; i++)
         {
-            Destroy(Submitlist[i].gameObject);
+            Destroy(submitlist[i].gameObject);
         }
-        Submitlist.Clear();
+        submitlist.Clear();
         submitCard = null;
     }
 
     //カードをリストに追加
     void Add(Card card)
     {
-        Submitlist.Add(card);
+        submitlist.Add(card);
         card.transform.SetParent(this.transform);
         card.transform.position = transform.position;
         SubmitPositionIn();
@@ -57,8 +57,8 @@ public class SubmitPosition : Singleton<SubmitPosition>
     //カードをリストから削除
     public void ReRemove(Card card)
     {
-        Submitlist.Remove(card);
-        if (Submitlist.Count < 2)
+        submitlist.Remove(card);
+        if (submitlist.Count < 2)
         {
             synthesis.OffSynthesisButton();
         }
@@ -67,16 +67,16 @@ public class SubmitPosition : Singleton<SubmitPosition>
     //フィールドに置かれたカードの位置を整列させる
     public void SubmitPositionIn()
     {
-        for (int i = 0; i < Submitlist.Count; i++)
+        for (int i = 0; i < submitlist.Count; i++)
         {
             float posX = 2.5f * (i - 1f);
-            Submitlist[i].transform.localPosition = new Vector3(posX, 0);
+            submitlist[i].transform.localPosition = new Vector3(posX, 0);
 
-            Transform childTransform = Submitlist[i].transform.GetChild(0);
+            Transform childTransform = submitlist[i].transform.GetChild(0);
             Canvas canvas = childTransform.GetComponent<Canvas>();
             canvas.sortingOrder = 2 - i;
         }
-        effectSwitch(Submitlist);
+        effectSwitch(submitlist);
     }
 
     //どのエフェクトが付くかを判別する

@@ -16,12 +16,12 @@ public class LightningStrikeEffect : UniqueEffect
     public override IEnumerator Execute(Card card, Card flontCard, Player player, Enemy enemy)
     {
         //定数ダメージを与える
-        MessageText.message.text = $"雷撃を放った！";
+        MessageText.TextIn($"雷撃を放った！");
         yield return new WaitForSeconds(1.0f);
 
         int damage = (int)card.Base.CardStatus.Attack_Status;
         enemy.Base.EnemyLife -= damage;
-        MessageText.message.text = $"{damage}ダメージ与えた";
+        MessageText.TextIn($"{damage}ダメージ与えた");
         if (enemy.Base.EnemyLife < 0)
         {
             enemy.Base.EnemyLife = 0;
@@ -33,7 +33,7 @@ public class LightningStrikeEffect : UniqueEffect
         //帯電状態が付与されていない場合
         if (!enemy.Base.Effects.Exists(e => e.Base == effectBase))
         {
-            MessageText.message.text = enemy.StatusEffectGenerator.EnemyGrantEffect(enemy, effectBase);
+            MessageText.TextIn(enemy.StatusEffectGenerator.EnemyGrantEffect(enemy, effectBase));
         }
         //すでに帯電状態の場合
         else
@@ -41,7 +41,7 @@ public class LightningStrikeEffect : UniqueEffect
             StatusEffect effect = enemy.Base.Effects.Find(e => e.Base == effectBase);
             effect.CountGrant++;
             effect.CountTurn = effectBase.EffectCount;
-            MessageText.message.text = $"帯電状態を{effect.CountGrant}回付与した。";
+            MessageText.TextIn($"帯電状態を{effect.CountGrant}回付与した。");
         }
         yield return new WaitForSeconds(1.0f);
 
@@ -49,7 +49,7 @@ public class LightningStrikeEffect : UniqueEffect
         if(probability >= Random.value)
         {
             enemy.Base.Act = false;
-            MessageText.message.text = $"{enemy.Base.Name1}はしびれている";
+            MessageText.TextIn($"{enemy.Base.Name1}はしびれている");
             yield return new WaitForSeconds(1.0f);
         }
 

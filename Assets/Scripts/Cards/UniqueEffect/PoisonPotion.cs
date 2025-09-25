@@ -15,7 +15,7 @@ public class PosonPotionEffect : UniqueEffect
     public override IEnumerator Execute(Card card, Card flontCard, Player player, Enemy enemy)
     {
 
-        MessageText.message.text = $"毒ポーションを投げつけた！";
+        MessageText.TextIn($"毒ポーションを投げつけた！");
         yield return new WaitForSeconds(1.0f);
 
         //すでに毒状態が付与されていた場合
@@ -25,13 +25,13 @@ public class PosonPotionEffect : UniqueEffect
             effect.CountTurn = effectBase.EffectCount;
             effect.CountGrant++;
             Debug.Log(effect.CountGrant);
-            MessageText.message.text = $"毒状態を延長した！";
+            MessageText.TextIn($"毒状態を延長した！");
             yield return new WaitForSeconds(1.0f);
             yield break;
         }
 
         //毒状態を付与する
-        MessageText.message.text = enemy.StatusEffectGenerator.EnemyGrantEffect(enemy, effectBase);
+        MessageText.TextIn(enemy.StatusEffectGenerator.EnemyGrantEffect(enemy, effectBase));
 
         yield break;
     }

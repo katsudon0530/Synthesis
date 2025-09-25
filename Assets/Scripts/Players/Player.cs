@@ -23,8 +23,6 @@ public class Player : Singleton<Player>
     public int Defens { get => defens; set => defens = value; }
     public int Life { get => life; set => life = value; }
     public int PastLife { get => pastLife; set => pastLife = value; }
-
-    //public SubmitPosition SubmitPosition { get => submitPosition; }
     public List<Card> SubmitList { get => SubmitPosition.Instance.Submitlist; }
     public StatusEffectGenerator StatusEffectGenerator { get => statusEffectGenerator; set => statusEffectGenerator = value; }
     public List<StatusEffect> Effects { get => effects; set => effects = value; }
@@ -87,7 +85,7 @@ public class Player : Singleton<Player>
     }
 
 
-    public IEnumerator PlayerEffectBoot(Player player, Enemy enemy, GameUI gameUI)
+    public IEnumerator PlayerEffectBoot(Enemy enemy, GameUI gameUI)
     {
         gameUI.OnMassegePanel();
 
@@ -102,7 +100,7 @@ public class Player : Singleton<Player>
         {
             if (effect != null)
             {
-                yield return StartCoroutine(effect.Base.EffectDetails.Execute(effect, player, enemy));
+                yield return StartCoroutine(effect.Base.EffectDetails.Execute(effect, enemy));
             }
         }
         gameUI.OffMassegePanel();

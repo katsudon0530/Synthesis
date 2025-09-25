@@ -35,6 +35,7 @@ public class GameUI : MonoBehaviour
     }
 
     //ライフの表示・変更
+    //経過ターン数をカウントする
     private void Update()
     {
         if(player != null)
@@ -45,24 +46,14 @@ public class GameUI : MonoBehaviour
             }
             playerLifeText.text = $"{player.Life}HP";
         }
-        ShowTurn();
-    }
 
-    //経過ターン数をカウントする
-    void ShowTurn()
-    {
         TurnText.text = $"ターン {GameMaster.TurnCount}";
     }
 
     //ゲームの結果を表示する
-    public bool Result(int TurnCount)
+    public void GameResult()
     {
-        if(player.Life <= 0 || enemy.Base.EnemyLife <= 0)
-        {
-            result.ShowResult(player.Life, TurnCount);
-            return true;
-        }
-        return false;
+        result.ShowResult(player.Life);
     }
 
 

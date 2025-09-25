@@ -7,15 +7,15 @@ using UnityEngine.UI;
 public class ElectrificationEffect : EffectDetails
 {
     [SerializeField] int grants;
-    public override IEnumerator Execute(StatusEffect statusEffect, Player player, Enemy enemy)
+    public override IEnumerator Execute(StatusEffect statusEffect, Enemy enemy)
     {
 
         if (statusEffect.CountGrant >= grants)
         {
-            MessageText.message.text = $"{enemy.Base.Name1}に帯電が最大数溜まった！";
+            MessageText.TextIn($"{enemy.Base.Name1}に帯電が最大数溜まった！");
             enemy.Base.Act = false;
             yield return new WaitForSeconds(1.0f);
-            MessageText.message.text = $"{enemy.Base.Name1}は行動不能になった！";
+            MessageText.TextIn($"{enemy.Base.Name1}は行動不能になった！");
             statusEffect.CountTurn = 1;
         }
 

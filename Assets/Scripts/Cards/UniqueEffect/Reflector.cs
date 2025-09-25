@@ -22,19 +22,18 @@ public class ReflectorEffect : UniqueEffect
         {
             player.Defens = 100;
         }
-        MessageText.message.text = $"{player.Defens}ぼうぎょがあがった";
-
+        MessageText.TextIn($"{player.Defens}ぼうぎょがあがった");
 
         //すでに反射状態が付与されていた場合
         if (enemy.Base.Effects.Exists(e => e.Base == effectBase))
         {
             //StatusEffect effect = enemy.Base.Effects.Find(e => e.Base == effectBase);
-            MessageText.message.text = $"すでに反射状態だ！";
+            MessageText.TextIn($"すでに反射状態だ！");
             yield return new WaitForSeconds(1.0f);
             yield break;
         }
 
-        MessageText.message.text = enemy.StatusEffectGenerator.PlayerGrantEffect(player, effectBase);
+        MessageText.TextIn(enemy.StatusEffectGenerator.PlayerGrantEffect(player, effectBase));
 
 
         yield break;

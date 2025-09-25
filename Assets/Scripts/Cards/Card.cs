@@ -4,7 +4,6 @@ using UnityEngine.UI;
 
 public class Card : MonoBehaviour
 {
-    // Start is called before the first frame update
 
     [SerializeField] Image Frame;
     [SerializeField] Image nameFrame;

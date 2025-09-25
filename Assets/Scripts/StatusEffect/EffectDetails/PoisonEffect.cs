@@ -9,7 +9,7 @@ public class PoisonEffect : EffectDetails
     [SerializeField] int defaultDamage;
     [SerializeField] int MaxDamage;
 
-    public override IEnumerator Execute(StatusEffect statusEffect, Player player, Enemy enemy)
+    public override IEnumerator Execute(StatusEffect statusEffect, Enemy enemy)
     {
         int damage = defaultDamage * statusEffect.CountGrant;
         if (damage > MaxDamage)
@@ -18,7 +18,7 @@ public class PoisonEffect : EffectDetails
         }
 
         enemy.Base.EnemyLife -= damage;
-        MessageText.message.text = $"{damage}の毒ダメージを与えた";
+        MessageText.TextIn($"{damage}の毒ダメージを与えた");
         if (enemy.Base.EnemyLife < 0)
         {
             enemy.Base.EnemyLife = 0;

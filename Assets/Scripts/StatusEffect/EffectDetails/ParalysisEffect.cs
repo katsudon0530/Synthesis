@@ -9,7 +9,7 @@ public class ParalysisEffect : EffectDetails
 {
 
     [SerializeField] List<ProbabilityCount> probabilities = new List<ProbabilityCount>();
-    public override IEnumerator Execute(StatusEffect statusEffect, Player player, Enemy enemy)
+    public override IEnumerator Execute(StatusEffect statusEffect, Enemy enemy)
     {
         ProbabilityCount found = probabilities.Find(count => count.count == statusEffect.CountTurn);
         if (found == null)
@@ -20,7 +20,7 @@ public class ParalysisEffect : EffectDetails
         //このターン体力が減少していると発動しない
         if (enemy.DecreaseLife)
         {
-            MessageText.message.text = $"ダメージを受けて麻痺が無効化された！";
+            MessageText.TextIn($"ダメージを受けて麻痺が無効化された！");
             yield return new WaitForSeconds(1.0f);
             yield break;
         }
@@ -28,12 +28,12 @@ public class ParalysisEffect : EffectDetails
         //エフェクトカウントを参照してターンごとの割合で行動不能になる
         if (Random.value <= found.probability)
         {
-            MessageText.message.text = $"麻痺の効果が発動した！";
+            MessageText.TextIn($"麻痺の効果が発動した！");
             enemy.Base.Act = false;
         }
         else
         {
-            MessageText.message.text = $"麻痺は発動しなかった！";
+            MessageText.TextIn($"麻痺は発動しなかった！");
         }
 
         yield return new WaitForSeconds(1.0f);

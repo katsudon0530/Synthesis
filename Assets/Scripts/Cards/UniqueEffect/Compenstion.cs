@@ -18,14 +18,14 @@ public class CompenstionEffect : UniqueEffect
         int attackValue = FlontBuff(card, flontCard);
 
         player.Life -= CompenstionLife;
-        MessageText.message.text = $"{CompenstionLife}HPの代償を払った！";
+        MessageText.TextIn($"{CompenstionLife}HPの代償を払った！");
         yield return new WaitForSeconds(1.0f);
 
         int Hit = (int)(attackValue * Random.Range(0.8f, 1.2f));
         float defense = 1f - enemy.Base.EnemyDefense / 100f;
         int damage = (int)(Hit * defense);
         enemy.Base.EnemyLife -= damage;
-        MessageText.message.text = $"{damage}ダメージ与えた";
+        MessageText.TextIn($"{damage}ダメージ与えた");
         if (enemy.Base.EnemyLife < 0)
         {
             enemy.Base.EnemyLife = 0;

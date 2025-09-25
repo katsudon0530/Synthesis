@@ -15,24 +15,25 @@ public class SynthesisManager : MonoBehaviour
     }
 
     //カードを合成する
-    public IEnumerator CardSynthesis(Player player,GameUI gameUI)
+    public IEnumerator CardSynthesis(GameUI gameUI)
     {
         gameUI.OnMassegePanel();
         Hand.Instance.gameObject.SetActive(false);
+        SubmitPosition feild = SubmitPosition.Instance;
 
-        Vector2 goal = player.SubmitList[0].transform.position;
+        Vector2 goal = feild.Submitlist[0].transform.position;
 
-        for (int i = 1; i < player.SubmitList.Count; i++)
+        for (int i = 1; i < feild.Submitlist.Count; i++)
         {
-            StartCoroutine(synthesis.CardSlide(player.SubmitList[i], goal, 0.5f));
+            StartCoroutine(synthesis.CardSlide(feild.Submitlist[i], goal, 0.5f));
         }
         yield return new WaitForSeconds(0.7f);
 
         //合成カードに変化させほかのカードを壊す
-        synthesis.CardSynthesis(player.SubmitList, deck.DeckAll);
-        yield return StartCoroutine(synthesis.CardSlide(player.SubmitList[0], SubmitPosition.Instance.transform.position, 0.7f));
+        synthesis.CardSynthesis(feild.Submitlist, deck.DeckAll);
+        yield return StartCoroutine(synthesis.CardSlide(feild.Submitlist[0], SubmitPosition.Instance.transform.position, 0.7f));
         yield return new WaitForSeconds(0.2f);
-        yield return StartCoroutine(synthesis.Close(player.SubmitList[0]));
+        yield return StartCoroutine(synthesis.Close(feild.Submitlist[0]));
         yield return new WaitForSeconds(1f);
 
         gameUI.OffMassegePanel();

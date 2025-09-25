@@ -17,20 +17,18 @@ public class EnemyManager : MonoBehaviour
 
 
     //エネミーの行動
-    public IEnumerator EnemyTurn(Player player, Enemy enemy,GameUI gameUI, int TurnCount)
+    public IEnumerator EnemyTurn(Enemy enemy,GameUI gameUI, int TurnCount)
     {
         gameUI.OnMassegePanel();
 
         if(enemy.Base.Act == false)
         {
-            MessageText.message.text = $"{enemy.Base.Name1}は動けない！";
+            MessageText.TextIn($"{enemy.Base.Name1}は動けない！");
         }
         else
         {
             //敵の攻撃
-            yield return StartCoroutine(enemy.Base.EnemyAction.Execute(player, enemy));
-            if (gameUI.Result(TurnCount))
-                yield break;
+            yield return StartCoroutine(enemy.Base.EnemyAction.Execute(enemy));
         }
 
         yield return new WaitForSeconds(1.5f);
@@ -40,7 +38,7 @@ public class EnemyManager : MonoBehaviour
 
 
 
-    public IEnumerator EnemyEffectBoot(Player player, Enemy enemy, GameUI gameUI)
+    public IEnumerator EnemyEffectBoot(Enemy enemy, GameUI gameUI)
     {
         gameUI.OnMassegePanel();
 
@@ -55,7 +53,7 @@ public class EnemyManager : MonoBehaviour
         {
             if(effect != null)
             {
-                yield return StartCoroutine(effect.Base.EffectDetails.Execute(effect,player, enemy));
+                yield return StartCoroutine(effect.Base.EffectDetails.Execute(effect, enemy));
             }
         }
         gameUI.OffMassegePanel();

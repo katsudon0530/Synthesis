@@ -7,14 +7,14 @@ using UnityEngine.UI;
 public class ReflectionEffect : EffectDetails
 {
     [SerializeField] float Magnification;
-    public override IEnumerator Execute(StatusEffect statusEffect, Player player, Enemy enemy)
+    public override IEnumerator Execute(StatusEffect statusEffect, Enemy enemy)
     {
         
-        int damage = player.PastLife - player.Life;
+        int damage = Player.Instance.PastLife - Player.Instance.Life;
         damage = (int)(damage * Magnification);
 
         enemy.Base.EnemyLife -= damage;
-        MessageText.message.text = $"{damage}の反射ダメージ与えた";
+        MessageText.TextIn($"{damage}の反射ダメージ与えた");
         if (enemy.Base.EnemyLife < 0)
         {
             enemy.Base.EnemyLife = 0;

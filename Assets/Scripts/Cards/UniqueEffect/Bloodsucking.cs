@@ -18,7 +18,7 @@ public class BloodsuckingEffect : UniqueEffect
         float defense = 1f - enemy.Base.EnemyDefense / 100f;
         int damage = (int)(Hit * defense);
         enemy.Base.EnemyLife -= damage;
-        MessageText.message.text = $"{damage}ダメージ与えた";
+        MessageText.TextIn($"{damage}ダメージ与えた");
         yield return new WaitForSeconds(1.0f);
         if (enemy.Base.EnemyLife < 0)
         {
@@ -30,7 +30,7 @@ public class BloodsuckingEffect : UniqueEffect
             damage = player.LifeMax - player.Life;
         }
         player.Life += damage;
-        MessageText.message.text = $"吸血で{damage}HP吸い取った";
+        MessageText.TextIn($"吸血で{damage}HP吸い取った");
 
         yield break;
     }

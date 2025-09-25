@@ -61,7 +61,7 @@ public class Enemy : MonoBehaviour
     }
 
     // エネミーの状態をテキストで表示する
-    public IEnumerator EnemySituation(Text massegeText)
+    public IEnumerator EnemySituation()
     {
         float RestLife = Base.EnemyLife / (float)Base.EnemyLifeMax;
         int textInNumber = 0;
@@ -78,7 +78,7 @@ public class Enemy : MonoBehaviour
 
         }
 
-        massegeText.text = $"{Base.Name1}は{Base.Situation[textInNumber].situationText}";
+        MessageText.TextIn ($"{Base.Name1}は{Base.Situation[textInNumber].situationText}");
         yield return new WaitForSeconds(1f);
         yield break;
     }

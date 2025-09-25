@@ -101,7 +101,7 @@ public class Synthesis : MonoBehaviour
 
         // 最後に目標の回転にぴったり合わせる
         card.transform.rotation = endRotation;
-        MessageText.message.text = "カードを合成した";
+        MessageText.TextIn("カードを合成した");
         yield return new WaitForSeconds(0.8f);
 
         rotationAngle = 0.0f;

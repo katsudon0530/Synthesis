@@ -16,10 +16,10 @@ public class ParalysisPotionEffect : UniqueEffect
     public override IEnumerator Execute(Card card, Card flontCard, Player player, Enemy enemy)
     {
 
-        MessageText.message.text = $"麻痺ポーションを投げつけた！";
+        MessageText.TextIn($"麻痺ポーションを投げつけた！");  
         yield return new WaitForSeconds(1.0f);
 
-        MessageText.message.text = enemy.StatusEffectGenerator.EnemyGrantEffect(enemy, effectBase);
+        MessageText.TextIn(enemy.StatusEffectGenerator.EnemyGrantEffect(enemy, effectBase));
 
         yield break;
     }
