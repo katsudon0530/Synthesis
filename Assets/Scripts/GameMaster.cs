@@ -10,20 +10,18 @@ public class GameMaster : MonoBehaviour
     [SerializeField] GameUI gameUI;
     [SerializeField] int handMax;
 
-    Enemy enemy;
-    EnemyManager enemyManager;
-    SynthesisManager synthesisManager;
-    CardManager cardManager;
-    Coroutine nowTurn;
+    private Enemy enemy;
+    private EnemyManager enemyManager;
+    private SynthesisManager synthesisManager;
+    private CardManager cardManager;
+    private Coroutine nowTurn;
 
     public int enemyNum;
     public static bool CardSet { get; private set; }
     public static int TurnCount;
 
-    private void Start()
+    private void Awake()
     {
-        gameUI.UISetUp();
-        deck.DeckDefault();
         enemyManager = GetComponent<EnemyManager>();
         synthesisManager = GetComponent<SynthesisManager>();
         cardManager = GetComponent<CardManager>();
@@ -33,7 +31,6 @@ public class GameMaster : MonoBehaviour
     public void Setup()
     {
         Player.Instance.SetPlayer(handMax);
-        //SendCardTo();
 
         enemy = enemyManager.GenerateEnemy(enemyNum);
         synthesisManager.SetButton();
@@ -140,7 +137,6 @@ public class GameMaster : MonoBehaviour
 
         enemy.EnemyReSet();
         Player.Instance.SetupNext();
-        
     
         gameUI.ResetUI();
         synthesisManager.SetButton();
@@ -184,5 +180,4 @@ public class GameMaster : MonoBehaviour
         yield return new WaitForSeconds(1f);
         gameUI.GameResult();
     }
-
 }

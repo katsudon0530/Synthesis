@@ -9,8 +9,8 @@ public class MessageText : MonoBehaviour
 
     public void Awake()
     {
-        message = GetComponent<Text>();
-        messagePanel = transform.parent.gameObject;
+        message = GetComponentInChildren<Text>();
+        messagePanel = this.gameObject;
     }
 
     public static void TextIn(string nowText)

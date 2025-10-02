@@ -10,7 +10,6 @@ public class GameUI : MonoBehaviour
     [SerializeField] GameObject submitButton;
     [SerializeField] GameObject synthesisButton;
 
-    [SerializeField] GameObject massagePanel;
     [SerializeField] GameObject serectPanel;
     [SerializeField] GameObject cardGuide;
     [SerializeField] RulePanelUI rulePanelUI;
@@ -25,9 +24,14 @@ public class GameUI : MonoBehaviour
 
 
     //UIの非表示化
-    public void UISetUp()
+    public void Awake()
     {
-        massagePanel.SetActive(false);
+        Init();
+    }
+
+    private void Init()
+    {
+        MessageText.Panel(false);
         deckPanel.SetActive(false);
         result.OffResultPanel();
         rulePanelUI.SetRuleText();
@@ -78,20 +82,8 @@ public class GameUI : MonoBehaviour
     {
         submitButton.SetActive(true);
         synthesisButton.SetActive(true);
-        massagePanel.SetActive(false);
+        MessageText.Panel(false);
         cardGuide.SetActive(true);
-    }
-
-
-    //メッセージパネルを表示・非表示
-    public void OnMassegePanel()
-    {
-        massagePanel.GetComponentInChildren<Text>().text = "";
-        massagePanel.SetActive(true);
-    }
-    public void OffMassegePanel()
-    {
-        massagePanel.SetActive(false);
     }
 
     //セレクトパネルを非表示

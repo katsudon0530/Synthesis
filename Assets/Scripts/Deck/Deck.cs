@@ -29,7 +29,12 @@ public class Deck : MonoBehaviour
     public CardGenerator Generator { get => generator; set => generator = value; }
 
     //ゲーム開始時にデッキをデフォルト状態にする
-    public void DeckDefault()
+    private void Awake()
+    {
+        Init();
+    }
+
+    private void Init()
     {
         DeckAll = new List<int>(Base);
         DeckListOpen();

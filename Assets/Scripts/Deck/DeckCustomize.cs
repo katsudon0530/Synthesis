@@ -17,7 +17,6 @@ public class DeckCustomize : MonoBehaviour
     //カードクリック時のリアクション
     public void SelectedDeckCard(Card card)
     {
-        //Debug.Log(card.Base.ID);
         if (card.transform.parent == deckContents.transform)
         {
             int dest = deck.DeckAll.FindIndex(number => number == card.Base.ID);
