@@ -44,7 +44,6 @@ public class EnemyManager : MonoBehaviour
 
         if (enemy.Base.Effects.Count == 0)
         {
-            Debug.Log("何もない");
             yield break;
         }
         

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UI;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,7 +8,7 @@ public class Synthesis : MonoBehaviour
 {
     [SerializeField] CardGenerator generator;
     [SerializeField] Dictionary dictionary;
-    [SerializeField] Button SynthesisButton;
+    [SerializeField] ButtonUI SynthesisButton;
     int id = 0;
 
 
@@ -147,12 +148,12 @@ public class Synthesis : MonoBehaviour
     //裏面を表示
     public void OffSynthesisButton()
     {
-        SynthesisButton.interactable = false;
+        SynthesisButton.Interactable = false;
     }
 
     //裏面を非表示
     public void OnSynthesisButton()
     {
-        SynthesisButton.interactable = true;
+        SynthesisButton.Interactable = true;
     }
 }

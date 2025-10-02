@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 namespace UI
@@ -154,9 +154,9 @@ namespace UI
         {
             if (Input.GetKeyDown(KeyCode.Return))
             {
-                var image = _currentButton.GetComponent<Image>();
+                //var image = _currentButton.GetComponent<Image>();
                 var buttonUi = _currentButton.GetComponent<ButtonUI>();
-                image.color = buttonUi.SelectedColor;
+                //image.color = buttonUi.SelectedColor;
                 buttonUi.Onclick?.Invoke();
                 // Enterキーが押されたときにOnClickを発火
             }

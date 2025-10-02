@@ -17,7 +17,7 @@ public class GameMaster : MonoBehaviour
     Coroutine nowTurn;
 
     public int enemyNum;
-    public static bool cardSet { get; private set; }
+    public static bool CardSet { get; private set; }
     public static int TurnCount;
 
     private void Start()
@@ -93,14 +93,14 @@ public class GameMaster : MonoBehaviour
     {
 
         yield return new WaitForSeconds(0.2f);
-        while (!cardSet)
+        while (!CardSet)
         {
             Player.Instance.PlayConditionCheck(enemy, deck); 
             yield return null; 
         }
 
         //カードが選択され、決定か合成が押されるまで待機
-        yield return new WaitUntil(() => CardSet());
+        yield return new WaitUntil(() => CardSetIN());
 
         gameUI.OffCardGuide();
         //どちらのボタンが押されたのかを判別してそのアクションを実行
@@ -149,17 +149,17 @@ public class GameMaster : MonoBehaviour
 
         TurnCount += 1;
 
-        cardSet = false;
+        CardSet = false;
     }
 
     void DecisionAction()
     {
-        cardSet = true;
+        CardSet = true;
     }
 
-    bool CardSet()
+    bool CardSetIN()
     {
-        return cardSet;
+        return CardSet;
     }
 
     private void Update()

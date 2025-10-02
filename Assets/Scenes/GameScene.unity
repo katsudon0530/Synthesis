@@ -478,11 +478,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 300762882}
   - {fileID: 1432407538}
   - {fileID: 915748524}
   - {fileID: 1022802465}
   - {fileID: 507296488}
-  - {fileID: 300762882}
   m_Father: {fileID: 1820168017}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -894,9 +894,7 @@ GameObject:
   - component: {fileID: 193596422}
   - component: {fileID: 193596427}
   - component: {fileID: 193596426}
-  - component: {fileID: 193596425}
-  - component: {fileID: 193596424}
-  - component: {fileID: 193596423}
+  - component: {fileID: 193596428}
   m_Layer: 5
   m_Name: DeckButton
   m_TagString: Untagged
@@ -924,133 +922,6 @@ RectTransform:
   m_AnchoredPosition: {x: 200, y: 0}
   m_SizeDelta: {x: 220, y: 295}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &193596423
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 193596421}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 193596424}
-          m_TargetAssemblyTypeName: Reaction, Assembly-CSharp
-          m_MethodName: ButtonPointerEnter
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 1
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 193596424}
-          m_TargetAssemblyTypeName: Reaction, Assembly-CSharp
-          m_MethodName: ButtonPointerExit
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
---- !u!114 &193596424
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 193596421}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 909fc310c64752749983e7e956b12810, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  colorOn: {r: 0.49019608, g: 0.49019608, b: 0.49019608, a: 1}
-  Chage: 0
---- !u!114 &193596425
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 193596421}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 193596426}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 675590293}
-        m_TargetAssemblyTypeName: Button, Assembly-CSharp
-        m_MethodName: OnObjectButton
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1533591785}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 675590293}
-        m_TargetAssemblyTypeName: Button, Assembly-CSharp
-        m_MethodName: UndoButton
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 193596421}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &193596426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1089,6 +960,46 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 193596421}
   m_CullTransparentMesh: 1
+--- !u!114 &193596428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 193596421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15e9ec4b0a9832243aed99a45b1c6839, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _onClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 675590293}
+        m_TargetAssemblyTypeName: GameButton, Assembly-CSharp
+        m_MethodName: OnObjectButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1533591785}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _interactable: 1
+  _colorChangeTime: 0.1
+  _text: 'Action
+
+    Card'
+  DefaultColor: {r: 1, g: 1, b: 1, a: 1}
+  OnCursorColor: {r: 0.49056602, g: 0.49056602, b: 0.49056602, a: 1}
+  OnClickedColor: {r: 0.26415092, g: 0.26415092, b: 0.26415092, a: 1}
+  DisableColor: {r: 0.4901961, g: 0.4901961, b: 0.4901961, a: 0.49803922}
+  DefaultTextColor: {r: 1, g: 0, b: 0, a: 1}
+  OnCursorTextColor: {r: 0.6792453, g: 0, b: 0, a: 1}
+  OnClickedTextColor: {r: 0.38679248, g: 0, b: 0, a: 1}
+  DisableTextColor: {r: 0.6784314, g: 0, b: 0, a: 0.49803922}
 --- !u!1 &226876569
 GameObject:
   m_ObjectHideFlags: 0
@@ -1339,8 +1250,6 @@ GameObject:
   - component: {fileID: 286003219}
   - component: {fileID: 286003222}
   - component: {fileID: 286003221}
-  - component: {fileID: 286003220}
-  - component: {fileID: 286003224}
   - component: {fileID: 286003223}
   m_Layer: 5
   m_Name: 'RetryButton '
@@ -1369,62 +1278,6 @@ RectTransform:
   m_AnchoredPosition: {x: 250, y: -220}
   m_SizeDelta: {x: 240, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &286003220
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 286003218}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 286003221}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 675590293}
-        m_TargetAssemblyTypeName: Button, Assembly-CSharp
-        m_MethodName: ResetButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &286003221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1472,56 +1325,35 @@ MonoBehaviour:
   m_GameObject: {fileID: 286003218}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Script: {fileID: 11500000, guid: 15e9ec4b0a9832243aed99a45b1c6839, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 286003224}
-          m_TargetAssemblyTypeName: Reaction, Assembly-CSharp
-          m_MethodName: ButtonPointerEnter
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 1
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 286003224}
-          m_TargetAssemblyTypeName: Reaction, Assembly-CSharp
-          m_MethodName: ButtonPointerExit
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
---- !u!114 &286003224
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 286003218}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 909fc310c64752749983e7e956b12810, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  colorOn: {r: 0.49019608, g: 0.49019608, b: 0.49019608, a: 1}
-  Chage: 1
+  _onClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 675590293}
+        m_TargetAssemblyTypeName: GameButton, Assembly-CSharp
+        m_MethodName: ResetButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _interactable: 1
+  _colorChangeTime: 0.1
+  _text: RETRY
+  DefaultColor: {r: 1, g: 1, b: 1, a: 1}
+  OnCursorColor: {r: 0.49056602, g: 0.49056602, b: 0.49056602, a: 1}
+  OnClickedColor: {r: 0.26415092, g: 0.26415092, b: 0.26415092, a: 1}
+  DisableColor: {r: 0.4901961, g: 0.4901961, b: 0.4901961, a: 0.49803922}
+  DefaultTextColor: {r: 1, g: 1, b: 1, a: 1}
+  OnCursorTextColor: {r: 0.4901961, g: 0.4901961, b: 0.4901961, a: 1}
+  OnClickedTextColor: {r: 0.2627451, g: 0.2627451, b: 0.2627451, a: 1}
+  DisableTextColor: {r: 0.4901961, g: 0.4901961, b: 0.4901961, a: 0.49803922}
 --- !u!1 &297445947
 GameObject:
   m_ObjectHideFlags: 0
@@ -1612,9 +1444,7 @@ GameObject:
   - component: {fileID: 300762882}
   - component: {fileID: 300762885}
   - component: {fileID: 300762884}
-  - component: {fileID: 300762883}
   - component: {fileID: 300762886}
-  - component: {fileID: 300762887}
   m_Layer: 6
   m_Name: SlimeButton
   m_TagString: Untagged
@@ -1642,74 +1472,6 @@ RectTransform:
   m_AnchoredPosition: {x: -600, y: -300}
   m_SizeDelta: {x: 400, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &300762883
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 300762881}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 300762884}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 675590293}
-        m_TargetAssemblyTypeName: Button, Assembly-CSharp
-        m_MethodName: EnemyButton
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 675590293}
-        m_TargetAssemblyTypeName: Button, Assembly-CSharp
-        m_MethodName: UndoButton
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 300762881}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &300762884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1757,56 +1519,35 @@ MonoBehaviour:
   m_GameObject: {fileID: 300762881}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Script: {fileID: 11500000, guid: 15e9ec4b0a9832243aed99a45b1c6839, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 300762887}
-          m_TargetAssemblyTypeName: Reaction, Assembly-CSharp
-          m_MethodName: ButtonPointerEnter
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 1
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 300762887}
-          m_TargetAssemblyTypeName: Reaction, Assembly-CSharp
-          m_MethodName: ButtonPointerExit
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
---- !u!114 &300762887
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 300762881}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 909fc310c64752749983e7e956b12810, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  colorOn: {r: 0.49019608, g: 0.49019608, b: 0.49019608, a: 1}
-  Chage: 1
+  _onClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 675590293}
+        m_TargetAssemblyTypeName: GameButton, Assembly-CSharp
+        m_MethodName: EnemyButton
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _interactable: 1
+  _colorChangeTime: 0.1
+  _text: "\u30B9\u30E9\u30A4\u30E0"
+  DefaultColor: {r: 1, g: 1, b: 1, a: 1}
+  OnCursorColor: {r: 0.49056602, g: 0.49056602, b: 0.49056602, a: 1}
+  OnClickedColor: {r: 0.26415092, g: 0.26415092, b: 0.26415092, a: 1}
+  DisableColor: {r: 0.4901961, g: 0.4901961, b: 0.4901961, a: 0.49803922}
+  DefaultTextColor: {r: 1, g: 1, b: 1, a: 1}
+  OnCursorTextColor: {r: 0.4901961, g: 0.4901961, b: 0.4901961, a: 1}
+  OnClickedTextColor: {r: 0.2627451, g: 0.2627451, b: 0.2627451, a: 1}
+  DisableTextColor: {r: 0.4901961, g: 0.4901961, b: 0.4901961, a: 0.49803922}
 --- !u!1 &310911772
 GameObject:
   m_ObjectHideFlags: 0
@@ -2414,8 +2155,6 @@ GameObject:
   - component: {fileID: 597436204}
   - component: {fileID: 597436207}
   - component: {fileID: 597436206}
-  - component: {fileID: 597436205}
-  - component: {fileID: 597436209}
   - component: {fileID: 597436208}
   m_Layer: 5
   m_Name: RuleButton
@@ -2444,74 +2183,6 @@ RectTransform:
   m_AnchoredPosition: {x: -150, y: -90}
   m_SizeDelta: {x: 200, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &597436205
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 597436203}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 597436206}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 675590293}
-        m_TargetAssemblyTypeName: Button, Assembly-CSharp
-        m_MethodName: OnObjectButton
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1731809987}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 675590293}
-        m_TargetAssemblyTypeName: Button, Assembly-CSharp
-        m_MethodName: UndoButton
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 597436203}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &597436206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2559,56 +2230,35 @@ MonoBehaviour:
   m_GameObject: {fileID: 597436203}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Script: {fileID: 11500000, guid: 15e9ec4b0a9832243aed99a45b1c6839, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 597436209}
-          m_TargetAssemblyTypeName: Reaction, Assembly-CSharp
-          m_MethodName: ButtonPointerEnter
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 1
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 597436209}
-          m_TargetAssemblyTypeName: Reaction, Assembly-CSharp
-          m_MethodName: ButtonPointerExit
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
---- !u!114 &597436209
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 597436203}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 909fc310c64752749983e7e956b12810, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  colorOn: {r: 0.49019608, g: 0.49019608, b: 0.49019608, a: 1}
-  Chage: 1
+  _onClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 675590293}
+        m_TargetAssemblyTypeName: GameButton, Assembly-CSharp
+        m_MethodName: OnObjectButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1731809987}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _interactable: 1
+  _colorChangeTime: 0.1
+  _text: "\u30EB\u30FC\u30EB"
+  DefaultColor: {r: 1, g: 1, b: 1, a: 1}
+  OnCursorColor: {r: 0.49056602, g: 0.49056602, b: 0.49056602, a: 1}
+  OnClickedColor: {r: 0.26415092, g: 0.26415092, b: 0.26415092, a: 1}
+  DisableColor: {r: 0.4901961, g: 0.4901961, b: 0.4901961, a: 0.49803922}
+  DefaultTextColor: {r: 1, g: 1, b: 1, a: 1}
+  OnCursorTextColor: {r: 0.4901961, g: 0.4901961, b: 0.4901961, a: 1}
+  OnClickedTextColor: {r: 0.2627451, g: 0.2627451, b: 0.2627451, a: 1}
+  DisableTextColor: {r: 0.4901961, g: 0.4901961, b: 0.4901961, a: 0.49803922}
 --- !u!1 &615895971
 GameObject:
   m_ObjectHideFlags: 0
@@ -2771,8 +2421,6 @@ GameObject:
   - component: {fileID: 653973696}
   - component: {fileID: 653973699}
   - component: {fileID: 653973698}
-  - component: {fileID: 653973697}
-  - component: {fileID: 653973701}
   - component: {fileID: 653973700}
   m_Layer: 5
   m_Name: ReturnButton
@@ -2801,74 +2449,6 @@ RectTransform:
   m_AnchoredPosition: {x: -650, y: -280}
   m_SizeDelta: {x: 160, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &653973697
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 653973695}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 653973698}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 675590293}
-        m_TargetAssemblyTypeName: Button, Assembly-CSharp
-        m_MethodName: ProceedReturnButton
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Return
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 675590293}
-        m_TargetAssemblyTypeName: Button, Assembly-CSharp
-        m_MethodName: UndoButton
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 653973695}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &653973698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2916,56 +2496,35 @@ MonoBehaviour:
   m_GameObject: {fileID: 653973695}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Script: {fileID: 11500000, guid: 15e9ec4b0a9832243aed99a45b1c6839, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 653973701}
-          m_TargetAssemblyTypeName: Reaction, Assembly-CSharp
-          m_MethodName: ButtonPointerEnter
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 1
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 653973701}
-          m_TargetAssemblyTypeName: Reaction, Assembly-CSharp
-          m_MethodName: ButtonPointerExit
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
---- !u!114 &653973701
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 653973695}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 909fc310c64752749983e7e956b12810, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  colorOn: {r: 0.49019608, g: 0.49019608, b: 0.49019608, a: 1}
-  Chage: 1
+  _onClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 675590293}
+        m_TargetAssemblyTypeName: GameButton, Assembly-CSharp
+        m_MethodName: ProceedReturnButton
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: Return
+          m_BoolArgument: 0
+        m_CallState: 2
+  _interactable: 1
+  _colorChangeTime: 0.1
+  _text: "\u623B\u308B"
+  DefaultColor: {r: 1, g: 1, b: 1, a: 1}
+  OnCursorColor: {r: 0.49056602, g: 0.49056602, b: 0.49056602, a: 1}
+  OnClickedColor: {r: 0.26415092, g: 0.26415092, b: 0.26415092, a: 1}
+  DisableColor: {r: 0.4901961, g: 0.4901961, b: 0.4901961, a: 0.49803922}
+  DefaultTextColor: {r: 1, g: 1, b: 1, a: 1}
+  OnCursorTextColor: {r: 0.4901961, g: 0.4901961, b: 0.4901961, a: 1}
+  OnClickedTextColor: {r: 0.2627451, g: 0.2627451, b: 0.2627451, a: 1}
+  DisableTextColor: {r: 0.4901961, g: 0.4901961, b: 0.4901961, a: 0.49803922}
 --- !u!1 &672372831
 GameObject:
   m_ObjectHideFlags: 0
@@ -3028,7 +2587,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   generator: {fileID: 959393678}
   dictionary: {fileID: 1036250512}
-  SynthesisButton: {fileID: 1545265718}
+  SynthesisButton: {fileID: 1545265721}
 --- !u!1 &675590289
 GameObject:
   m_ObjectHideFlags: 0
@@ -3043,6 +2602,7 @@ GameObject:
   - component: {fileID: 675590296}
   - component: {fileID: 675590297}
   - component: {fileID: 675590293}
+  - component: {fileID: 675590298}
   m_Layer: 0
   m_Name: GameMaster
   m_TagString: Untagged
@@ -3137,6 +2697,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c55954952fa31147b24d2cadad9efbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &675590298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 675590289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdaaf7f6d7252cc4d97b0d7644a2e7fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _buttons:
+  - {fileID: 1424002599}
+  - {fileID: 1545265716}
+  - {fileID: 1682138731}
+  - {fileID: 193596421}
+  - {fileID: 940335336}
+  - {fileID: 597436203}
+  - {fileID: 1794657970}
+  - {fileID: 653973695}
+  - {fileID: 1165540954}
+  - {fileID: 300762881}
+  - {fileID: 1432407537}
+  - {fileID: 915748523}
+  _navigationMode: 0
 --- !u!1 &688216825
 GameObject:
   m_ObjectHideFlags: 0
@@ -3642,9 +3228,7 @@ GameObject:
   - component: {fileID: 915748524}
   - component: {fileID: 915748527}
   - component: {fileID: 915748526}
-  - component: {fileID: 915748525}
   - component: {fileID: 915748528}
-  - component: {fileID: 915748529}
   m_Layer: 6
   m_Name: DragonButton
   m_TagString: Untagged
@@ -3672,74 +3256,6 @@ RectTransform:
   m_AnchoredPosition: {x: 600, y: -300}
   m_SizeDelta: {x: 400, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &915748525
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 915748523}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 915748526}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 675590293}
-        m_TargetAssemblyTypeName: Button, Assembly-CSharp
-        m_MethodName: EnemyButton
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 675590293}
-        m_TargetAssemblyTypeName: Button, Assembly-CSharp
-        m_MethodName: UndoButton
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 915748523}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &915748526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3787,56 +3303,35 @@ MonoBehaviour:
   m_GameObject: {fileID: 915748523}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Script: {fileID: 11500000, guid: 15e9ec4b0a9832243aed99a45b1c6839, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 915748529}
-          m_TargetAssemblyTypeName: Reaction, Assembly-CSharp
-          m_MethodName: ButtonPointerEnter
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 1
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 915748529}
-          m_TargetAssemblyTypeName: Reaction, Assembly-CSharp
-          m_MethodName: ButtonPointerExit
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
---- !u!114 &915748529
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 915748523}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 909fc310c64752749983e7e956b12810, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  colorOn: {r: 0.49019608, g: 0.49019608, b: 0.49019608, a: 1}
-  Chage: 1
+  _onClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 675590293}
+        m_TargetAssemblyTypeName: GameButton, Assembly-CSharp
+        m_MethodName: EnemyButton
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _interactable: 1
+  _colorChangeTime: 0.1
+  _text: "\u30C9\u30E9\u30B4\u30F3"
+  DefaultColor: {r: 1, g: 1, b: 1, a: 1}
+  OnCursorColor: {r: 0.49056602, g: 0.49056602, b: 0.49056602, a: 1}
+  OnClickedColor: {r: 0.26415092, g: 0.26415092, b: 0.26415092, a: 1}
+  DisableColor: {r: 0.4901961, g: 0.4901961, b: 0.4901961, a: 0.49803922}
+  DefaultTextColor: {r: 1, g: 1, b: 1, a: 1}
+  OnCursorTextColor: {r: 0.4901961, g: 0.4901961, b: 0.4901961, a: 1}
+  OnClickedTextColor: {r: 0.2627451, g: 0.2627451, b: 0.2627451, a: 1}
+  DisableTextColor: {r: 0.4901961, g: 0.4901961, b: 0.4901961, a: 0.49803922}
 --- !u!1 &936931354
 GameObject:
   m_ObjectHideFlags: 0
@@ -3924,9 +3419,7 @@ GameObject:
   - component: {fileID: 940335337}
   - component: {fileID: 940335342}
   - component: {fileID: 940335341}
-  - component: {fileID: 940335340}
-  - component: {fileID: 940335339}
-  - component: {fileID: 940335338}
+  - component: {fileID: 940335343}
   m_Layer: 5
   m_Name: ExitButton
   m_TagString: Untagged
@@ -3954,133 +3447,6 @@ RectTransform:
   m_AnchoredPosition: {x: 725, y: 375}
   m_SizeDelta: {x: 250, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &940335338
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 940335336}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 940335339}
-          m_TargetAssemblyTypeName: Reaction, Assembly-CSharp
-          m_MethodName: ButtonPointerEnter
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 1
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 940335339}
-          m_TargetAssemblyTypeName: Reaction, Assembly-CSharp
-          m_MethodName: ButtonPointerExit
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
---- !u!114 &940335339
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 940335336}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 909fc310c64752749983e7e956b12810, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  colorOn: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  Chage: 0
---- !u!114 &940335340
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 940335336}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 940335341}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 675590293}
-        m_TargetAssemblyTypeName: Button, Assembly-CSharp
-        m_MethodName: OffObjectButton
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1533591785}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 675590293}
-        m_TargetAssemblyTypeName: Button, Assembly-CSharp
-        m_MethodName: UndoButton
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 940335336}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &940335341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4119,6 +3485,44 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 940335336}
   m_CullTransparentMesh: 1
+--- !u!114 &940335343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 940335336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15e9ec4b0a9832243aed99a45b1c6839, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _onClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 675590293}
+        m_TargetAssemblyTypeName: GameButton, Assembly-CSharp
+        m_MethodName: OffObjectButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1533591785}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _interactable: 1
+  _colorChangeTime: 0.1
+  _text: "\u9589\u3058\u308B"
+  DefaultColor: {r: 1, g: 1, b: 1, a: 1}
+  OnCursorColor: {r: 0.49056602, g: 0.49056602, b: 0.49056602, a: 1}
+  OnClickedColor: {r: 0.26415092, g: 0.26415092, b: 0.26415092, a: 1}
+  DisableColor: {r: 0.4901961, g: 0.4901961, b: 0.4901961, a: 0.49803922}
+  DefaultTextColor: {r: 1, g: 1, b: 1, a: 1}
+  OnCursorTextColor: {r: 0.4901961, g: 0.4901961, b: 0.4901961, a: 1}
+  OnClickedTextColor: {r: 0.2627451, g: 0.2627451, b: 0.2627451, a: 1}
+  DisableTextColor: {r: 0.4901961, g: 0.4901961, b: 0.4901961, a: 0.49803922}
 --- !u!1 &959393677
 GameObject:
   m_ObjectHideFlags: 0
@@ -4503,9 +3907,7 @@ GameObject:
   - component: {fileID: 1004785975}
   - component: {fileID: 1004785980}
   - component: {fileID: 1004785979}
-  - component: {fileID: 1004785978}
-  - component: {fileID: 1004785977}
-  - component: {fileID: 1004785976}
+  - component: {fileID: 1004785981}
   m_Layer: 5
   m_Name: DeckButton
   m_TagString: Untagged
@@ -4533,133 +3935,6 @@ RectTransform:
   m_AnchoredPosition: {x: -750, y: 0}
   m_SizeDelta: {x: 220, y: 295}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1004785976
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1004785974}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1004785977}
-          m_TargetAssemblyTypeName: Reaction, Assembly-CSharp
-          m_MethodName: ButtonPointerEnter
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 1
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1004785977}
-          m_TargetAssemblyTypeName: Reaction, Assembly-CSharp
-          m_MethodName: ButtonPointerExit
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
---- !u!114 &1004785977
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1004785974}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 909fc310c64752749983e7e956b12810, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  colorOn: {r: 0.49019608, g: 0.49019608, b: 0.49019608, a: 1}
-  Chage: 0
---- !u!114 &1004785978
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1004785974}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 1004785979}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 675590293}
-        m_TargetAssemblyTypeName: Button, Assembly-CSharp
-        m_MethodName: OnObjectButton
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1533591785}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 675590293}
-        m_TargetAssemblyTypeName: Button, Assembly-CSharp
-        m_MethodName: ReSet
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1004785974}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1004785979
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4698,6 +3973,46 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1004785974}
   m_CullTransparentMesh: 1
+--- !u!114 &1004785981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1004785974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15e9ec4b0a9832243aed99a45b1c6839, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _onClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 675590293}
+        m_TargetAssemblyTypeName: GameButton, Assembly-CSharp
+        m_MethodName: OnObjectButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1533591785}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _interactable: 1
+  _colorChangeTime: 0.1
+  _text: 'Action
+
+    Card'
+  DefaultColor: {r: 1, g: 1, b: 1, a: 1}
+  OnCursorColor: {r: 0.49056602, g: 0.49056602, b: 0.49056602, a: 1}
+  OnClickedColor: {r: 0.26415092, g: 0.26415092, b: 0.26415092, a: 1}
+  DisableColor: {r: 0.4901961, g: 0.4901961, b: 0.4901961, a: 0.49803922}
+  DefaultTextColor: {r: 1, g: 0, b: 0, a: 1}
+  OnCursorTextColor: {r: 0.6603774, g: 0.00622999, b: 0.00622999, a: 1}
+  OnClickedTextColor: {r: 0.36320752, g: 0, b: 0, a: 1}
+  DisableTextColor: {r: 0.65882355, g: 0.007843138, b: 0.007843138, a: 0.49803922}
 --- !u!1 &1022802464
 GameObject:
   m_ObjectHideFlags: 0
@@ -5128,8 +4443,6 @@ GameObject:
   - component: {fileID: 1165540955}
   - component: {fileID: 1165540958}
   - component: {fileID: 1165540957}
-  - component: {fileID: 1165540956}
-  - component: {fileID: 1165540960}
   - component: {fileID: 1165540959}
   m_Layer: 5
   m_Name: ExitButton
@@ -5158,74 +4471,6 @@ RectTransform:
   m_AnchoredPosition: {x: 605, y: 290}
   m_SizeDelta: {x: 250, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1165540956
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1165540954}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 1165540957}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 675590293}
-        m_TargetAssemblyTypeName: Button, Assembly-CSharp
-        m_MethodName: OffObjectButton
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1731809987}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 675590293}
-        m_TargetAssemblyTypeName: Button, Assembly-CSharp
-        m_MethodName: UndoButton
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1165540954}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1165540957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5273,56 +4518,35 @@ MonoBehaviour:
   m_GameObject: {fileID: 1165540954}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Script: {fileID: 11500000, guid: 15e9ec4b0a9832243aed99a45b1c6839, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1165540960}
-          m_TargetAssemblyTypeName: Reaction, Assembly-CSharp
-          m_MethodName: ButtonPointerEnter
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 1
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1165540960}
-          m_TargetAssemblyTypeName: Reaction, Assembly-CSharp
-          m_MethodName: ButtonPointerExit
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
---- !u!114 &1165540960
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1165540954}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 909fc310c64752749983e7e956b12810, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  colorOn: {r: 0.49019608, g: 0.49019608, b: 0.49019608, a: 1}
-  Chage: 1
+  _onClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 675590293}
+        m_TargetAssemblyTypeName: GameButton, Assembly-CSharp
+        m_MethodName: OffObjectButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1731809987}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _interactable: 1
+  _colorChangeTime: 0.1
+  _text: "\u9589\u3058\u308B"
+  DefaultColor: {r: 1, g: 1, b: 1, a: 1}
+  OnCursorColor: {r: 0.49056602, g: 0.49056602, b: 0.49056602, a: 1}
+  OnClickedColor: {r: 0.26415092, g: 0.26415092, b: 0.26415092, a: 1}
+  DisableColor: {r: 0.4901961, g: 0.4901961, b: 0.4901961, a: 0.49803922}
+  DefaultTextColor: {r: 1, g: 1, b: 1, a: 1}
+  OnCursorTextColor: {r: 0.4901961, g: 0.4901961, b: 0.4901961, a: 1}
+  OnClickedTextColor: {r: 0.2627451, g: 0.2627451, b: 0.2627451, a: 1}
+  DisableTextColor: {r: 0.4901961, g: 0.4901961, b: 0.4901961, a: 0.49803922}
 --- !u!1 &1313092701
 GameObject:
   m_ObjectHideFlags: 0
@@ -5516,7 +4740,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 200}
+  m_AnchoredPosition: {x: 0, y: 200.00021}
   m_SizeDelta: {x: 0, y: 800}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1324895147
@@ -5687,9 +4911,7 @@ GameObject:
   - component: {fileID: 1424002600}
   - component: {fileID: 1424002603}
   - component: {fileID: 1424002602}
-  - component: {fileID: 1424002601}
   - component: {fileID: 1424002605}
-  - component: {fileID: 1424002604}
   m_Layer: 5
   m_Name: 'SubmitButton '
   m_TagString: Untagged
@@ -5717,74 +4939,6 @@ RectTransform:
   m_AnchoredPosition: {x: 750, y: -100}
   m_SizeDelta: {x: 250, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1424002601
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1424002599}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 1424002602}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1820168018}
-        m_TargetAssemblyTypeName: GameUI, Assembly-CSharp
-        m_MethodName: OnDecision
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 675590293}
-        m_TargetAssemblyTypeName: Button, Assembly-CSharp
-        m_MethodName: UndoButton
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1424002599}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1424002602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5823,51 +4977,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1424002599}
   m_CullTransparentMesh: 1
---- !u!114 &1424002604
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1424002599}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1424002605}
-          m_TargetAssemblyTypeName: Reaction, Assembly-CSharp
-          m_MethodName: ButtonPointerEnter
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 1
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1424002605}
-          m_TargetAssemblyTypeName: Reaction, Assembly-CSharp
-          m_MethodName: ButtonPointerExit
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!114 &1424002605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5877,11 +4986,35 @@ MonoBehaviour:
   m_GameObject: {fileID: 1424002599}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 909fc310c64752749983e7e956b12810, type: 3}
+  m_Script: {fileID: 11500000, guid: 15e9ec4b0a9832243aed99a45b1c6839, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorOn: {r: 0.49019608, g: 0.49019608, b: 0.49019608, a: 1}
-  Chage: 1
+  _onClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1820168018}
+        m_TargetAssemblyTypeName: GameUI, Assembly-CSharp
+        m_MethodName: OnDecision
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _interactable: 1
+  _colorChangeTime: 0.1
+  _text: "\u6C7A\u5B9A"
+  DefaultColor: {r: 1, g: 1, b: 1, a: 1}
+  OnCursorColor: {r: 0.49056602, g: 0.49056602, b: 0.49056602, a: 1}
+  OnClickedColor: {r: 0.26415092, g: 0.26415092, b: 0.26415092, a: 1}
+  DisableColor: {r: 0.4901961, g: 0.4901961, b: 0.4901961, a: 0.49803922}
+  DefaultTextColor: {r: 1, g: 1, b: 1, a: 1}
+  OnCursorTextColor: {r: 0.4901961, g: 0.4901961, b: 0.4901961, a: 1}
+  OnClickedTextColor: {r: 0.2627451, g: 0.2627451, b: 0.2627451, a: 1}
+  DisableTextColor: {r: 0.4901961, g: 0.4901961, b: 0.4901961, a: 0.49803922}
 --- !u!1 &1432407537
 GameObject:
   m_ObjectHideFlags: 0
@@ -5893,9 +5026,7 @@ GameObject:
   - component: {fileID: 1432407538}
   - component: {fileID: 1432407541}
   - component: {fileID: 1432407540}
-  - component: {fileID: 1432407539}
   - component: {fileID: 1432407542}
-  - component: {fileID: 1432407543}
   m_Layer: 6
   m_Name: GolemButton
   m_TagString: Untagged
@@ -5923,74 +5054,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -300}
   m_SizeDelta: {x: 400, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1432407539
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1432407537}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 1432407540}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 675590293}
-        m_TargetAssemblyTypeName: Button, Assembly-CSharp
-        m_MethodName: EnemyButton
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 675590293}
-        m_TargetAssemblyTypeName: Button, Assembly-CSharp
-        m_MethodName: UndoButton
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1432407537}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1432407540
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6038,56 +5101,35 @@ MonoBehaviour:
   m_GameObject: {fileID: 1432407537}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Script: {fileID: 11500000, guid: 15e9ec4b0a9832243aed99a45b1c6839, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1432407543}
-          m_TargetAssemblyTypeName: Reaction, Assembly-CSharp
-          m_MethodName: ButtonPointerEnter
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 1
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1432407543}
-          m_TargetAssemblyTypeName: Reaction, Assembly-CSharp
-          m_MethodName: ButtonPointerExit
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
---- !u!114 &1432407543
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1432407537}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 909fc310c64752749983e7e956b12810, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  colorOn: {r: 0.49019608, g: 0.49019608, b: 0.49019608, a: 1}
-  Chage: 1
+  _onClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 675590293}
+        m_TargetAssemblyTypeName: GameButton, Assembly-CSharp
+        m_MethodName: EnemyButton
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _interactable: 1
+  _colorChangeTime: 0.1
+  _text: "\u30B4\u30FC\u30EC\u30E0"
+  DefaultColor: {r: 1, g: 1, b: 1, a: 1}
+  OnCursorColor: {r: 0.49056602, g: 0.49056602, b: 0.49056602, a: 1}
+  OnClickedColor: {r: 0.26415092, g: 0.26415092, b: 0.26415092, a: 1}
+  DisableColor: {r: 0.4901961, g: 0.4901961, b: 0.4901961, a: 0.49803922}
+  DefaultTextColor: {r: 1, g: 1, b: 1, a: 1}
+  OnCursorTextColor: {r: 0.4901961, g: 0.4901961, b: 0.4901961, a: 1}
+  OnClickedTextColor: {r: 0.2627451, g: 0.2627451, b: 0.2627451, a: 1}
+  DisableTextColor: {r: 0.4901961, g: 0.4901961, b: 0.4901961, a: 0.49803922}
 --- !u!1 &1465620994
 GameObject:
   m_ObjectHideFlags: 0
@@ -6374,7 +5416,6 @@ GameObject:
   - component: {fileID: 1545265720}
   - component: {fileID: 1545265719}
   - component: {fileID: 1545265718}
-  - component: {fileID: 1545265722}
   - component: {fileID: 1545265721}
   m_Layer: 5
   m_Name: SynthesisButton
@@ -6410,7 +5451,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1545265716}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
@@ -6518,56 +5559,35 @@ MonoBehaviour:
   m_GameObject: {fileID: 1545265716}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Script: {fileID: 11500000, guid: 15e9ec4b0a9832243aed99a45b1c6839, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1545265722}
-          m_TargetAssemblyTypeName: Reaction, Assembly-CSharp
-          m_MethodName: ButtonPointerEnter
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 1
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1545265722}
-          m_TargetAssemblyTypeName: Reaction, Assembly-CSharp
-          m_MethodName: ButtonPointerExit
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
---- !u!114 &1545265722
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1545265716}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 909fc310c64752749983e7e956b12810, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  colorOn: {r: 0.49019608, g: 0.49019608, b: 0.49019608, a: 1}
-  Chage: 1
+  _onClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1820168018}
+        m_TargetAssemblyTypeName: GameUI, Assembly-CSharp
+        m_MethodName: OnDecision
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _interactable: 1
+  _colorChangeTime: 0.1
+  _text: "\u5408\u6210"
+  DefaultColor: {r: 1, g: 1, b: 1, a: 1}
+  OnCursorColor: {r: 0.49056602, g: 0.49056602, b: 0.49056602, a: 1}
+  OnClickedColor: {r: 0.26415092, g: 0.26415092, b: 0.26415092, a: 1}
+  DisableColor: {r: 0.4901961, g: 0.4901961, b: 0.4901961, a: 0.49803922}
+  DefaultTextColor: {r: 1, g: 1, b: 1, a: 1}
+  OnCursorTextColor: {r: 0.4901961, g: 0.4901961, b: 0.4901961, a: 1}
+  OnClickedTextColor: {r: 0.2627451, g: 0.2627451, b: 0.2627451, a: 1}
+  DisableTextColor: {r: 0.4901961, g: 0.4901961, b: 0.4901961, a: 0.49803922}
 --- !u!1 &1556301167
 GameObject:
   m_ObjectHideFlags: 0
@@ -6840,9 +5860,7 @@ GameObject:
   - component: {fileID: 1682138732}
   - component: {fileID: 1682138737}
   - component: {fileID: 1682138736}
-  - component: {fileID: 1682138735}
-  - component: {fileID: 1682138734}
-  - component: {fileID: 1682138733}
+  - component: {fileID: 1682138738}
   m_Layer: 5
   m_Name: ResetButton
   m_TagString: Untagged
@@ -6870,121 +5888,6 @@ RectTransform:
   m_AnchoredPosition: {x: 125, y: 80}
   m_SizeDelta: {x: 150, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1682138733
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1682138731}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1682138734}
-          m_TargetAssemblyTypeName: Reaction, Assembly-CSharp
-          m_MethodName: ButtonPointerEnter
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 1
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1682138734}
-          m_TargetAssemblyTypeName: Reaction, Assembly-CSharp
-          m_MethodName: ButtonPointerExit
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
---- !u!114 &1682138734
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1682138731}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 909fc310c64752749983e7e956b12810, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  colorOn: {r: 0.5803922, g: 0, b: 0, a: 1}
-  Chage: 1
---- !u!114 &1682138735
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1682138731}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 1682138736}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 675590293}
-        m_TargetAssemblyTypeName: Button, Assembly-CSharp
-        m_MethodName: ResetButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1682138736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7023,6 +5926,44 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1682138731}
   m_CullTransparentMesh: 1
+--- !u!114 &1682138738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1682138731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15e9ec4b0a9832243aed99a45b1c6839, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _onClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 675590293}
+        m_TargetAssemblyTypeName: GameButton, Assembly-CSharp
+        m_MethodName: ResetButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _interactable: 1
+  _colorChangeTime: 0.1
+  _text: "\u30EA\u30BB\u30C3\u30C8"
+  DefaultColor: {r: 1, g: 1, b: 1, a: 1}
+  OnCursorColor: {r: 0.49056602, g: 0.49056602, b: 0.49056602, a: 1}
+  OnClickedColor: {r: 0.26415092, g: 0.26415092, b: 0.26415092, a: 1}
+  DisableColor: {r: 0.4901961, g: 0.4901961, b: 0.4901961, a: 0.49803922}
+  DefaultTextColor: {r: 1, g: 1, b: 1, a: 1}
+  OnCursorTextColor: {r: 0.4901961, g: 0.4901961, b: 0.4901961, a: 1}
+  OnClickedTextColor: {r: 0.2627451, g: 0.2627451, b: 0.2627451, a: 1}
+  DisableTextColor: {r: 0.4901961, g: 0.4901961, b: 0.4901961, a: 0.49803922}
 --- !u!1 &1718209138
 GameObject:
   m_ObjectHideFlags: 0
@@ -7253,8 +6194,6 @@ GameObject:
   - component: {fileID: 1794657971}
   - component: {fileID: 1794657974}
   - component: {fileID: 1794657973}
-  - component: {fileID: 1794657972}
-  - component: {fileID: 1794657976}
   - component: {fileID: 1794657975}
   m_Layer: 5
   m_Name: ProceedButton
@@ -7283,74 +6222,6 @@ RectTransform:
   m_AnchoredPosition: {x: 650, y: -280}
   m_SizeDelta: {x: 160, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1794657972
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1794657970}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 1794657973}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 675590293}
-        m_TargetAssemblyTypeName: Button, Assembly-CSharp
-        m_MethodName: ProceedReturnButton
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Proceed
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 675590293}
-        m_TargetAssemblyTypeName: Button, Assembly-CSharp
-        m_MethodName: UndoButton
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1794657970}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1794657973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7398,56 +6269,35 @@ MonoBehaviour:
   m_GameObject: {fileID: 1794657970}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Script: {fileID: 11500000, guid: 15e9ec4b0a9832243aed99a45b1c6839, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1794657976}
-          m_TargetAssemblyTypeName: Reaction, Assembly-CSharp
-          m_MethodName: ButtonPointerEnter
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 1
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1794657976}
-          m_TargetAssemblyTypeName: Reaction, Assembly-CSharp
-          m_MethodName: ButtonPointerExit
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
---- !u!114 &1794657976
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1794657970}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 909fc310c64752749983e7e956b12810, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  colorOn: {r: 0.49019608, g: 0.49019608, b: 0.49019608, a: 1}
-  Chage: 1
+  _onClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 675590293}
+        m_TargetAssemblyTypeName: GameButton, Assembly-CSharp
+        m_MethodName: ProceedReturnButton
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: Proceed
+          m_BoolArgument: 0
+        m_CallState: 2
+  _interactable: 1
+  _colorChangeTime: 0.1
+  _text: "\u6B21\u3078"
+  DefaultColor: {r: 1, g: 1, b: 1, a: 1}
+  OnCursorColor: {r: 0.49056602, g: 0.49056602, b: 0.49056602, a: 1}
+  OnClickedColor: {r: 0.26415092, g: 0.26415092, b: 0.26415092, a: 1}
+  DisableColor: {r: 0.4901961, g: 0.4901961, b: 0.4901961, a: 0.49803922}
+  DefaultTextColor: {r: 1, g: 1, b: 1, a: 1}
+  OnCursorTextColor: {r: 0.4901961, g: 0.4901961, b: 0.4901961, a: 1}
+  OnClickedTextColor: {r: 0.2627451, g: 0.2627451, b: 0.2627451, a: 1}
+  DisableTextColor: {r: 0.4901961, g: 0.4901961, b: 0.4901961, a: 0.49803922}
 --- !u!1 &1804400921
 GameObject:
   m_ObjectHideFlags: 0
@@ -8646,8 +7496,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1804400923}
   m_HandleRect: {fileID: 1804400922}
   m_Direction: 2
-  m_Value: 0
-  m_Size: 0.74983615
+  m_Value: -0.00000091552704
+  m_Size: 0.7499844
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -8701,8 +7551,6 @@ GameObject:
   - component: {fileID: 2137385058}
   - component: {fileID: 2137385061}
   - component: {fileID: 2137385060}
-  - component: {fileID: 2137385059}
-  - component: {fileID: 2137385063}
   - component: {fileID: 2137385062}
   m_Layer: 5
   m_Name: TitleButton
@@ -8731,62 +7579,6 @@ RectTransform:
   m_AnchoredPosition: {x: -250, y: -220}
   m_SizeDelta: {x: 240, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2137385059
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2137385057}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 2137385060}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 675590293}
-        m_TargetAssemblyTypeName: Button, Assembly-CSharp
-        m_MethodName: OnTitleButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &2137385060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8834,56 +7626,35 @@ MonoBehaviour:
   m_GameObject: {fileID: 2137385057}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Script: {fileID: 11500000, guid: 15e9ec4b0a9832243aed99a45b1c6839, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 2137385063}
-          m_TargetAssemblyTypeName: Reaction, Assembly-CSharp
-          m_MethodName: ButtonPointerEnter
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 1
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 2137385063}
-          m_TargetAssemblyTypeName: Reaction, Assembly-CSharp
-          m_MethodName: ButtonPointerExit
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
---- !u!114 &2137385063
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2137385057}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 909fc310c64752749983e7e956b12810, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  colorOn: {r: 0.49019608, g: 0.49019608, b: 0.49019608, a: 1}
-  Chage: 1
+  _onClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 675590293}
+        m_TargetAssemblyTypeName: GameButton, Assembly-CSharp
+        m_MethodName: OnTitleButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _interactable: 1
+  _colorChangeTime: 0.1
+  _text: TITLE
+  DefaultColor: {r: 1, g: 1, b: 1, a: 1}
+  OnCursorColor: {r: 0.49056602, g: 0.49056602, b: 0.49056602, a: 1}
+  OnClickedColor: {r: 0.26415092, g: 0.26415092, b: 0.26415092, a: 1}
+  DisableColor: {r: 0.4901961, g: 0.4901961, b: 0.4901961, a: 0.49803922}
+  DefaultTextColor: {r: 1, g: 1, b: 1, a: 1}
+  OnCursorTextColor: {r: 0.4901961, g: 0.4901961, b: 0.4901961, a: 1}
+  OnClickedTextColor: {r: 0.2627451, g: 0.2627451, b: 0.2627451, a: 1}
+  DisableTextColor: {r: 0.4901961, g: 0.4901961, b: 0.4901961, a: 0.49803922}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
