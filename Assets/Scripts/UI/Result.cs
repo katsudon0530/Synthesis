@@ -1,33 +1,32 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Result : MonoBehaviour
 {
-    [SerializeField] GameObject resultPanel;
     [SerializeField] Text resultText;
     [SerializeField] Text TurnResultText;
 
     //リザルトパネルを非表示化
-    public void OffResultPanel()
+    public void Awake()
     {
-        resultPanel.SetActive(false);
+        gameObject.SetActive(false);
     }
 
     //ゲームの結果を表示する
-    public void ShowResult(int playerLife)
+    public void ShowResult()
     {
-        if (playerLife <= 0)
+        if (Player.Instance.Life <= 0)
             ShowGameResult("LOSE");
 
-        else if (playerLife >= 0)
+        else if (Player.Instance.Life >= 0)
             ShowGameResult("WIN");
     }
 
     //ゲームの勝敗をパネルで表示
     public void ShowGameResult(string result)
     {
-        resultPanel.SetActive(true);
-        //resultPanel.GetComponentInChildren<Text>().text = result ;
+        gameObject.SetActive(true);
         resultText.text = result;
         if (result == "WIN")
         {
@@ -38,5 +37,18 @@ public class Result : MonoBehaviour
         {
             TurnResultText.gameObject.SetActive(false);
         }
+    }
+
+    //タイトルに戻る
+    public void OnTitleButton()
+    {
+        SceneManager.LoadScene("Title");
+    }
+
+    //シーンをリセットする
+    public void ResetButton()
+    {
+        string currentScene = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(currentScene);
     }
 }

@@ -4,74 +4,25 @@ using UnityEngine.UI;
 
 public class GameUI : MonoBehaviour
 {
-    [SerializeField] Text playerLifeText;
-    [SerializeField] Text TurnText;
-    [SerializeField] GameObject deckPanel;
     [SerializeField] GameObject submitButton;
     [SerializeField] GameObject synthesisButton;
 
-    [SerializeField] GameObject serectPanel;
-    [SerializeField] GameObject cardGuide;
-    [SerializeField] RulePanelUI rulePanelUI;
     [SerializeField] Result result;
 
     public UnityAction OnDecisionButton;
-    private int buttonID;
-    Player player;
-    Enemy enemy;
 
-    public int ButtonID { get => buttonID; }
-
-
-    //UIの非表示化
-    public void Awake()
-    {
-        Init();
-    }
-
-    private void Init()
-    {
-        MessageText.Panel(false);
-        deckPanel.SetActive(false);
-        result.OffResultPanel();
-        rulePanelUI.SetRuleText();
-        player = Player.Instance;
-    }
-
-    //ライフの表示・変更
-    //経過ターン数をカウントする
-    private void Update()
-    {
-        if(player != null)
-        {
-            if (player.Life <= 0)
-            {
-                player.Life = 0;
-            }
-            playerLifeText.text = $"{player.Life}HP";
-        }
-
-        TurnText.text = $"ターン {GameMaster.TurnCount}";
-    }
+    public int ButtonID { get; set; }
 
     //ゲームの結果を表示する
     public void GameResult()
     {
-        result.ShowResult(player.Life);
+        result.ShowResult();
     }
-
-
-    //ルール説明の遷移とボタン  
-    public void RuleTextAZ(string ProceedReturn)
-    {
-        rulePanelUI.RuleTextChange(ProceedReturn);
-    }
-
 
     //決定ボタン入力時に行うアクション
     public void OnDecision(int ID)
     {
-        buttonID = ID;
+        ButtonID = ID;
         submitButton.SetActive(false);
         synthesisButton.SetActive(false);
         OnDecisionButton?.Invoke();
@@ -83,19 +34,5 @@ public class GameUI : MonoBehaviour
         submitButton.SetActive(true);
         synthesisButton.SetActive(true);
         MessageText.Panel(false);
-        cardGuide.SetActive(true);
-    }
-
-    //セレクトパネルを非表示
-    public void StartGameUI(Enemy enemyIn)
-    {
-        serectPanel.SetActive(false);
-        enemy = enemyIn;
-    }
-    
-    //カードガイドの非表示
-    public void OffCardGuide()
-    {
-        cardGuide.SetActive(false);
     }
 }

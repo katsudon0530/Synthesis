@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RulePanelUI : MonoBehaviour
+public class RulePanel : MonoBehaviour
 {
     [SerializeField] GameObject rulePanel;
     [SerializeField] Text ruleText;
@@ -11,9 +11,9 @@ public class RulePanelUI : MonoBehaviour
     [SerializeField] GameObject proceedButton;
     [SerializeField] GameObject returnButton;
 
-    int textCount;
+    private int textCount;
 
-    public void SetRuleText()
+    public void Awake()
     {
         rulePanel.SetActive(false);
         returnButton.SetActive(false);
@@ -47,6 +47,10 @@ public class RulePanelUI : MonoBehaviour
             returnButton.SetActive(true);
             proceedButton.SetActive(true);
         }
-
     }
+
+    public void OffPanel()
+    {
+        gameObject.SetActive(false);
+    } 
 }

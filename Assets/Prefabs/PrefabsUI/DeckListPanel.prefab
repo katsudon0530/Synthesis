@@ -502,7 +502,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8047963975879662551}
   m_HandleRect: {fileID: 3166112839288394757}
   m_Direction: 2
-  m_Value: -0.00000030517577
+  m_Value: -0.0000018310546
   m_Size: 0.75
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -691,7 +691,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 200.00006}
+  m_AnchoredPosition: {x: 0, y: 200.00037}
   m_SizeDelta: {x: 0, y: 800}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &4085589663480282179
@@ -720,7 +720,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4085589663480282179}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -787,10 +787,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13483bbd64ba8b746ba6784bccdd8c39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  generator: {fileID: 0}
   deckContents: {fileID: 5770919714090420901}
   cardContents: {fileID: 7971938433150881917}
-  exitButton: {fileID: 8694405231107103676}
-  deck: {fileID: 0}
+  Contents: {fileID: 6461558928654310339}
+  Contents2: {fileID: 3377577058038252446}
+  ScrollScale: {fileID: 4512457861032241445}
+  CardList: {fileID: 8861749011758917336}
+  exitButton: {fileID: 5591236561651046798}
+  DeckWidth: 5
+  DeckHeight: 270
+  cardInterval: 210
+  LookDeck: []
+  LookCards: []
 --- !u!1 &4512457861032241445
 GameObject:
   m_ObjectHideFlags: 0
@@ -1546,13 +1555,13 @@ MonoBehaviour:
   _onClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameButton, Assembly-CSharp
-        m_MethodName: OffObjectButton
-        m_Mode: 2
+      - m_Target: {fileID: 4272695163986327739}
+        m_TargetAssemblyTypeName: DeckCustomize, Assembly-CSharp
+        m_MethodName: OffPanel
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 4085589663480282179}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 

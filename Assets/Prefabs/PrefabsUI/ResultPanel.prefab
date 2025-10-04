@@ -92,8 +92,8 @@ MonoBehaviour:
   _onClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameButton, Assembly-CSharp
+      - m_Target: {fileID: 3361894082661462650}
+        m_TargetAssemblyTypeName: Result, Assembly-CSharp
         m_MethodName: ResetButton
         m_Mode: 1
         m_Arguments:
@@ -523,8 +523,8 @@ MonoBehaviour:
   _onClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameButton, Assembly-CSharp
+      - m_Target: {fileID: 3361894082661462650}
+        m_TargetAssemblyTypeName: Result, Assembly-CSharp
         m_MethodName: OnTitleButton
         m_Mode: 1
         m_Arguments:
@@ -714,6 +714,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b39e4600e1745a48b1d41144db8cbc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resultPanel: {fileID: 8958667096903914556}
   resultText: {fileID: 1202606041877618062}
   TurnResultText: {fileID: 965407352982305899}

@@ -10,7 +10,12 @@ public class MessageText : MonoBehaviour
     public void Awake()
     {
         message = GetComponentInChildren<Text>();
+        if(message == null)
+        {
+            Debug.LogError("Textが入っていません");
+        }
         messagePanel = this.gameObject;
+        Panel(false);
     }
 
     public static void TextIn(string nowText)

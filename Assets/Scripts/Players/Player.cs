@@ -49,7 +49,7 @@ public class Player : Singleton<Player>
         if (card.Base.PlayCondition != true)
             return;
 
-        if (card.transform.parent == SubmitPosition.Instance.transform)
+        if (card.transform.parent == SubmitPosition.Instance.transform && !GameMaster.CardSet)
         {
             SubmitPosition.Instance.ReRemove(card);
             SubmitPosition.Instance.SubmitCard = null;

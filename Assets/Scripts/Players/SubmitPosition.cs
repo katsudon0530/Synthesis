@@ -4,6 +4,7 @@ using UnityEngine;
 public class SubmitPosition : Singleton<SubmitPosition>
 {
     [SerializeField] Synthesis synthesis;
+    [SerializeField] GameObject cardGuide;
     Card submitCard;
 
     public List<Card> submitlist = new();
@@ -117,4 +118,8 @@ public class SubmitPosition : Singleton<SubmitPosition>
         }
     }
 
+    private void Update()
+    {
+        cardGuide.SetActive(GameMaster.CardSet ? false : true);
+    }
 }

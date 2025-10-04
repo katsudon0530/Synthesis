@@ -16,8 +16,9 @@ public class GameMaster : MonoBehaviour
     private CardManager cardManager;
     private Coroutine nowTurn;
 
-    public int enemyNum;
+    public static int enemyNum;
     public static bool CardSet { get; private set; }
+
     public static int TurnCount;
 
     private void Awake()
@@ -34,17 +35,14 @@ public class GameMaster : MonoBehaviour
 
         enemy = enemyManager.GenerateEnemy(enemyNum);
         synthesisManager.SetButton();
-        deck.DeckListOpen();
         deck.DeckSet();
 
         SendCardTo();
 
         gameUI.OnDecisionButton = DecisionAction;
         TurnCount = 1;
-        gameUI.StartGameUI(enemy);
 
         nowTurn = StartCoroutine(turn());
-
     }
 
     //手札を生成
@@ -99,7 +97,6 @@ public class GameMaster : MonoBehaviour
         //カードが選択され、決定か合成が押されるまで待機
         yield return new WaitUntil(() => CardSetIN());
 
-        gameUI.OffCardGuide();
         //どちらのボタンが押されたのかを判別してそのアクションを実行
         switch (gameUI.ButtonID)
         {
@@ -140,7 +137,7 @@ public class GameMaster : MonoBehaviour
     
         gameUI.ResetUI();
         synthesisManager.SetButton();
-        deck.DeckListOpen();
+        deck.Setlist();
         SendCardTo();
 
         TurnCount += 1;
