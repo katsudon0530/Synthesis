@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class SynthesisManager : MonoBehaviour
 {
     [SerializeField] Synthesis synthesis;
-    [SerializeField] Deck deck;
+    private Deck deck;
 
     public void Awake()
     {

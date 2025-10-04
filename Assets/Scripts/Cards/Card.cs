@@ -54,6 +54,7 @@ public class Card : MonoBehaviour
     {
         transform.position += Vector3.up * 0.1f;
     }
+
     //カードにマウスカーソルが入った時の反応
     public void PointerEnter()
     {

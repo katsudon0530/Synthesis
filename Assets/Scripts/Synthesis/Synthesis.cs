@@ -15,7 +15,11 @@ public class Synthesis : MonoBehaviour
     //カードを合成する
     public void CardSynthesis(List<Card> card, List<int> Deck)
     {
-        if(card.Count == 2)
+        if (card.Count <= 1)
+        {
+            return;
+        }
+        else if(card.Count == 2)
         {
             id = DoubleSearchID(card[0].Base.ID, card[1].Base.ID);
         }

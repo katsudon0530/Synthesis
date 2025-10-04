@@ -5,10 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class TitleManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-
     public void OnStartButtan()
     {
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene("CustomScene");
     }
 }
