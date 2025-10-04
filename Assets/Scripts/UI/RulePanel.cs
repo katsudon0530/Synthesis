@@ -4,7 +4,6 @@ using UnityEngine.UI;
 
 public class RulePanel : MonoBehaviour
 {
-    [SerializeField] GameObject rulePanel;
     [SerializeField] Text ruleText;
     [TextArea]
     [SerializeField] List<string> ruleAllText;
@@ -15,7 +14,7 @@ public class RulePanel : MonoBehaviour
 
     public void Awake()
     {
-        rulePanel.SetActive(false);
+        gameObject.SetActive(false);
         returnButton.SetActive(false);
         textCount = 0;
         ruleText.text = ruleAllText[textCount];

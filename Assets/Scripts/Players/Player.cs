@@ -5,12 +5,10 @@ using UnityEngine.UI;
 
 public class Player : Singleton<Player>
 {
-    //[SerializeField] Hand hand;
-    //[SerializeField] SubmitPosition submitPosition;
-    [SerializeField] StatusEffectGenerator statusEffectGenerator;
+    protected override bool IsPersistent => true;
 
     [Header("プレイヤーベースステータス")]
-    [SerializeField] int lifeMax;
+    [SerializeField] int lifeMax =100;
     [Space(10)]
     [Header("実数値")]
     [SerializeField] int life;
@@ -24,9 +22,7 @@ public class Player : Singleton<Player>
     public int Life { get => life; set => life = value; }
     public int PastLife { get => pastLife; set => pastLife = value; }
     public List<Card> SubmitList { get => SubmitPosition.Instance.Submitlist; }
-    public StatusEffectGenerator StatusEffectGenerator { get => statusEffectGenerator; set => statusEffectGenerator = value; }
     public List<StatusEffect> Effects { get => effects; set => effects = value; }
-
 
 
     public void SetPlayer(int handMax)
@@ -114,7 +110,6 @@ public class Player : Singleton<Player>
     {
         SubmitPosition.Instance.DeleteCard();
         Defens = 0;
-        GetComponent<EffectCount>().StatusEffectCount(Effects, statusEffectGenerator.PlayerXY);
         Hand.Instance.gameObject.SetActive(true);
     }
 }

@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class Hand : Singleton<Hand>
 {
+    protected override bool IsPersistent => false;
+
     List<Card> list = new();
     public float cardInterval;
 

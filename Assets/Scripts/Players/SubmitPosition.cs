@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class SubmitPosition : Singleton<SubmitPosition>
 {
+    protected override bool IsPersistent => false;
+
     [SerializeField] Synthesis synthesis;
     [SerializeField] GameObject cardGuide;
     Card submitCard;

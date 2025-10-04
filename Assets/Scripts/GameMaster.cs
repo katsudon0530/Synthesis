@@ -6,10 +6,12 @@ using UnityEngine;
 public class GameMaster : MonoBehaviour
 {
     [SerializeField] CardGenerator cardGenerator;
-    [SerializeField] Deck deck;
     [SerializeField] GameUI gameUI;
+    [SerializeField] GameObject playrPrefab;
+    [SerializeField] GameObject DeckPrefab;
     [SerializeField] int handMax;
 
+    private Deck deck;
     private Enemy enemy;
     private EnemyManager enemyManager;
     private SynthesisManager synthesisManager;
@@ -17,7 +19,7 @@ public class GameMaster : MonoBehaviour
     private Coroutine nowTurn;
 
     public static int enemyNum;
-    public static bool CardSet { get; private set; }
+    public static bool CardSet { get; set; }
 
     public static int TurnCount;
 
@@ -26,10 +28,19 @@ public class GameMaster : MonoBehaviour
         enemyManager = GetComponent<EnemyManager>();
         synthesisManager = GetComponent<SynthesisManager>();
         cardManager = GetComponent<CardManager>();
+        deck = Deck.Instance;
+        if (Player.Instance == null)
+        {
+            Instantiate(playrPrefab);
+        }
+        if (Deck.Instance == null)
+        {
+            Instantiate(DeckPrefab);
+        }
     }
 
     //ゲームスタート時のセットアップ内容
-    public void Setup()
+    public void Start()
     {
         Player.Instance.SetPlayer(handMax);
 
@@ -81,7 +92,7 @@ public class GameMaster : MonoBehaviour
             Player.Instance.SerCardToHand(card);
         }
         Hand.Instance.ResetPosition();
-        deck.RestDeck();
+        gameUI.RestDeck();
     }
 
     IEnumerator turn()
@@ -137,7 +148,6 @@ public class GameMaster : MonoBehaviour
     
         gameUI.ResetUI();
         synthesisManager.SetButton();
-        deck.Setlist();
         SendCardTo();
 
         TurnCount += 1;

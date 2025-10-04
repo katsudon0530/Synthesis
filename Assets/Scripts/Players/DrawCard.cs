@@ -40,6 +40,5 @@ public class DrawCard : MonoBehaviour
             player.SerCardToHand(card);
         }
         Hand.Instance.ResetPosition();
-        deck.RestDeck();
     }
 }

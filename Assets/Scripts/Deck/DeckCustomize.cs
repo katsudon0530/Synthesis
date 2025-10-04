@@ -34,7 +34,11 @@ public class DeckCustomize : MonoBehaviour
     {
         gameObject.SetActive(false);
         deck = Deck.Instance;
-        deck.DeckAll = new List<int>(deck.Base);
+    }
+
+    public void OnPanel()
+    {
+        gameObject.SetActive(true);
         DeckListOpen();
         CustomCardListOpen();
     }

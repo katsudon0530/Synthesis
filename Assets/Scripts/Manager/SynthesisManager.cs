@@ -8,6 +8,10 @@ public class SynthesisManager : MonoBehaviour
     [SerializeField] Synthesis synthesis;
     [SerializeField] Deck deck;
 
+    public void Awake()
+    {
+         deck = Deck.Instance;
+    }
 
     public void SetButton()
     {

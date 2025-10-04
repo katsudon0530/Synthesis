@@ -6,6 +6,7 @@ public class GameUI : MonoBehaviour
 {
     [SerializeField] GameObject submitButton;
     [SerializeField] GameObject synthesisButton;
+    [SerializeField] Text RestText;
 
     [SerializeField] Result result;
 
@@ -34,5 +35,12 @@ public class GameUI : MonoBehaviour
         submitButton.SetActive(true);
         synthesisButton.SetActive(true);
         MessageText.Panel(false);
+    }
+
+
+    //デッキの残り枚数を表示する
+    public void RestDeck()
+    {
+        RestText.text = $"残り{Deck.Instance.cardDeck.Count}枚";
     }
 }

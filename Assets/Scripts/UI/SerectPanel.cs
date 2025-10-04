@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Timeline;
+using UnityEngine.SceneManagement;
 
 public class SerectPanel : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class SerectPanel : MonoBehaviour
     public void EnemyButton(int enemyID)
     {
         GameMaster.enemyNum = enemyID;
-        gameObject.SetActive(false);
+        string currentScene = SceneManager.GetActiveScene().name;
+        if(currentScene != "GameScene")
+            SceneManager.LoadScene("GameScene");
     }
 }
