@@ -13,7 +13,6 @@ public class EffectCount : MonoBehaviour
         for (int i = Effects.Count - 1; i >= 0; i--)
         {
             Effects[i].EffectCountDown(Effects);
-            Debug.Log("aaaaaaaaaa");
         }
 
         alignment(Effects, firstEffect);

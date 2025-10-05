@@ -126,7 +126,7 @@ public class Card : MonoBehaviour
 
     void Update()
     {
-        OnMouseCursor();
+        //OnMouseCursor();
         if (!Base.PlayCondition)
         {
             Frame.color = npColor;
