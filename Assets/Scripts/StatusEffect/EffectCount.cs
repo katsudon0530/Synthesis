@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class EffectCount : MonoBehaviour
 {
-    public void StatusEffectCount(List<StatusEffect> Effects, Vector2 xy)
+    public void StatusEffectCount(List<StatusEffect> Effects)
     {
         Effects.RemoveAll(a => a == null);
         if (Effects.Count == 0)
@@ -13,6 +13,7 @@ public class EffectCount : MonoBehaviour
         for (int i = Effects.Count - 1; i >= 0; i--)
         {
             Effects[i].EffectCountDown(Effects);
+            Debug.Log("aaaaaaaaaa");
         }
 
         alignment(Effects, firstEffect);

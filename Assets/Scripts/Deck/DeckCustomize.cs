@@ -110,6 +110,13 @@ public class DeckCustomize : MonoBehaviour
     //カスタマイズするためのカードを表示する
     public void CustomCardListOpen()
     {
+        for (int i = cardContents.transform.childCount - 1; i >= 0; i--)
+        {
+            Destroy(cardContents.transform.GetChild(i).gameObject);
+        }
+
+        if (LookCards != null)
+            LookCards.Clear();
 
         foreach (CardBase i in generator.CardBases)
         {

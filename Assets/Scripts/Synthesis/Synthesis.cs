@@ -149,15 +149,12 @@ public class Synthesis : MonoBehaviour
         yield break;
     }
 
-    //裏面を表示
-    public void OffSynthesisButton()
-    {
-        SynthesisButton.Interactable = false;
-    }
 
-    //裏面を非表示
-    public void OnSynthesisButton()
+    private void Update()
     {
-        SynthesisButton.Interactable = true;
+        if(SubmitPosition.Instance.SubmitList.Count <= 1)
+            SynthesisButton.Interactable = false;
+        else
+            SynthesisButton.Interactable = true;
     }
 }

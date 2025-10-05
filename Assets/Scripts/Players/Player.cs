@@ -21,14 +21,13 @@ public class Player : Singleton<Player>
     public int Defens { get => defens; set => defens = value; }
     public int Life { get => life; set => life = value; }
     public int PastLife { get => pastLife; set => pastLife = value; }
-    public List<Card> SubmitList { get => SubmitPosition.Instance.Submitlist; }
     public List<StatusEffect> Effects { get => effects; set => effects = value; }
-
 
     public void SetPlayer(int handMax)
     {
         life = lifeMax;
         Hand.Instance.cardInterval = Hand.Instance.cardInterval * 6f / handMax;
+        gameObject.AddComponent<EffectCount>();
         SetupNext();
     }
 
@@ -47,8 +46,7 @@ public class Player : Singleton<Player>
 
         if (card.transform.parent == SubmitPosition.Instance.transform && !GameMaster.CardSet)
         {
-            SubmitPosition.Instance.ReRemove(card);
-            SubmitPosition.Instance.SubmitCard = null;
+            SubmitPosition.Instance.RemoveCard(card);
             Hand.Instance.Add(card);
             Hand.Instance.RePosition(card);
             SubmitPosition.Instance.SubmitPositionIn();
@@ -56,7 +54,7 @@ public class Player : Singleton<Player>
             card.effectReSet();
 
         }
-        else if (SubmitPosition.Instance.SubmitCard != null)
+        else if (SubmitPosition.Instance.SubmitList.Count >= 3)
         {
             return;
         }
@@ -110,6 +108,7 @@ public class Player : Singleton<Player>
     {
         SubmitPosition.Instance.DeleteCard();
         Defens = 0;
+        GetComponent<EffectCount>().StatusEffectCount(effects);
         Hand.Instance.gameObject.SetActive(true);
     }
 }

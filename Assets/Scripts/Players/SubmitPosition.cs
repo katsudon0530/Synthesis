@@ -7,79 +7,67 @@ public class SubmitPosition : Singleton<SubmitPosition>
 
     [SerializeField] Synthesis synthesis;
     [SerializeField] GameObject cardGuide;
-    Card submitCard;
 
-    public List<Card> submitlist = new();
-    public Card SubmitCard { get => submitCard; set => submitCard = value; }
-    public List<Card> Submitlist { get => submitlist; set => submitlist = value; }
+    public List<Card> submitList = new();
+    public List<Card> SubmitList { get => submitList; set => submitList = value; }
 
 
     //カードをフィールドにセットする
     public void Set(Card card)
     {
-        if (submitlist.Count < 2 )
+        if (submitList.Count < 2 )
         {
-            Add(card);
-            if (submitlist.Count > 1)
-            {
-                synthesis.OnSynthesisButton();
-            }
+            AddCard(card);
         }
-        else if (submitlist.Count == 2 )
+        else if (submitList.Count == 2 )
         {
-            Add(card);
-            SubmitCard = card;
+            AddCard(card);
         }
         else
         {
             return;
         }
-        effectSwitch(submitlist);
+        effectSwitch(submitList);
     }
 
     //場のカードを消去する
     public void DeleteCard()
     {
-        for (int i = 0; i < submitlist.Count; i++)
+        for (int i = 0; i < submitList.Count; i++)
         {
-            Destroy(submitlist[i].gameObject);
+            Destroy(submitList[i].gameObject);
         }
-        submitlist.Clear();
-        submitCard = null;
+        submitList.Clear();
     }
 
     //カードをリストに追加
-    void Add(Card card)
+    void AddCard(Card card)
     {
-        submitlist.Add(card);
+        submitList.Add(card);
         card.transform.SetParent(this.transform);
         card.transform.position = transform.position;
         SubmitPositionIn();
     }
 
     //カードをリストから削除
-    public void ReRemove(Card card)
+    public void RemoveCard(Card card)
     {
-        submitlist.Remove(card);
-        if (submitlist.Count < 2)
-        {
-            synthesis.OffSynthesisButton();
-        }
+        submitList.Remove(card);
     }
 
     //フィールドに置かれたカードの位置を整列させる
     public void SubmitPositionIn()
     {
-        for (int i = 0; i < submitlist.Count; i++)
+        for (int i = 0; i < submitList.Count; i++)
         {
             float posX = 2.5f * (i - 1f);
-            submitlist[i].transform.localPosition = new Vector3(posX, 0);
+            submitList[i].transform.localPosition = new Vector3(posX, 0);
 
-            Transform childTransform = submitlist[i].transform.GetChild(0);
+            Transform childTransform = submitList[i].transform.GetChild(0);
             Canvas canvas = childTransform.GetComponent<Canvas>();
             canvas.sortingOrder = 2 - i;
         }
-        effectSwitch(submitlist);
+        effectSwitch(submitList);
     }
 
     //どのエフェクトが付くかを判別する

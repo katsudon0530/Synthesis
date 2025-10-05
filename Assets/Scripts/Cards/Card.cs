@@ -1,5 +1,8 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class Card : MonoBehaviour
@@ -18,7 +21,7 @@ public class Card : MonoBehaviour
     GameObject windowGenerator;
     CardWindow ThisWindow;
 
-
+    private GraphicRaycaster _raycaster;
     public CardBase Base { get; private set; }
 
     public UnityAction<Card> OnClickCard;
@@ -26,9 +29,51 @@ public class Card : MonoBehaviour
     public Vector3 originalSize;
     public Vector3 originalPosition;
 
+    /// <summary>
+    ///　キーがボタンオブジェクト内にあるかどうかのフラグ
+    /// </summary>
+    private bool _onCursor;
+
+    /// <summary>
+    ///　キーが押されているかどうかのフラグ
+    /// </summary>
+    private bool _onPress = false;
+
+    private bool OnCursor
+    {
+        get => _onCursor;
+        set
+        {
+            if (_onCursor != value) // カーソルがボタン上にあるか判定しているboolの値が切り替わったとき
+            {
+                if (value && _onPress)
+                {
+                    _onCursor = false; //ボタンを押しながら入ると変更しない
+                }
+                else
+                {
+                    _onCursor = value; // 変更を適用
+                }
+
+                if (_onCursor)
+                {
+                    PointerEnter();
+                }
+                else if (!_onCursor)
+                {
+                    PointerExit();
+                }
+            
+            }
+        }
+    }
+
     private void Start()
     {
         windowGenerator = GameObject.FindWithTag("WindowGenerator");
+        _raycaster = GetComponentInChildren<Canvas>().GetComponent<GraphicRaycaster>();
+        if (_raycaster == null)
+            Debug.LogError("Canvas に GraphicRaycaster が必要です！");
     }
     //カード内容の定義
     public void Set(CardBase cardBase)
@@ -77,19 +122,11 @@ public class Card : MonoBehaviour
             Destroy(ThisWindow.gameObject);
     }
 
-    //カードのハイドパネルを非表示にする
-    public void Open()
-    {
-        SynthesisPanel.SetActive(false);
-    }
 
-    public void Close()
-    {
-        SynthesisPanel.SetActive(true);
-    }
 
     void Update()
     {
+        OnMouseCursor();
         if (!Base.PlayCondition)
         {
             Frame.color = npColor;
@@ -120,5 +157,36 @@ public class Card : MonoBehaviour
         {
             effectUp.gameObject.SetActive(true);
         }
+    }
+
+
+    private void OnMouseCursor()
+    {
+        PointerEventData pointerData
+            = new PointerEventData(EventSystem.current) { position = Input.mousePosition };
+        List<RaycastResult> results = new List<RaycastResult>();
+        _raycaster.Raycast(pointerData, results);
+
+        OnCursor = CheckCursor(results);
+    }
+    /// <summary>
+    ///　マウスカーソルがボタン上にあるかどうかを判定する
+    /// </summary>
+    private bool CheckCursor(List<RaycastResult> results)
+    {
+
+        return results.Count > 0 && results[0].gameObject.name == "Panel";
+    }
+
+
+    //カードのハイドパネルを非表示にする
+    public void Open()
+    {
+        SynthesisPanel.SetActive(false);
+    }
+
+    public void Close()
+    {
+        SynthesisPanel.SetActive(true);
     }
 }

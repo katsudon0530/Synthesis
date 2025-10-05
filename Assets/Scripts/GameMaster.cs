@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
+public enum TurnState { start, cardSet, battle, synthesis, enemy, end }
 public class GameMaster : MonoBehaviour
 {
     [SerializeField] CardGenerator cardGenerator;
@@ -14,7 +14,6 @@ public class GameMaster : MonoBehaviour
     private Deck deck;
     private Enemy enemy;
     private EnemyManager enemyManager;
-    private SynthesisManager synthesisManager;
     private CardManager cardManager;
     private Coroutine nowTurn;
 
@@ -26,31 +25,19 @@ public class GameMaster : MonoBehaviour
     private void Awake()
     {
         enemyManager = GetComponent<EnemyManager>();
-        synthesisManager = GetComponent<SynthesisManager>();
         cardManager = GetComponent<CardManager>();
         deck = Deck.Instance;
-        if (Player.Instance == null)
-        {
-            Instantiate(playrPrefab);
-        }
-        if (Deck.Instance == null)
-        {
-            Instantiate(DeckPrefab);
-        }
     }
 
     //ゲームスタート時のセットアップ内容
     public void Start()
     {
         Player.Instance.SetPlayer(handMax);
-
         enemy = enemyManager.GenerateEnemy(enemyNum);
-        synthesisManager.SetButton();
+        gameUI.OnDecisionButton = DecisionAction;
         deck.DeckSet();
 
-        SendCardTo();
-
-        gameUI.OnDecisionButton = DecisionAction;
+        CardSet = false;
         TurnCount = 1;
 
         nowTurn = StartCoroutine(turn());
@@ -97,8 +84,7 @@ public class GameMaster : MonoBehaviour
 
     IEnumerator turn()
     {
-
-        yield return new WaitForSeconds(0.2f);
+        SendCardTo();
         while (!CardSet)
         {
             Player.Instance.PlayConditionCheck(enemy, deck); 
@@ -107,6 +93,8 @@ public class GameMaster : MonoBehaviour
 
         //カードが選択され、決定か合成が押されるまで待機
         yield return new WaitUntil(() => CardSetIN());
+
+        Hand.Instance.gameObject.SetActive(false);
 
         //どちらのボタンが押されたのかを判別してそのアクションを実行
         switch (gameUI.ButtonID)
@@ -117,7 +105,7 @@ public class GameMaster : MonoBehaviour
                 break;
             case 1:
                 //合成ボタンが押された場合
-                yield return StartCoroutine(synthesisManager.CardSynthesis());
+                yield return StartCoroutine(cardManager.CardSynthesis());
                 break;
         }
         yield return new WaitForSeconds(0.7f);
@@ -145,13 +133,9 @@ public class GameMaster : MonoBehaviour
 
         enemy.EnemyReSet();
         Player.Instance.SetupNext();
-    
         gameUI.ResetUI();
-        synthesisManager.SetButton();
-        SendCardTo();
 
         TurnCount += 1;
-
         CardSet = false;
     }
 
@@ -184,6 +168,8 @@ public class GameMaster : MonoBehaviour
         {
             MessageText.TextIn("アナタは力尽きた");
         }
+        Hand.Instance.gameObject.SetActive(false);
+        SubmitPosition.Instance.gameObject.SetActive(false);
         yield return new WaitForSeconds(1f);
         gameUI.GameResult();
     }

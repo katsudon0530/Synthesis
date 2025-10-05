@@ -48,7 +48,6 @@ public class Result : MonoBehaviour
     //シーンをリセットする
     public void ResetButton()
     {
-        GameMaster.CardSet = false;
         Deck.Instance.OnCustomize = true;
         SceneManager.LoadScene("CustomScene");
     }

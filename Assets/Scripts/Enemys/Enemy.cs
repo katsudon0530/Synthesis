@@ -85,7 +85,7 @@ public class Enemy : MonoBehaviour
 
     public void EnemyReSet()
     {
-        GetComponent<EffectCount>().StatusEffectCount(Base.Effects,statusEffectGenerator.Xy);
+        GetComponent<EffectCount>().StatusEffectCount(Base.Effects);
         Base.Act = true;
         DecreaseLife = false;
     }
