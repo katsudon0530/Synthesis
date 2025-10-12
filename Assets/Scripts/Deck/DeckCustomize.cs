@@ -62,7 +62,6 @@ public class DeckCustomize : MonoBehaviour
             LookDeck.RemoveAt(dest);
 
             deckArignment();
-            card.PosReset();
         }
         else if (deck.DeckAll.Count < 15 && card.transform.parent == cardContents.transform)
         {

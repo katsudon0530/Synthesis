@@ -12,11 +12,6 @@ public class Deck : Singleton<Deck>
 
     public bool OnCustomize;
 
-    protected override void Awake()
-    {
-        base.Awake(); // これで親のDontDestroy処理が必ず実行される
-    }
-
     private void Start()
     {
         OnCustomize = true;

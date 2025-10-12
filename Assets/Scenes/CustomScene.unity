@@ -950,7 +950,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 60364050523772977, guid: 699e483f1d9f6e4499e5bf812846d0c8, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 200.00072
+      value: 199.99998
       objectReference: {fileID: 0}
     - target: {fileID: 726817574752184289, guid: 699e483f1d9f6e4499e5bf812846d0c8, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1186,6 +1186,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2561973254218416, guid: 98d67e124bcc9314c847b311874f79fe, type: 3}
+      propertyPath: lifeMax
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 6696886997274690821, guid: 98d67e124bcc9314c847b311874f79fe, type: 3}
       propertyPath: m_Name
       value: Player

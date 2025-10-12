@@ -7,12 +7,12 @@ public class CardManager : MonoBehaviour
 
     [SerializeField] Synthesis synthesis;
     private Deck deck;
-    private SubmitPosition field;
+    private Field field;
 
     public void Awake()
     {
         deck = Deck.Instance;
-        field = SubmitPosition.Instance;
+        field = Field.Instance;
     }
 
 
@@ -24,13 +24,13 @@ public class CardManager : MonoBehaviour
         Player player = Player.Instance;
 
         yield return new WaitForSeconds(1.2f);
-        for (int i = 0; i < field.SubmitList.Count; i++)
+        for (int i = 0; i < field.Stand.Count; i++)
         {
-            Card card = field.SubmitList[i];
+            Card card = field.Stand[i];
             Card flontCard = null;
             if (i != 0)
             {
-                flontCard = field.SubmitList[i - 1];
+                flontCard = field.Stand[i - 1];
             }
             card.transform.position += Vector3.up * 0.2f;
 
@@ -54,19 +54,19 @@ public class CardManager : MonoBehaviour
     {
         MessageText.Panel(true);
 
-        Vector2 goal = field.SubmitList[0].transform.position;
+        Vector2 goal = field.Stand[0].transform.position;
 
-        for (int i = 1; i < field.SubmitList.Count; i++)
+        for (int i = 1; i < field.Stand.Count; i++)
         {
-            StartCoroutine(synthesis.CardSlide(field.SubmitList[i], goal, 0.5f));
+            StartCoroutine(synthesis.CardSlide(field.Stand[i], goal, 0.5f));
         }
         yield return new WaitForSeconds(0.7f);
-
+        goal = field.BattleField.transform.position;
         //合成カードに変化させほかのカードを壊す
-        synthesis.CardSynthesis(field.SubmitList, deck.DeckAll);
-        yield return StartCoroutine(synthesis.CardSlide(field.SubmitList[0], SubmitPosition.Instance.transform.position, 0.7f));
+        synthesis.CardSynthesis(field.Stand, deck.DeckAll);
+        yield return StartCoroutine(synthesis.CardSlide(field.Stand[0], goal, 0.7f));
         yield return new WaitForSeconds(0.2f);
-        yield return StartCoroutine(synthesis.Close(field.SubmitList[0]));
+        yield return StartCoroutine(synthesis.Close(field.Stand[0]));
         yield return new WaitForSeconds(1f);
 
         MessageText.Panel(false);

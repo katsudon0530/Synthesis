@@ -8,7 +8,7 @@ public class Player : Singleton<Player>
     protected override bool IsPersistent => true;
 
     [Header("プレイヤーベースステータス")]
-    [SerializeField] int lifeMax =100;
+    [SerializeField] int lifeMax = 100;
     [Space(10)]
     [Header("実数値")]
     [SerializeField] int life;
@@ -26,15 +26,16 @@ public class Player : Singleton<Player>
     public void SetPlayer(int handMax)
     {
         life = lifeMax;
-        Hand.Instance.cardInterval = Hand.Instance.cardInterval * 6f / handMax;
-        gameObject.AddComponent<EffectCount>();
+        Field.Instance.cardInterval *= (6f / handMax);
+        if(GetComponent<EffectCount>() == null)
+            gameObject.AddComponent<EffectCount>();
         SetupNext();
     }
 
     //生成されたカードをリストに追加・カードクリック時の効果追加
     public void SerCardToHand(Card card)
     {
-        Hand.Instance.Add(card);
+        Field.Instance.HandSet(card);
         card.OnClickCard = SelectedCard;
     }
 
@@ -44,36 +45,27 @@ public class Player : Singleton<Player>
         if (card.Base.PlayCondition != true)
             return;
 
-        if (card.transform.parent == SubmitPosition.Instance.transform && !GameMaster.CardSet)
+        if (card.transform.parent == Field.Instance.BattleField.transform && !GameMaster.CardSet)
         {
-            SubmitPosition.Instance.RemoveCard(card);
-            Hand.Instance.Add(card);
-            Hand.Instance.RePosition(card);
-            SubmitPosition.Instance.SubmitPositionIn();
-            card.PosReset();
-            card.effectReSet();
-
+            Field.Instance.HandSet(card);
         }
-        else if (SubmitPosition.Instance.SubmitList.Count >= 3)
+        else if (Field.Instance.Stand.Count >= 3)
         {
             return;
         }
-        else if (card.transform.parent == Hand.Instance.transform)
+        else if (card.transform.parent == Field.Instance.PlayerHand.transform)
         {
-            SubmitPosition.Instance.Set(card);
-            Hand.Instance.RemoveList(card);
-            Hand.Instance.ResetPosition();
-            card.PosReset();
+            Field.Instance.StandSet(card);
         }
 
     }
 
     public void PlayConditionCheck(Enemy enemy, Deck deck)
     {
-
-        for (int i = 0; i < Hand.Instance.List.Count; i++)
+        var cards = Field.Instance.Hand;
+        for (int i = 0; i < cards.Count; i++)
         {
-            Hand.Instance.List[i].Base.UniqueEffect.PlayCondition(Hand.Instance.List[i], this, enemy, deck, GameMaster.TurnCount);
+            cards[i].Base.UniqueEffect.PlayCondition(cards[i], this, enemy, deck, GameMaster.TurnCount);
         }
         
     }
@@ -106,9 +98,9 @@ public class Player : Singleton<Player>
     //次のターンでの関数のリセット
     public void SetupNext()
     {
-        SubmitPosition.Instance.DeleteCard();
+        Field.Instance.DeleteCard();
         Defens = 0;
         GetComponent<EffectCount>().StatusEffectCount(effects);
-        Hand.Instance.gameObject.SetActive(true);
+        Field.Instance.PlayerHand.SetActive(true);
     }
 }

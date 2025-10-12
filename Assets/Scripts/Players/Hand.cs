@@ -16,19 +16,13 @@ public class Hand : Singleton<Hand>
     {
         list.Add(card);
         card.transform.SetParent(this.transform);
+        ResetPosition();
     }
 
     //カードをリストから削除
     public void RemoveList(Card card)
     {
         list.Remove(card);
-    }
-
-    //カードのディレクトリを変更・カードリセットの呼び出し
-    public void RePosition(Card card)
-    {
-        card.transform.SetParent(this.transform);
-        ResetPosition();
     }
 
     //リストの範囲をとってカードきれいに並べる
@@ -47,12 +41,11 @@ public class Hand : Singleton<Hand>
                 float posX = (i - list.Count / 2) * cardInterval;
                 list[i].transform.localPosition = new Vector3(posX, 0);
             }
-            Transform childTransform = List[i].transform.GetChild(0);
+            Transform childTransform = list[i].transform.GetChild(0);
             Canvas canvas = childTransform.GetComponent<Canvas>();
             canvas.sortingOrder = i;
 
         }
     }
-
 
 }

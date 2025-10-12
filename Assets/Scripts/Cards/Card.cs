@@ -22,12 +22,13 @@ public class Card : MonoBehaviour
     CardWindow ThisWindow;
 
     private GraphicRaycaster _raycaster;
+    private RectTransform _rect;
     public CardBase Base { get; private set; }
 
     public UnityAction<Card> OnClickCard;
 
-    public Vector3 originalSize;
-    public Vector3 originalPosition;
+    private Vector2 originalSize;
+    private Vector2 originalPosition;
 
     /// <summary>
     ///　キーがボタンオブジェクト内にあるかどうかのフラグ
@@ -74,6 +75,12 @@ public class Card : MonoBehaviour
         _raycaster = GetComponentInChildren<Canvas>().GetComponent<GraphicRaycaster>();
         if (_raycaster == null)
             Debug.LogError("Canvas に GraphicRaycaster が必要です！");
+        _rect = GetComponentInChildren<Canvas>().GetComponent<RectTransform>();
+        if (_rect == null)
+            Debug.LogError("Canvas に RectTransform が必要です！");
+
+        originalSize = _rect.sizeDelta;
+        originalPosition = _rect.anchoredPosition;
     }
     //カード内容の定義
     public void Set(CardBase cardBase)
@@ -94,19 +101,12 @@ public class Card : MonoBehaviour
     {
         OnClickCard?.Invoke(this);
     }
-    //カードにをクリックした後の位置補正
-    public void PosReset()
-    {
-        transform.position += Vector3.up * 0.1f;
-    }
 
     //カードにマウスカーソルが入った時の反応
     public void PointerEnter()
     {
-        originalSize = transform.localScale;
-        originalPosition = transform.position;
-        transform.position += Vector3.up * 0.1f;
-        transform.localScale = originalSize * 1.1f;
+        _rect.anchoredPosition += new Vector2(0, 0.1f);
+        _rect.sizeDelta *= 1.1f;
         GetComponentInChildren<Canvas>().sortingLayerName = "overLay";
         ThisWindow = windowGenerator.GetComponent<WindowGenerator>().SpawnWindow(Base);
     }
@@ -115,18 +115,16 @@ public class Card : MonoBehaviour
     //カードからマウスカーソルが出た時のリアクション
     public void PointerExit()
     {
-        transform.position -= Vector3.up * 0.1f;
-        transform.localScale = originalSize;
+        _rect.anchoredPosition = originalPosition;
+        _rect.sizeDelta = originalSize;
         GetComponentInChildren<Canvas>().sortingLayerName = "Default";
         if (ThisWindow != null)
             Destroy(ThisWindow.gameObject);
     }
 
-
-
     void Update()
     {
-        //OnMouseCursor();
+        OnMouseCursor();
         if (!Base.PlayCondition)
         {
             Frame.color = npColor;
@@ -149,7 +147,11 @@ public class Card : MonoBehaviour
     //どちらかのエフェクトを表示
     public void effectSet(float magnification)
     {
-        if (magnification < 1f)
+        if (magnification == 1f)
+        {
+            effectReSet();
+        }
+        else if (magnification < 1f)
         {
             effectDown.gameObject.SetActive(true);
         }
@@ -169,6 +171,7 @@ public class Card : MonoBehaviour
 
         OnCursor = CheckCursor(results);
     }
+
     /// <summary>
     ///　マウスカーソルがボタン上にあるかどうかを判定する
     /// </summary>

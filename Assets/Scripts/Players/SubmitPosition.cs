@@ -5,7 +5,6 @@ public class SubmitPosition : Singleton<SubmitPosition>
 {
     protected override bool IsPersistent => false;
 
-    [SerializeField] Synthesis synthesis;
     [SerializeField] GameObject cardGuide;
 
     public List<Card> submitList = new();
@@ -15,11 +14,7 @@ public class SubmitPosition : Singleton<SubmitPosition>
     //カードをフィールドにセットする
     public void Set(Card card)
     {
-        if (submitList.Count < 2 )
-        {
-            AddCard(card);
-        }
-        else if (submitList.Count == 2 )
+        if (submitList.Count <= 2 )
         {
             AddCard(card);
         }
@@ -45,7 +40,6 @@ public class SubmitPosition : Singleton<SubmitPosition>
     {
         submitList.Add(card);
         card.transform.SetParent(this.transform);
-        card.transform.position = transform.position;
         SubmitPositionIn();
     }
 
@@ -89,24 +83,12 @@ public class SubmitPosition : Singleton<SubmitPosition>
                 FlontBuff foundBuff = submitCards[i].Base.FlontBuff.Find(buff => buff.flontCard == cardName);
                 if (foundBuff != null)
                 {
-                    effectJudgement(foundBuff.buff, submitCards[i]);
+                    submitCards[i].effectSet(foundBuff.buff);
                 }
             }
         }
     }
 
-    //エフェクトを表示する
-    private void effectJudgement(float magnification,Card card)
-    {
-        if (magnification != 1f)
-        {
-            card.effectSet(magnification);
-        }
-        else
-        {
-            card.effectReSet();
-        }
-    }
 
     private void Update()
     {

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public enum TurnState { start, cardSet, battle, synthesis, enemy, end }
@@ -7,8 +8,6 @@ public class GameMaster : MonoBehaviour
 {
     [SerializeField] CardGenerator cardGenerator;
     [SerializeField] GameUI gameUI;
-    [SerializeField] GameObject playrPrefab;
-    [SerializeField] GameObject DeckPrefab;
     [SerializeField] int handMax;
 
     private Deck deck;
@@ -50,13 +49,13 @@ public class GameMaster : MonoBehaviour
 
         if(deck.cardDeck.Count != 0)
         {
-            cardsum = handMax - Hand.Instance.List.Count;
+            cardsum = handMax - Field.Instance.Hand.Count;
             if (cardsum > deck.cardDeck.Count)
             {
                 cardsum = deck.cardDeck.Count;
             }
         }
-        else if (deck.cardDeck.Count == 0 && Hand.Instance.List.Count == 0)
+        else if (deck.cardDeck.Count == 0 && Field.Instance.Hand.Count == 0)
         {
             deck.cardDeck = new List<int>(deck.DeckAll);
             cardsum = handMax;
@@ -78,7 +77,6 @@ public class GameMaster : MonoBehaviour
             card.effectReSet();
             Player.Instance.SerCardToHand(card);
         }
-        Hand.Instance.ResetPosition();
         gameUI.RestDeck();
     }
 
@@ -94,7 +92,7 @@ public class GameMaster : MonoBehaviour
         //カードが選択され、決定か合成が押されるまで待機
         yield return new WaitUntil(() => CardSetIN());
 
-        Hand.Instance.gameObject.SetActive(false);
+        Field.Instance.PlayerHand.SetActive(false);
 
         //どちらのボタンが押されたのかを判別してそのアクションを実行
         switch (gameUI.ButtonID)
@@ -151,13 +149,14 @@ public class GameMaster : MonoBehaviour
 
     private void Update()
     {
-        if(enemy == null)
+        if(Player.Instance == null || enemy == null)
         {
 
         }
         else if (Player.Instance.Life <= 0 || enemy.Base.EnemyLife <= 0)
         {
-            StopCoroutine(nowTurn);
+            if (nowTurn != null)
+                StopCoroutine(nowTurn);
             StartCoroutine(Result());
         }
     }
@@ -168,8 +167,8 @@ public class GameMaster : MonoBehaviour
         {
             MessageText.TextIn("アナタは力尽きた");
         }
-        Hand.Instance.gameObject.SetActive(false);
-        SubmitPosition.Instance.gameObject.SetActive(false);
+        Field.Instance.PlayerHand.SetActive(false);
+        Field.Instance.BattleField.SetActive(false);
         yield return new WaitForSeconds(1f);
         gameUI.GameResult();
     }

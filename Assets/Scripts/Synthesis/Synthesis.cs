@@ -13,39 +13,38 @@ public class Synthesis : MonoBehaviour
 
 
     //カードを合成する
-    public void CardSynthesis(List<Card> card, List<int> Deck)
+    public void CardSynthesis(List<Card> cards, List<int> Deck)
     {
-        if (card.Count <= 1)
+        if (cards.Count <= 1)
         {
             return;
         }
-        else if(card.Count == 2)
+        else if(cards.Count == 2)
         {
-            id = DoubleSearchID(card[0].Base.ID, card[1].Base.ID);
+            id = DoubleSearchID(cards[0].Base.ID, cards[1].Base.ID);
         }
-        else if(card.Count == 3)
+        else if(cards.Count == 3)
         {
-            id = TripleSearchID(card[0].Base.ID, card[1].Base.ID, card[2].Base.ID);
+            id = TripleSearchID(cards[0].Base.ID, cards[1].Base.ID, cards[2].Base.ID);
         }
         
         //合成したカードを手札に生成
         Deck.Add(id);
         Card synthesisCard = generator.Spawn(id);
         Player.Instance.SerCardToHand(synthesisCard);
-        Hand.Instance.ResetPosition();
 
         //デッキから合成したカードを削除
-        for (int i = 0; i < card.Count; i++)
+        for (int i = 0; i < cards.Count; i++)
         {
-            int index = Deck.FindIndex(number => number == card[i].Base.ID);
+            int index = Deck.FindIndex(number => number == cards[i].Base.ID);
             Deck.RemoveAt(index);
         }
 
         //合成した場のカードを壊す
-        for (int i = 1; card.Count > 1;)
+        for (int i = 1; cards.Count > 1;)
         {
-            Destroy(card[i].gameObject);
-            card.RemoveAt(i);
+            Destroy(cards[i].gameObject);
+            cards.RemoveAt(i);
         }
 
     }
@@ -152,7 +151,7 @@ public class Synthesis : MonoBehaviour
 
     private void Update()
     {
-        if(SubmitPosition.Instance.SubmitList.Count <= 1)
+        if(Field.Instance.Stand.Count <= 1)
             SynthesisButton.Interactable = false;
         else
             SynthesisButton.Interactable = true;

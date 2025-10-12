@@ -1,20 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerLife : MonoBehaviour
 {
     [SerializeField] Text playerLifeText;
+    private Player player;
 
-
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        if (Player.Instance.Life <= 0)
-        {
-            Player.Instance.Life = 0;
-        }
-        playerLifeText.text = $"{Player.Instance.Life}HP";
+        player = Player.Instance;
     }
+
+    private void Update()
+    {
+        if (Player.Instance == null) return;
+        if (player.Life <= 0)
+        {
+            player.Life = 0;
+        }
+        playerLifeText.text = $"{player.Life}HP";
+    }
+
+
 }
