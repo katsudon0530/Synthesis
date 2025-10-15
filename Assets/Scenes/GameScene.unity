@@ -660,7 +660,7 @@ GameObject:
   - component: {fileID: 597436208}
   m_Layer: 5
   m_Name: RuleButton
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1310,6 +1310,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: playerLife
       objectReference: {fileID: 0}
+    - target: {fileID: 5656943727034153048, guid: e36d97c0f07c8fa44b4260a865bcff0a, type: 3}
+      propertyPath: m_TagString
+      value: UI
+      objectReference: {fileID: 0}
     - target: {fileID: 9055582461137081892, guid: e36d97c0f07c8fa44b4260a865bcff0a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1409,7 +1413,7 @@ GameObject:
   - component: {fileID: 1388517806}
   m_Layer: 5
   m_Name: DeckButton
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1528,7 +1532,7 @@ GameObject:
   - component: {fileID: 1424002605}
   m_Layer: 5
   m_Name: 'SubmitButton '
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1648,7 +1652,7 @@ GameObject:
   - component: {fileID: 1545265721}
   m_Layer: 5
   m_Name: SynthesisButton
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1812,7 +1816,7 @@ GameObject:
   - component: {fileID: 1682138738}
   m_Layer: 5
   m_Name: ResetButton
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2495,6 +2499,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TurnCount
       objectReference: {fileID: 0}
+    - target: {fileID: 6967184499578275727, guid: 8d931f572f218c3469d1fc3521215c86, type: 3}
+      propertyPath: m_TagString
+      value: UI
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2592,6 +2600,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ResultPanel
       objectReference: {fileID: 0}
+    - target: {fileID: 8958667096903914556, guid: cb5ddf2b88bc89f4e90bea40b05bba2d, type: 3}
+      propertyPath: m_TagString
+      value: UI
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2607,7 +2619,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 60364050523772977, guid: 699e483f1d9f6e4499e5bf812846d0c8, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 200.00002
+      value: 200.00005
       objectReference: {fileID: 0}
     - target: {fileID: 726817574752184289, guid: 699e483f1d9f6e4499e5bf812846d0c8, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2640,6 +2652,10 @@ PrefabInstance:
     - target: {fileID: 4085589663480282179, guid: 699e483f1d9f6e4499e5bf812846d0c8, type: 3}
       propertyPath: m_Name
       value: DeckListPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 4085589663480282179, guid: 699e483f1d9f6e4499e5bf812846d0c8, type: 3}
+      propertyPath: m_TagString
+      value: UI
       objectReference: {fileID: 0}
     - target: {fileID: 4272695163986327739, guid: 699e483f1d9f6e4499e5bf812846d0c8, type: 3}
       propertyPath: generator
@@ -2841,6 +2857,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RulePanel
       objectReference: {fileID: 0}
+    - target: {fileID: 6650715944033600854, guid: c835870a25328554e946d3c321d7f4c8, type: 3}
+      propertyPath: m_TagString
+      value: UI
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2857,6 +2877,10 @@ PrefabInstance:
     - target: {fileID: 2444973637255112427, guid: 6fa15f05c23d5994db231fa14f7a2900, type: 3}
       propertyPath: m_Name
       value: MessagePanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 2444973637255112427, guid: 6fa15f05c23d5994db231fa14f7a2900, type: 3}
+      propertyPath: m_TagString
+      value: UI
       objectReference: {fileID: 0}
     - target: {fileID: 6819800802693266192, guid: 6fa15f05c23d5994db231fa14f7a2900, type: 3}
       propertyPath: m_Pivot.x

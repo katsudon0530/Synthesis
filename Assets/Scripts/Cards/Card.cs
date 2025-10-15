@@ -14,6 +14,7 @@ public class Card : MonoBehaviour
     [SerializeField] Image icon;
     [SerializeField] Color npColor;
     [SerializeField] Text descriotionText;
+    [SerializeField] GameObject panel;
     [SerializeField] GameObject hidePanel;
     [SerializeField] GameObject SynthesisPanel;
     [SerializeField] GameObject effectUp;
@@ -168,6 +169,7 @@ public class Card : MonoBehaviour
             = new PointerEventData(EventSystem.current) { position = Input.mousePosition };
         List<RaycastResult> results = new List<RaycastResult>();
         _raycaster.Raycast(pointerData, results);
+        EventSystem.current.RaycastAll(pointerData, results);
 
         OnCursor = CheckCursor(results);
     }
@@ -177,8 +179,7 @@ public class Card : MonoBehaviour
     /// </summary>
     private bool CheckCursor(List<RaycastResult> results)
     {
-
-        return results.Count > 0 && results[0].gameObject.name == "Panel";
+        return results.Count > 0 && results[0].gameObject == panel;
     }
 
 

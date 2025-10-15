@@ -6,6 +6,7 @@ TagManager:
   tags:
   - WindowGenerator
   - StatusEffectGenerator
+  - UI
   layers:
   - Default
   - TransparentFX

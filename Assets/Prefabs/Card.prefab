@@ -1080,12 +1080,11 @@ MonoBehaviour:
   icon: {fileID: 8488193388622676747}
   npColor: {r: 0.4669811, g: 0.4669811, b: 0.4669811, a: 1}
   descriotionText: {fileID: 6202701018185725568}
+  panel: {fileID: 8355722463224310557}
   hidePanel: {fileID: 3953991855361178089}
   SynthesisPanel: {fileID: 7551176860191338578}
   effectUp: {fileID: 1311129068368772818}
   effectDown: {fileID: 8838243254580488212}
-  originalSize: {x: 0, y: 0}
-  originalPosition: {x: 0, y: 0}
 --- !u!1 &8838243254580488212
 GameObject:
   m_ObjectHideFlags: 0
