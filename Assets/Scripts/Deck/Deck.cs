@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Deck : Singleton<Deck>
 {
@@ -10,12 +9,12 @@ public class Deck : Singleton<Deck>
     public List<int> DeckAll;
     public List<int> cardDeck;
 
-    public bool OnCustomize;
+    public bool OnCustomize = true;
     private GameObject generator;
 
     private void Start()
     {
-        OnCustomize = true;
+        //OnCustomize = true;
         DeckAll = new List<int>(Base);
     }
     //カスタマイズしたデッキをセットする
@@ -24,8 +23,8 @@ public class Deck : Singleton<Deck>
         if (DeckAll ==null)
             DeckAll = new List<int>(Base);
         cardDeck = new List<int>(DeckAll);
+        
         OnCustomize = false;
-
         generator = GameObject.FindWithTag("CardGenerator");
         if (generator == null)
             Debug.LogError("CardGeneratorが存在しません");

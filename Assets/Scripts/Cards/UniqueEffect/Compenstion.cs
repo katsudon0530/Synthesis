@@ -6,15 +6,16 @@ using UnityEngine.UI;
 public class CompenstionEffect : UniqueEffect
 {
     [SerializeField] int CompenstionLife;
-    public override void PlayCondition(Card card, Player player, Enemy enemy, Deck deck, int TurnCount)
+    public override void PlayCondition(Card card, Enemy enemy)
     {
         card.Base.PlayCondition = false;
-        if (player.Life > CompenstionLife)
+        if (Player.Instance.Life > CompenstionLife)
             card.Base.PlayCondition = true;
     }
     //カードの効果処理
-    public override IEnumerator Execute(Card card, Card flontCard, Player player, Enemy enemy)
+    public override IEnumerator Execute(Card card, Card flontCard, Enemy enemy)
     {
+        Player player = Player.Instance;
         int attackValue = FlontBuff(card, flontCard);
 
         player.Life -= CompenstionLife;

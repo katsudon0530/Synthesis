@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class CardManager : MonoBehaviour
 {
@@ -35,7 +34,7 @@ public class CardManager : MonoBehaviour
             card.transform.position += Vector3.up * 0.2f;
 
             //カードの効果処理
-            yield return StartCoroutine(card.Base.UniqueEffect.Execute(card, flontCard, player, enemy));
+            yield return StartCoroutine(card.Base.UniqueEffect.Execute(card, flontCard, enemy));
 
             yield return new WaitForSeconds(1.2f);
         }

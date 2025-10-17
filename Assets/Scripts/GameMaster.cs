@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using UnityEngine;
-using static UnityEngine.CullingGroup;
 
 public enum TurnState { start, cardSet, battle, synthesis, enemy, end }
 public class GameMaster : MonoBehaviour
@@ -19,7 +17,7 @@ public class GameMaster : MonoBehaviour
 
     public static event Action OnGameOver;
     public static event Action<TurnState> OnStateChanged;
-    public static TurnState turnState { get; set; }
+    public static TurnState turnState { get; private set; }
 
     public static int TurnCount;
     public static int enemyNum;

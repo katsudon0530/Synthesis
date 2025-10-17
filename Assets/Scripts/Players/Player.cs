@@ -66,7 +66,7 @@ public class Player : Singleton<Player>
         var cards = Field.Instance.Hand;
         for (int i = 0; i < cards.Count; i++)
         {
-            cards[i].Base.UniqueEffect.PlayCondition(cards[i], this, enemy, deck, GameMaster.TurnCount);
+            cards[i].Base.UniqueEffect.PlayCondition(cards[i], enemy);
         }
         
     }

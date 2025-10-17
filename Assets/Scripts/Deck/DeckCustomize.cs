@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using UI;
 using UnityEngine;
-using static UnityEditor.Timeline.TimelinePlaybackControls;
 
 
 public class DeckCustomize : MonoBehaviour

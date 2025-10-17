@@ -8,12 +8,12 @@ public class LightningStrikeEffect : UniqueEffect
     [SerializeField] StatusEffectBase effectBase;
     [SerializeField] float probability;
 
-    public override void PlayCondition(Card card, Player player, Enemy enemy, Deck deck, int TurnCount)
+    public override void PlayCondition(Card card, Enemy enemy)
     {
         card.Base.PlayCondition = true;
     }
     //カードの効果処理
-    public override IEnumerator Execute(Card card, Card flontCard, Player player, Enemy enemy)
+    public override IEnumerator Execute(Card card, Card flontCard, Enemy enemy)
     {
         //定数ダメージを与える
         MessageText.TextIn($"雷撃を放った！");

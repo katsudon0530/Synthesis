@@ -1,8 +1,7 @@
 ﻿using UI;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class StateChangeButton : MonoBehaviour
+public class TurnStateChangeButton : MonoBehaviour
 {
     [SerializeField] private TurnState nextState; 
     [SerializeField] private ButtonUI button;

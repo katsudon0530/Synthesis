@@ -5,14 +5,15 @@ using UnityEngine.UI;
 [CreateAssetMenu(menuName = "UniqueEffects/Bloodsucking")]
 public class BloodsuckingEffect : UniqueEffect
 {
-    public override void PlayCondition(Card card, Player player, Enemy enemy, Deck deck, int TurnCount)
+    public override void PlayCondition(Card card, Enemy enemy)
     {
         card.Base.PlayCondition = true;
     }
     //カードの効果処理
-    public override IEnumerator Execute(Card card, Card flontCard, Player player, Enemy enemy)
+    public override IEnumerator Execute(Card card, Card flontCard, Enemy enemy)
     {
         int attackValue = FlontBuff(card, flontCard);
+        Player player = Player.Instance;
 
         int Hit = (int)(attackValue * Random.Range(0.8f, 1.2f));
         float defense = 1f - enemy.Base.EnemyDefense / 100f;
