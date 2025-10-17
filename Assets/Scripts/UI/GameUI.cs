@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using static UnityEngine.CullingGroup;
 
 public class GameUI : MonoBehaviour
 {
@@ -8,25 +9,23 @@ public class GameUI : MonoBehaviour
     [SerializeField] GameObject synthesisButton;
     [SerializeField] Text RestText;
 
-    [SerializeField] Result result;
-
-    public UnityAction OnDecisionButton;
-
-    public int ButtonID { get; set; }
-
-    //ゲームの結果を表示する
-    public void GameResult()
+    private void Awake()
     {
-        result.ShowResult();
+        GameMaster.OnStateChanged += OnStateChanged;
     }
 
-    //決定ボタン入力時に行うアクション
-    public void OnDecision(int ID)
+    private void OnStateChanged(TurnState state)
     {
-        ButtonID = ID;
-        submitButton.SetActive(false);
-        synthesisButton.SetActive(false);
-        OnDecisionButton?.Invoke();
+        switch (state)
+        {
+            case TurnState.cardSet:
+                ResetUI();
+                break;
+
+            case TurnState.end:
+                RestDeck();
+                break;
+        }
     }
 
     //ボタン初期化を行う

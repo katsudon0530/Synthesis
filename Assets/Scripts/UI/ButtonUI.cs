@@ -153,7 +153,7 @@ namespace UI
             if (_raycaster == null)
                 Debug.LogError("Canvas に GraphicRaycaster が必要です！");
             _image.color = DefaultColor;
-            _onClick.AddListener(ForDebug);
+            //_onClick.AddListener(ForDebug);
             _displayText = transform.GetComponentInChildren<Text>();
             if (_displayText == null)
             {

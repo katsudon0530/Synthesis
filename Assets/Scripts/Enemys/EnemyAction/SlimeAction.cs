@@ -6,7 +6,6 @@ using UnityEngine.UI;
 [CreateAssetMenu(menuName = "EnemyAction/SlimeAction")]
 public class SlimeAction : EnemyAction
 {
-    [SerializeField, Header("確率"), Range(0, 100)]
     private List<int> Weights = new List<int>();
     public override IEnumerator Execute(Enemy enemy)
     {

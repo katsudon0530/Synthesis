@@ -28,6 +28,7 @@ public class EnemyManager : MonoBehaviour
         else
         {
             //敵の攻撃
+            int count = enemy.Base.ActionLists.Count;
             yield return StartCoroutine(enemy.Base.EnemyAction.Execute(enemy));
         }
 

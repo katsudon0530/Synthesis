@@ -29,6 +29,7 @@ public class EnemyBase : ScriptableObject
     List<StatusEffect> effects = new List<StatusEffect>();
 
     [SerializeField] EnemyAction enemyAction;
+    [SerializeField] List<ActionList> actionLists;
 
 
 
@@ -47,6 +48,7 @@ public class EnemyBase : ScriptableObject
     public EnemyAction EnemyAction { get => enemyAction; set => enemyAction = value; }
     public List<StatusEffect> Effects { get => effects; set => effects = value; }
     public bool Act { get => act; set => act = value; }
+    public List<ActionList> ActionLists { get => actionLists; set => actionLists = value; }
 }
 
 public enum EnemyType
@@ -65,3 +67,10 @@ public class parLifeEnemy
     public string situationText;
 }
 
+[System.Serializable]
+public class ActionList
+{
+    public string textMessage;
+    [Range(0, 100)] public float percent;
+    public EnemyAction enemyAction;
+}

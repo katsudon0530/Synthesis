@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 1985357307187003971}
   - component: {fileID: 2960511560020074164}
   m_Layer: 0
-  m_Name: SubmitPosition
+  m_Name: StandPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

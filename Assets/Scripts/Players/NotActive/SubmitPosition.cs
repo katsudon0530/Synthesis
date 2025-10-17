@@ -90,8 +90,4 @@ public class SubmitPosition : Singleton<SubmitPosition>
     }
 
 
-    private void Update()
-    {
-        cardGuide.SetActive(GameMaster.CardSet ? false : true);
-    }
 }

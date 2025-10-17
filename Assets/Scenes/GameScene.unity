@@ -127,17 +127,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2202466716822857136, guid: cb5ddf2b88bc89f4e90bea40b05bba2d, type: 3}
   m_PrefabInstance: {fileID: 3217862210146012795}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &655282 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3361894082661462650, guid: cb5ddf2b88bc89f4e90bea40b05bba2d, type: 3}
-  m_PrefabInstance: {fileID: 3217862210146012795}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b39e4600e1745a48b1d41144db8cbc9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &164775278
 GameObject:
   m_ObjectHideFlags: 0
@@ -678,11 +667,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 597084014}
-  m_Father: {fileID: 1820168017}
+  m_Father: {fileID: 1439743535}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -150, y: -90}
+  m_AnchoredPosition: {x: 760.00006, y: 400}
   m_SizeDelta: {x: 200, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &597436206
@@ -809,7 +798,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92c0bfa969114ee4b81edd995fcf416b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardGenerator: {fileID: 959393678}
   gameUI: {fileID: 1820168018}
   handMax: 6
 --- !u!4 &675590291
@@ -902,7 +890,7 @@ GameObject:
   - component: {fileID: 959393678}
   m_Layer: 0
   m_Name: CardGenerator
-  m_TagString: Untagged
+  m_TagString: CardGenerator
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1426,18 +1414,18 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1388517804}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 90}
+  m_LocalPosition: {x: 0, y: 0, z: 90.00027}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 320913051}
   - {fileID: 1285536305}
   - {fileID: 1317151083}
-  m_Father: {fileID: 1820168017}
+  m_Father: {fileID: 1439743535}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 200, y: 0}
+  m_AnchoredPosition: {x: -710.00006, y: 0}
   m_SizeDelta: {x: 220, y: 295}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1388517806
@@ -1529,6 +1517,7 @@ GameObject:
   - component: {fileID: 1424002600}
   - component: {fileID: 1424002603}
   - component: {fileID: 1424002602}
+  - component: {fileID: 1424002606}
   - component: {fileID: 1424002605}
   m_Layer: 5
   m_Name: 'SubmitButton '
@@ -1544,13 +1533,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1424002599}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 164775279}
-  m_Father: {fileID: 1820168017}
+  m_Father: {fileID: 1439743535}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1610,13 +1599,25 @@ MonoBehaviour:
   _onClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1820168018}
-        m_TargetAssemblyTypeName: GameUI, Assembly-CSharp
-        m_MethodName: OnDecision
-        m_Mode: 3
+      - m_Target: {fileID: 1820168019}
+        m_TargetAssemblyTypeName: GameButton, Assembly-CSharp
+        m_MethodName: OffObjectButton
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1424002599}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1820168019}
+        m_TargetAssemblyTypeName: GameButton, Assembly-CSharp
+        m_MethodName: OffObjectButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1545265716}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1633,6 +1634,60 @@ MonoBehaviour:
   OnCursorTextColor: {r: 0.4901961, g: 0.4901961, b: 0.4901961, a: 1}
   OnClickedTextColor: {r: 0.2627451, g: 0.2627451, b: 0.2627451, a: 1}
   DisableTextColor: {r: 0.4901961, g: 0.4901961, b: 0.4901961, a: 0.49803922}
+--- !u!114 &1424002606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1424002599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 184efb5ef46224145888d3a8f688a81b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextState: 2
+  button: {fileID: 1424002605}
+--- !u!1 &1439743534
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1439743535}
+  m_Layer: 5
+  m_Name: Button
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1439743535
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1439743534}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1424002600}
+  - {fileID: 1545265717}
+  - {fileID: 1388517805}
+  - {fileID: 1682138732}
+  - {fileID: 597436204}
+  m_Father: {fileID: 1820168017}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &1533591786 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7448394977269115591, guid: 699e483f1d9f6e4499e5bf812846d0c8, type: 3}
@@ -1649,6 +1704,7 @@ GameObject:
   - component: {fileID: 1545265717}
   - component: {fileID: 1545265720}
   - component: {fileID: 1545265719}
+  - component: {fileID: 1545265722}
   - component: {fileID: 1545265721}
   m_Layer: 5
   m_Name: SynthesisButton
@@ -1670,7 +1726,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1997627534}
-  m_Father: {fileID: 1820168017}
+  m_Father: {fileID: 1439743535}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1730,13 +1786,25 @@ MonoBehaviour:
   _onClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1820168018}
-        m_TargetAssemblyTypeName: GameUI, Assembly-CSharp
-        m_MethodName: OnDecision
-        m_Mode: 3
+      - m_Target: {fileID: 1820168019}
+        m_TargetAssemblyTypeName: GameButton, Assembly-CSharp
+        m_MethodName: OffObjectButton
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1424002599}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1820168019}
+        m_TargetAssemblyTypeName: GameButton, Assembly-CSharp
+        m_MethodName: OffObjectButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1545265716}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1753,6 +1821,20 @@ MonoBehaviour:
   OnCursorTextColor: {r: 0.4901961, g: 0.4901961, b: 0.4901961, a: 1}
   OnClickedTextColor: {r: 0.2627451, g: 0.2627451, b: 0.2627451, a: 1}
   DisableTextColor: {r: 0.4901961, g: 0.4901961, b: 0.4901961, a: 0.49803922}
+--- !u!114 &1545265722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1545265716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 184efb5ef46224145888d3a8f688a81b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextState: 3
+  button: {fileID: 1545265721}
 --- !u!1 &1626623169
 GameObject:
   m_ObjectHideFlags: 0
@@ -1834,11 +1916,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1930857029}
-  m_Father: {fileID: 1820168017}
+  m_Father: {fileID: 1439743535}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 125, y: 80}
+  m_AnchoredPosition: {x: -785.00006, y: -410}
   m_SizeDelta: {x: 150, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1682138736
@@ -2016,14 +2098,10 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1424002600}
-  - {fileID: 1545265717}
-  - {fileID: 1388517805}
-  - {fileID: 1682138732}
+  - {fileID: 1439743535}
   - {fileID: 1340720802}
   - {fileID: 1074223975}
   - {fileID: 853556412}
-  - {fileID: 597436204}
   - {fileID: 1731809988}
   - {fileID: 1533591786}
   - {fileID: 655279}
@@ -2049,7 +2127,6 @@ MonoBehaviour:
   submitButton: {fileID: 1424002599}
   synthesisButton: {fileID: 1545265716}
   RestText: {fileID: 1317151084}
-  result: {fileID: 655282}
 --- !u!114 &1820168019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2619,7 +2696,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 60364050523772977, guid: 699e483f1d9f6e4499e5bf812846d0c8, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 200.00005
+      value: 200.00002
       objectReference: {fileID: 0}
     - target: {fileID: 726817574752184289, guid: 699e483f1d9f6e4499e5bf812846d0c8, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2663,7 +2740,7 @@ PrefabInstance:
       objectReference: {fileID: 959393678}
     - target: {fileID: 4791865830455768370, guid: 699e483f1d9f6e4499e5bf812846d0c8, type: 3}
       propertyPath: m_Size
-      value: 0.7499986
+      value: 0.7499965
       objectReference: {fileID: 0}
     - target: {fileID: 4791865830455768370, guid: 699e483f1d9f6e4499e5bf812846d0c8, type: 3}
       propertyPath: m_Value

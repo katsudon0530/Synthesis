@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.CullingGroup;
 
 public class Player : Singleton<Player>
 {
@@ -29,7 +30,7 @@ public class Player : Singleton<Player>
         Field.Instance.cardInterval *= (6f / handMax);
         if(GetComponent<EffectCount>() == null)
             gameObject.AddComponent<EffectCount>();
-        SetupNext();
+        GameMaster.OnStateChanged += SetupNext;
     }
 
     //生成されたカードをリストに追加・カードクリック時の効果追加
@@ -42,10 +43,10 @@ public class Player : Singleton<Player>
     //カードクリック時のリアクション
     public void SelectedCard(Card card)
     {
-        if (card.Base.PlayCondition != true)
+        if (card.Base.PlayCondition != true || GameMaster.turnState != TurnState.cardSet)
             return;
 
-        if (card.transform.parent == Field.Instance.BattleField.transform && !GameMaster.CardSet)
+        if (card.transform.parent == Field.Instance.BattleField.transform)
         {
             Field.Instance.HandSet(card);
         }
@@ -96,11 +97,15 @@ public class Player : Singleton<Player>
     }
 
     //次のターンでの関数のリセット
-    public void SetupNext()
+    public void SetupNext(TurnState state)
     {
-        Field.Instance.DeleteCard();
-        Defens = 0;
-        GetComponent<EffectCount>().StatusEffectCount(effects);
-        Field.Instance.PlayerHand.SetActive(true);
+        if (state == TurnState.end)
+        {
+            Field.Instance.DeleteCard();
+            Defens = 0;
+            GetComponent<EffectCount>().StatusEffectCount(effects);
+            Field.Instance.PlayerHand.SetActive(true);
+        }
+
     }
 }

@@ -11,6 +11,7 @@ public class Deck : Singleton<Deck>
     public List<int> cardDeck;
 
     public bool OnCustomize;
+    private GameObject generator;
 
     private void Start()
     {
@@ -24,5 +25,18 @@ public class Deck : Singleton<Deck>
             DeckAll = new List<int>(Base);
         cardDeck = new List<int>(DeckAll);
         OnCustomize = false;
+
+        generator = GameObject.FindWithTag("CardGenerator");
+        if (generator == null)
+            Debug.LogError("CardGeneratorが存在しません");
+    }
+
+    //カードを手札に生成する
+    public void Draw()
+    {
+        int num = UnityEngine.Random.Range(0, cardDeck.Count);
+        Card card = generator.GetComponent<CardGenerator>().Spawn(cardDeck[num]);
+        cardDeck.RemoveAt(num);
+        Player.Instance.SerCardToHand(card);
     }
 }

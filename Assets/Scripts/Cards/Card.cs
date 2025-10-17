@@ -94,6 +94,7 @@ public class Card : MonoBehaviour
         Frame.color = cardBase.Color;
         SynthesisPanel.SetActive(false);
         Base.PlayCondition = true;
+        effectReSet();
 
     }
 

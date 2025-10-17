@@ -11,11 +11,13 @@ public class Result : MonoBehaviour
     public void Awake()
     {
         gameObject.SetActive(false);
+        GameMaster.OnGameOver += ShowResult;
     }
 
     //ゲームの結果を表示する
     public void ShowResult()
     {
+        gameObject.SetActive(true);
         if (Player.Instance.Life <= 0)
             ShowGameResult("LOSE");
 

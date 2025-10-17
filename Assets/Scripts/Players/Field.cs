@@ -135,9 +135,4 @@ public class Field : Singleton<Field>
         }
     }
 
-
-    private void Update()
-    {
-        cardGuide.SetActive(GameMaster.CardSet ? false : true);
-    }
 }

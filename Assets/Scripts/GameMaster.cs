@@ -1,25 +1,28 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
+using static UnityEngine.CullingGroup;
 
 public enum TurnState { start, cardSet, battle, synthesis, enemy, end }
 public class GameMaster : MonoBehaviour
 {
-    [SerializeField] CardGenerator cardGenerator;
-    [SerializeField] GameUI gameUI;
     [SerializeField] int handMax;
+
+    private EnemyManager enemyManager;
+    private CardManager cardManager;
 
     private Deck deck;
     private Enemy enemy;
-    private EnemyManager enemyManager;
-    private CardManager cardManager;
     private Coroutine nowTurn;
 
-    public static int enemyNum;
-    public static bool CardSet { get; set; }
+    public static event Action OnGameOver;
+    public static event Action<TurnState> OnStateChanged;
+    public static TurnState turnState { get; set; }
 
     public static int TurnCount;
+    public static int enemyNum;
 
     private void Awake()
     {
@@ -33,75 +36,57 @@ public class GameMaster : MonoBehaviour
     {
         Player.Instance.SetPlayer(handMax);
         enemy = enemyManager.GenerateEnemy(enemyNum);
-        gameUI.OnDecisionButton = DecisionAction;
         deck.DeckSet();
 
-        CardSet = false;
+        turnState = TurnState.cardSet;
         TurnCount = 1;
 
         nowTurn = StartCoroutine(turn());
     }
 
     //手札を生成
-    void SendCardTo()
+    private void SetHand()
     {
         int cardsum;
+        int deckCount = deck.cardDeck.Count;
+        int handCount = Field.Instance.Hand.Count;
 
-        if(deck.cardDeck.Count != 0)
-        {
-            cardsum = handMax - Field.Instance.Hand.Count;
-            if (cardsum > deck.cardDeck.Count)
-            {
-                cardsum = deck.cardDeck.Count;
-            }
-        }
-        else if (deck.cardDeck.Count == 0 && Field.Instance.Hand.Count == 0)
-        {
+        if (deckCount == 0 && handCount == 0)
             deck.cardDeck = new List<int>(deck.DeckAll);
-            cardsum = handMax;
-            if (cardsum > deck.cardDeck.Count)
-            {
-                cardsum = deck.cardDeck.Count;
-            }
-        }
-        else
-        {
-            cardsum = 0;
-        }
+
+        cardsum = handMax - handCount;
+        if (cardsum > deckCount)
+            cardsum = deckCount;
 
         for (int i = 0; i < cardsum; i++)
         {
-            int num = Random.Range(0, deck.cardDeck.Count);
-            Card card = cardGenerator.Spawn(deck.cardDeck[num]);
-            deck.cardDeck.RemoveAt(num);
-            card.effectReSet();
-            Player.Instance.SerCardToHand(card);
+            deck.Draw();
         }
-        gameUI.RestDeck();
     }
 
     IEnumerator turn()
     {
-        SendCardTo();
-        while (!CardSet)
+        SetHand();
+        ChangeState(TurnState.cardSet);
+        while (turnState == TurnState.cardSet)
         {
             Player.Instance.PlayConditionCheck(enemy, deck); 
             yield return null; 
         }
 
         //カードが選択され、決定か合成が押されるまで待機
-        yield return new WaitUntil(() => CardSetIN());
+        yield return new WaitUntil(() => turnState != TurnState.cardSet);
 
         Field.Instance.PlayerHand.SetActive(false);
 
         //どちらのボタンが押されたのかを判別してそのアクションを実行
-        switch (gameUI.ButtonID)
+        switch (turnState)
         {
-            case 0:
+            case TurnState.battle:
                 //決定ボタンが押された場合
                 yield return StartCoroutine(cardManager.CardBattle(enemy));
                 break;
-            case 1:
+            case TurnState.synthesis:
                 //合成ボタンが押された場合
                 yield return StartCoroutine(cardManager.CardSynthesis());
                 break;
@@ -129,22 +114,19 @@ public class GameMaster : MonoBehaviour
     {
         Debug.Log($"敵のLife：{enemy.Base.EnemyLife}");
 
-        enemy.EnemyReSet();
-        Player.Instance.SetupNext();
-        gameUI.ResetUI();
-
         TurnCount += 1;
-        CardSet = false;
+        enemy.EnemyReSet();
+        ChangeState(TurnState.end);
     }
 
-    void DecisionAction()
+    public static void ChangeState(TurnState newState)
     {
-        CardSet = true;
-    }
-
-    bool CardSetIN()
-    {
-        return CardSet;
+        if (turnState != newState)
+        {
+            //Debug.Log($"[GameState] {turnState} → {newState}");
+            turnState = newState;
+            OnStateChanged?.Invoke(newState);
+        }
     }
 
     private void Update()
@@ -157,11 +139,11 @@ public class GameMaster : MonoBehaviour
         {
             if (nowTurn != null)
                 StopCoroutine(nowTurn);
-            StartCoroutine(Result());
+            StartCoroutine(ResultTurn());
         }
     }
 
-    IEnumerator Result()
+    IEnumerator ResultTurn()
     {
         if(Player.Instance.Life <= 0)
         {
@@ -170,6 +152,6 @@ public class GameMaster : MonoBehaviour
         Field.Instance.PlayerHand.SetActive(false);
         Field.Instance.BattleField.SetActive(false);
         yield return new WaitForSeconds(1f);
-        gameUI.GameResult();
+        OnGameOver?.Invoke();
     }
 }

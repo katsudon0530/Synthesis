@@ -3,15 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[CreateAssetMenu(menuName = "EnemyAction/GolemAction")]
-public class GolemAction : EnemyAction
+[CreateAssetMenu(menuName = "EnemyAction/AttackAction")]
+public class AttackAction : EnemyAction
 {
-    private List<int> Weights = new List<int>();
     public override IEnumerator Execute(Enemy enemy)
     {
-        MessageText.TextIn($"{enemy.Base.Name1}の攻撃");
-        yield return new WaitForSeconds(1f);
-        MessageText.TextIn(($"{enemy.Base.Name1}のグレートパンチ！"));
+        MessageText.TextIn(($"{enemy.Base.Name1}の攻撃"));
         yield return new WaitForSeconds(1.2f);
 
         int Hit = EnemyAttack(enemy);
@@ -19,7 +16,7 @@ public class GolemAction : EnemyAction
         yield break;
     }
 
-    public int EnemyAttack( Enemy enemy)
+    public int EnemyAttack(Enemy enemy)
     {
 
         int Hit = (int)(enemy.Base.EnemyAttack * Random.Range(0.8f, 1.1f));
