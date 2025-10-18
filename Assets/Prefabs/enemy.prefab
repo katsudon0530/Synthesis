@@ -252,7 +252,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 2768839345695975543}
   descriotionText: {fileID: 8076336017246761204}
-  CountText: {fileID: 357693902196145069}
+  countText: {fileID: 357693902196145069}
 --- !u!114 &1128331482677297784
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -620,7 +620,7 @@ GameObject:
   - component: {fileID: 6690999876023845146}
   - component: {fileID: 357693902196145069}
   m_Layer: 5
-  m_Name: Count1
+  m_Name: Count
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

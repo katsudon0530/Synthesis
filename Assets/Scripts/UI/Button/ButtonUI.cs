@@ -137,7 +137,6 @@ namespace UI
             }
         }
 
-
         private void Awake()
         {
             Init();

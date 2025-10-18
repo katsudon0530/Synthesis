@@ -13,11 +13,11 @@ public class ReflectionEffect : EffectDetails
         int damage = Player.Instance.PastLife - Player.Instance.Life;
         damage = (int)(damage * Magnification);
 
-        enemy.Base.EnemyLife -= damage;
+        enemy.Life -= damage;
         MessageText.TextIn($"{damage}の反射ダメージ与えた");
-        if (enemy.Base.EnemyLife < 0)
+        if (enemy.Life < 0)
         {
-            enemy.Base.EnemyLife = 0;
+            enemy.Life = 0;
         }
 
         yield return new WaitForSeconds(1.0f);

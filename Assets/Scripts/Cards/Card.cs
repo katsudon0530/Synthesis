@@ -94,7 +94,6 @@ public class Card : MonoBehaviour
         SynthesisPanel.SetActive(false);
         Base.PlayCondition = true;
         effectReSet();
-
     }
 
     //カードクリック時のリアクション先の参照

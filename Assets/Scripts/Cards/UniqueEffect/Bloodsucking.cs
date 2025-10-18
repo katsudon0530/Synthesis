@@ -16,14 +16,14 @@ public class BloodsuckingEffect : UniqueEffect
         Player player = Player.Instance;
 
         int Hit = (int)(attackValue * Random.Range(0.8f, 1.2f));
-        float defense = 1f - enemy.Base.EnemyDefense / 100f;
+        float defense = 1f - enemy.Defense / 100f;
         int damage = (int)(Hit * defense);
-        enemy.Base.EnemyLife -= damage;
+        enemy.Life -= damage;
         MessageText.TextIn($"{damage}ダメージ与えた");
         yield return new WaitForSeconds(1.0f);
-        if (enemy.Base.EnemyLife < 0)
+        if (enemy.Life < 0)
         {
-            enemy.Base.EnemyLife = 0;
+            enemy.Life = 0;
         }
 
         if ((player.Life + damage) > player.LifeMax)

@@ -31,7 +31,7 @@ public class PosonPotionEffect : UniqueEffect
         }
 
         //毒状態を付与する
-        MessageText.TextIn(enemy.StatusEffectGenerator.EnemyGrantEffect(enemy, effectBase));
+        MessageText.TextIn(enemy.EffectGenerator.EnemyGrantEffect(enemy, effectBase));
 
         yield break;
     }

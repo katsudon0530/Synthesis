@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: 02_Dragon
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: edb7cb4842c884f4cb1056ff19e62ed6, type: 3}
-  Name: "\u30C9\u30E9\u30B4\u30F3"
+  enemyName: "\u30C9\u30E9\u30B4\u30F3"
   type: 2
   enemyLifeMax: 500
-  enemyAttack: 35
-  enemyDefense: 30
-  enemyMagicDefense: 30
+  baseAttack: 35
+  baseDefense: 30
+  baseMagicDefense: 30
   enemyCount: 3
   description: "\u5F37\u653B\u6483\u307E\u3067"
   situation:
@@ -32,5 +32,7 @@ MonoBehaviour:
     situationText: "\u3082\u3046\u30DC\u30ED\u30DC\u30ED\u3060\uFF01"
   - restLife: 0
     situationText: "\u5012\u308C\u305F\uFF01"
-  Weights: 000000000000000000000000
-  enemyAction: {fileID: 11400000, guid: 4bf0e98e890d26f45bc938d877f8d4fa, type: 2}
+  actionLists:
+  - textMessage: 
+    percent: 100
+    enemyAction: {fileID: 11400000, guid: 39679a8a3cc94b746889750f9ce7ec3e, type: 2}

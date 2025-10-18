@@ -17,11 +17,11 @@ public class PoisonEffect : EffectDetails
             damage = MaxDamage;
         }
 
-        enemy.Base.EnemyLife -= damage;
+        enemy.Life -= damage;
         MessageText.TextIn($"{damage}の毒ダメージを与えた");
-        if (enemy.Base.EnemyLife < 0)
+        if (enemy.Life < 0)
         {
-            enemy.Base.EnemyLife = 0;
+            enemy.Life = 0;
         }
 
         yield return new WaitForSeconds(1.0f);

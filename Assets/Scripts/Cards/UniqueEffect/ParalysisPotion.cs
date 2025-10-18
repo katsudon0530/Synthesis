@@ -19,7 +19,7 @@ public class ParalysisPotionEffect : UniqueEffect
         MessageText.TextIn($"麻痺ポーションを投げつけた！");  
         yield return new WaitForSeconds(1.0f);
 
-        MessageText.TextIn(enemy.StatusEffectGenerator.EnemyGrantEffect(enemy, effectBase));
+        MessageText.TextIn(enemy.EffectGenerator.EnemyGrantEffect(enemy, effectBase));
 
         yield break;
     }

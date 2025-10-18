@@ -8,7 +8,7 @@ public class EnemyLifeContlloer : MonoBehaviour
     {
         RectTransform rectTransform = life.GetComponent<RectTransform>();
         Vector2 size = rectTransform.sizeDelta;
-        float proportion = (float)enemy.Base.EnemyLife / (float)enemy.Base.EnemyLifeMax;
+        float proportion = (float)enemy.Life / (float)enemy.Base.EnemyLifeMax;
         size.x = 300 * proportion;
         rectTransform.sizeDelta = size;
     }

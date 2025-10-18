@@ -34,7 +34,7 @@ public class ReflectorEffect : UniqueEffect
             yield break;
         }
 
-        MessageText.TextIn(enemy.StatusEffectGenerator.PlayerGrantEffect(player, effectBase));
+        MessageText.TextIn(enemy.EffectGenerator.PlayerGrantEffect(player, effectBase));
 
 
         yield break;

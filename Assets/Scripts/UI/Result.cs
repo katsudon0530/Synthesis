@@ -41,16 +41,8 @@ public class Result : MonoBehaviour
         }
     }
 
-    //タイトルに戻る
-    public void OnTitleButton()
+    private void OnDestroy()
     {
-        SceneManager.LoadScene("Title");
-    }
-
-    //シーンをリセットする
-    public void ResetButton()
-    {
-        Deck.Instance.OnCustomize = true;
-        SceneManager.LoadScene("CustomScene");
+        GameMaster.OnGameOver -= ShowResult;
     }
 }

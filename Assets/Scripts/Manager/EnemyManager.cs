@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
@@ -20,15 +21,25 @@ public class EnemyManager : MonoBehaviour
     {
         MessageText.Panel(true);
 
-        if (enemy.Base.Act == false)
+        if (enemy.Act == false)
         {
-            MessageText.TextIn($"{enemy.Base.Name1}は動けない！");
+            MessageText.TextIn($"{enemy.Base.Name}は動けない！");
         }
         else
         {
             //敵の攻撃
-            int count = enemy.Base.ActionLists.Count;
-            yield return StartCoroutine(enemy.Base.EnemyAction.Execute(enemy));
+            List<ActionList> list = enemy.Base.ActionLists;
+            float num = Random.Range(0f, 100f);
+            float per = 0;
+            for (int i = 0;i < list.Count; i++)
+            {
+                per += list[i].percent;
+                if (per > num)
+                {
+                    yield return StartCoroutine(list[i].enemyAction.Execute(enemy));
+                    break;
+                }
+            } 
         }
 
         yield return new WaitForSeconds(1.5f);

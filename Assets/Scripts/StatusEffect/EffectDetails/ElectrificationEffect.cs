@@ -12,10 +12,10 @@ public class ElectrificationEffect : EffectDetails
 
         if (statusEffect.CountGrant >= grants)
         {
-            MessageText.TextIn($"{enemy.Base.Name1}に帯電が最大数溜まった！");
-            enemy.Base.Act = false;
+            MessageText.TextIn($"{enemy.Base.Name}に帯電が最大数溜まった！");
+            enemy.Act = false;
             yield return new WaitForSeconds(1.0f);
-            MessageText.TextIn($"{enemy.Base.Name1}は行動不能になった！");
+            MessageText.TextIn($"{enemy.Base.Name}は行動不能になった！");
             statusEffect.CountTurn = 1;
         }
 

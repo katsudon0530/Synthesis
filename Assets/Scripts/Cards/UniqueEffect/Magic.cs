@@ -17,13 +17,13 @@ public class MagicEffect : UniqueEffect
         int magicValue = (int)FlontBuff(card, flontCard);
 
         int Hit = (int)(magicValue * Random.Range(0.8f, 1.2f));
-        float defense = 1f - enemy.Base.EnemyMagicDefense / 100f;
+        float defense = 1f - enemy.MagicDefense / 100f;
         int damage = (int)(Hit * defense);
-        enemy.Base.EnemyLife -= damage;
+        enemy.Life -= damage;
         MessageText.TextIn($"{damage}魔法ダメージあたえた");
-        if (enemy.Base.EnemyLife < 0)
+        if (enemy.Life < 0)
         {
-            enemy.Base.EnemyLife = 0;
+            enemy.Life = 0;
         }
 
         yield break;

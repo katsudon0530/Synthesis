@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: 00_Slime
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 437accca62cf30e45858f3048125d86f, type: 3}
-  Name: "\u30B9\u30E9\u30A4\u30E0"
+  enemyName: "\u30B9\u30E9\u30A4\u30E0"
   type: 0
   enemyLifeMax: 300
-  enemyAttack: 25
-  enemyDefense: 50
-  enemyMagicDefense: 20
+  baseAttack: 25
+  baseDefense: 50
+  baseMagicDefense: 20
   enemyCount: 3
   description: "\u5F37\u653B\u6483\u307E\u3067"
   situation:
@@ -34,5 +34,7 @@ MonoBehaviour:
     situationText: "\u3082\u3046\u30DC\u30ED\u30DC\u30ED\u3060\uFF01"
   - restLife: 0
     situationText: "\u5012\u308C\u305F\uFF01"
-  Weights: 000000000000000000000000
-  enemyAction: {fileID: 11400000, guid: 9519cd1171d184a4ab9015e565d966a9, type: 2}
+  actionLists:
+  - textMessage: 
+    percent: 100
+    enemyAction: {fileID: 11400000, guid: 39679a8a3cc94b746889750f9ce7ec3e, type: 2}

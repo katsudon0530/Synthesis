@@ -9,9 +9,9 @@ public class GolemAction : EnemyAction
     private List<int> Weights = new List<int>();
     public override IEnumerator Execute(Enemy enemy)
     {
-        MessageText.TextIn($"{enemy.Base.Name1}の攻撃");
+        MessageText.TextIn($"{enemy.Base.Name}の攻撃");
         yield return new WaitForSeconds(1f);
-        MessageText.TextIn(($"{enemy.Base.Name1}のグレートパンチ！"));
+        MessageText.TextIn(($"{enemy.Base.Name}のグレートパンチ！"));
         yield return new WaitForSeconds(1.2f);
 
         int Hit = EnemyAttack(enemy);
@@ -22,10 +22,10 @@ public class GolemAction : EnemyAction
     public int EnemyAttack( Enemy enemy)
     {
 
-        int Hit = (int)(enemy.Base.EnemyAttack * Random.Range(0.8f, 1.1f));
+        int Hit = (int)(enemy.Attack * Random.Range(0.8f, 1.1f));
         float Decrease = 1f - Player.Instance.Defens / 100f;
 
-        if (enemy.Base.Count == 0)
+        if (enemy.Count == 0)
         {
             Hit = 2 * Hit;
         }

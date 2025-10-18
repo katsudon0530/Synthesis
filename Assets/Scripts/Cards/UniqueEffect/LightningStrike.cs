@@ -20,11 +20,11 @@ public class LightningStrikeEffect : UniqueEffect
         yield return new WaitForSeconds(1.0f);
 
         int damage = (int)card.Base.CardStatus.Attack_Status;
-        enemy.Base.EnemyLife -= damage;
+        enemy.Life -= damage;
         MessageText.TextIn($"{damage}ダメージ与えた");
-        if (enemy.Base.EnemyLife < 0)
+        if (enemy.Life < 0)
         {
-            enemy.Base.EnemyLife = 0;
+            enemy.Life = 0;
             yield break;
         }
         yield return new WaitForSeconds(1.0f);
@@ -33,7 +33,7 @@ public class LightningStrikeEffect : UniqueEffect
         //帯電状態が付与されていない場合
         if (!enemy.Base.Effects.Exists(e => e.Base == effectBase))
         {
-            MessageText.TextIn(enemy.StatusEffectGenerator.EnemyGrantEffect(enemy, effectBase));
+            MessageText.TextIn(enemy.EffectGenerator.EnemyGrantEffect(enemy, effectBase));
         }
         //すでに帯電状態の場合
         else
@@ -48,8 +48,8 @@ public class LightningStrikeEffect : UniqueEffect
         //確率で相手は行動不能
         if(probability >= Random.value)
         {
-            enemy.Base.Act = false;
-            MessageText.TextIn($"{enemy.Base.Name1}はしびれている");
+            enemy.Act = false;
+            MessageText.TextIn($"{enemy.Base.Name}はしびれている");
             yield return new WaitForSeconds(1.0f);
         }
 

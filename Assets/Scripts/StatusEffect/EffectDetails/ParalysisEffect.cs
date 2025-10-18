@@ -29,7 +29,7 @@ public class ParalysisEffect : EffectDetails
         if (Random.value <= found.probability)
         {
             MessageText.TextIn($"麻痺の効果が発動した！");
-            enemy.Base.Act = false;
+            enemy.Act = false;
         }
         else
         {

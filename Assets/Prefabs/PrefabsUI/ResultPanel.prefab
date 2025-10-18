@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3829296050482555539}
   - component: {fileID: 8176199704154609415}
   - component: {fileID: 6114670595410952632}
+  - component: {fileID: 9087208252043257212}
   - component: {fileID: 4131525453757708928}
   m_Layer: 5
   m_Name: 'RetryButton '
@@ -77,6 +78,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &9087208252043257212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1029747752816651603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dff869faf816e2c4fad4781d048a1e3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextState: 2
+  button: {fileID: 4131525453757708928}
 --- !u!114 &4131525453757708928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -442,6 +457,7 @@ GameObject:
   - component: {fileID: 2598297351896121224}
   - component: {fileID: 4232025106350662086}
   - component: {fileID: 2652212369713303927}
+  - component: {fileID: 550902985538852393}
   - component: {fileID: 5049425579358711322}
   m_Layer: 5
   m_Name: TitleButton
@@ -508,6 +524,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &550902985538852393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6780040288950250443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dff869faf816e2c4fad4781d048a1e3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextState: 0
+  button: {fileID: 5049425579358711322}
 --- !u!114 &5049425579358711322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -639,7 +669,7 @@ GameObject:
   - component: {fileID: 3361894082661462650}
   m_Layer: 5
   m_Name: ResultPanel
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

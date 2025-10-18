@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: 01_Golem
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 530fb48c3de39fa43a2078d17063e19e, type: 3}
-  Name: "\u30B4\u30FC\u30EC\u30E0"
+  enemyName: "\u30B4\u30FC\u30EC\u30E0"
   type: 1
   enemyLifeMax: 400
-  enemyAttack: 30
-  enemyDefense: 0
-  enemyMagicDefense: 50
+  baseAttack: 30
+  baseDefense: 20
+  baseMagicDefense: 50
   enemyCount: 3
   description: "\u5F37\u653B\u6483\u307E\u3067"
   situation:
@@ -32,5 +32,7 @@ MonoBehaviour:
     situationText: "\u3082\u3046\u30DC\u30ED\u30DC\u30ED\u3060\uFF01"
   - restLife: 0
     situationText: "\u5012\u308C\u305F\uFF01"
-  Weights: 000000000000000000000000
-  enemyAction: {fileID: 11400000, guid: 24a1581995082fe4e86cc3ca97a322e2, type: 2}
+  actionLists:
+  - textMessage: 
+    percent: 100
+    enemyAction: {fileID: 11400000, guid: 39679a8a3cc94b746889750f9ce7ec3e, type: 2}

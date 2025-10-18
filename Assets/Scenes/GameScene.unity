@@ -1792,6 +1792,7 @@ GameObject:
   - component: {fileID: 1682138732}
   - component: {fileID: 1682138737}
   - component: {fileID: 1682138736}
+  - component: {fileID: 1682138739}
   - component: {fileID: 1682138738}
   m_Layer: 5
   m_Name: ResetButton
@@ -1884,6 +1885,20 @@ MonoBehaviour:
   OnCursorTextColor: {r: 0.4901961, g: 0.4901961, b: 0.4901961, a: 1}
   OnClickedTextColor: {r: 0.2627451, g: 0.2627451, b: 0.2627451, a: 1}
   DisableTextColor: {r: 0.4901961, g: 0.4901961, b: 0.4901961, a: 0.49803922}
+--- !u!114 &1682138739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1682138731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dff869faf816e2c4fad4781d048a1e3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextState: 0
+  button: {fileID: 1682138738}
 --- !u!1 &1696561895
 GameObject:
   m_ObjectHideFlags: 0
@@ -1964,7 +1979,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -50
   m_TargetDisplay: 0
 --- !u!224 &1696561899
 RectTransform:
@@ -2518,6 +2533,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 7946917882321975427, guid: 5103cb1735dbcf948855712e5bf930c7, type: 3}
+      propertyPath: m_SortingOrder
+      value: -10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2676,10 +2695,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ResultPanel
       objectReference: {fileID: 0}
-    - target: {fileID: 8958667096903914556, guid: cb5ddf2b88bc89f4e90bea40b05bba2d, type: 3}
-      propertyPath: m_TagString
-      value: UI
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2695,7 +2710,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 60364050523772977, guid: 699e483f1d9f6e4499e5bf812846d0c8, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 200.00087
+      value: 200.0009
       objectReference: {fileID: 0}
     - target: {fileID: 726817574752184289, guid: 699e483f1d9f6e4499e5bf812846d0c8, type: 3}
       propertyPath: m_AnchorMax.x

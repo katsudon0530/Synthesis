@@ -50,7 +50,10 @@ public class GameMaster : MonoBehaviour
         int handCount = Field.Instance.Hand.Count;
 
         if (deckCount == 0 && handCount == 0)
+        {
             deck.cardDeck = new List<int>(deck.DeckAll);
+            deckCount = deck.cardDeck.Count;
+        }
 
         cardsum = handMax - handCount;
         if (cardsum > deckCount)
@@ -93,10 +96,8 @@ public class GameMaster : MonoBehaviour
         //敵に付与されている状態の処理
         yield return StartCoroutine(enemyManager.EnemyEffectBoot(enemy));
 
-
         //エネミーの行動を行う
         yield return StartCoroutine(enemyManager.EnemyTurn(enemy));
-
 
         //自分に付与されている状態の処理
         yield return StartCoroutine(Player.Instance.PlayerEffectBoot(enemy));
@@ -110,7 +111,7 @@ public class GameMaster : MonoBehaviour
     //次ターンに向けてのリセットと準備
     void SetupNextTurn()
     {
-        Debug.Log($"敵のLife：{enemy.Base.EnemyLife}");
+        Debug.Log($"敵のLife：{enemy.Life}");
 
         TurnCount += 1;
         enemy.EnemyReSet();
@@ -133,7 +134,7 @@ public class GameMaster : MonoBehaviour
         {
 
         }
-        else if (Player.Instance.Life <= 0 || enemy.Base.EnemyLife <= 0)
+        else if (Player.Instance.Life <= 0 || enemy.Life <= 0)
         {
             if (nowTurn != null)
                 StopCoroutine(nowTurn);
@@ -149,7 +150,7 @@ public class GameMaster : MonoBehaviour
         }
         Field.Instance.PlayerHand.SetActive(false);
         Field.Instance.BattleField.SetActive(false);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         OnGameOver?.Invoke();
     }
 }
