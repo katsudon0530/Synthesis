@@ -3,7 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum TurnState { start, cardSet, battle, synthesis, enemy, end }
+public enum TurnState 
+{
+    start,
+    cardSet,
+    battle,
+    synthesis,
+    enemy,
+    end
+}
 public class GameMaster : MonoBehaviour
 {
     [SerializeField] int handMax;
@@ -20,7 +28,7 @@ public class GameMaster : MonoBehaviour
     public static TurnState turnState { get; private set; }
 
     public static int TurnCount;
-    public static int enemyNum;
+    public static int enemyNum = 101;
 
     private void Awake()
     {
@@ -32,12 +40,13 @@ public class GameMaster : MonoBehaviour
     //ゲームスタート時のセットアップ内容
     public void Start()
     {
+        TurnCount = 1;
         Player.Instance.SetPlayer(handMax);
         enemy = enemyManager.GenerateEnemy(enemyNum);
         deck.DeckSet();
 
         turnState = TurnState.cardSet;
-        TurnCount = 1;
+        
 
         nowTurn = StartCoroutine(turn());
     }

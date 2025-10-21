@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 728bc2c4ad0aecb409c40952bc35a995, type: 3}
   m_Name: 00_Slime
   m_EditorClassIdentifier: 
+  enemyID: 101
   icon: {fileID: 21300000, guid: 437accca62cf30e45858f3048125d86f, type: 3}
   enemyName: "\u30B9\u30E9\u30A4\u30E0"
   type: 0

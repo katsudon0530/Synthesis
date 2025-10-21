@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 728bc2c4ad0aecb409c40952bc35a995, type: 3}
   m_Name: 02_Dragon
   m_EditorClassIdentifier: 
+  enemyID: 103
   icon: {fileID: 21300000, guid: edb7cb4842c884f4cb1056ff19e62ed6, type: 3}
   enemyName: "\u30C9\u30E9\u30B4\u30F3"
   type: 2

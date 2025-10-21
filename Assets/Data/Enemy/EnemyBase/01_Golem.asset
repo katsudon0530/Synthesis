@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 728bc2c4ad0aecb409c40952bc35a995, type: 3}
   m_Name: 01_Golem
   m_EditorClassIdentifier: 
+  enemyID: 102
   icon: {fileID: 21300000, guid: 530fb48c3de39fa43a2078d17063e19e, type: 3}
   enemyName: "\u30B4\u30FC\u30EC\u30E0"
   type: 1

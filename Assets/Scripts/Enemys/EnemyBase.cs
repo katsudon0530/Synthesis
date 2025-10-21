@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyBase : ScriptableObject
 {
     [Header("エネミーの種類")]
+    [SerializeField] int enemyID;
     [SerializeField] Sprite icon;
     [SerializeField] string enemyName;
     [SerializeField] EnemyType type;
@@ -27,7 +28,7 @@ public class EnemyBase : ScriptableObject
 
     [SerializeField] List<ActionList> actionLists;
 
-
+    public int EnemyID { get => enemyID; set => enemyID = value; }
     public EnemyType Type { get => type; set => type = value; }
     public Sprite Icon { get => icon; set => icon = value; }
     public string Description { get => description; set => description = value; }

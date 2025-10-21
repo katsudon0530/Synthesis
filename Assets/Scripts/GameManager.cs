@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using System.Diagnostics;
 using UnityEngine.SceneManagement;
-using static UnityEngine.CullingGroup;
+using UnityEngine;
 
 public enum GameState
 {
-    title, 
+    title,
     costom,
     singleGame,
     dungeon,

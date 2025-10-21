@@ -67,7 +67,7 @@ public class Synthesis : MonoBehaviour
     {
         int SearchID = 0;
 
-        IdDataTriple TripleID = dictionary.SynthesisTriple.Find(id => id.card_1_ID ==card1ID &&  id.card_2_ID ==card2ID && id.card_3_ID ==card3ID);
+        IdDataTriple TripleID = dictionary.SynthesisTriple.Find(id => id.card_1_ID == card1ID &&  id.card_2_ID == card2ID && id.card_3_ID == card3ID);
 
         if (TripleID != null)
         {
