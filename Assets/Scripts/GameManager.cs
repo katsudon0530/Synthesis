@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Diagnostics;
 using UnityEngine.SceneManagement;
-using UnityEngine;
 
 public enum GameState
 {

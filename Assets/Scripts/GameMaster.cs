@@ -12,6 +12,7 @@ public enum TurnState
     enemy,
     end
 }
+
 public class GameMaster : MonoBehaviour
 {
     [SerializeField] int handMax;
@@ -36,23 +37,28 @@ public class GameMaster : MonoBehaviour
         enemyManager = GetComponent<EnemyManager>();
         cardManager = GetComponent<CardManager>();
         deck = Deck.Instance;
+        Set();
     }
 
     //ゲームスタート時のセットアップ内容
-    public void Start()
+    public void Set()
     {
         TurnCount = 1;
+        deck.DeckSet();
         Player.Instance.SetPlayer(handMax);
-        enemy = enemyManager.GenerateEnemy(enemyNum);
-        deck.DeckSet();        
 
-        nowTurn = StartCoroutine(turn());
+        //TurnStart();
     }
 
-    //ターンを開始する
-    private void TurnStart()
+    public Enemy EnemySet(int num)
     {
-        nowTurn = StartCoroutine(turn());
+        enemy = enemyManager.GenerateEnemy(num);
+        return enemy;
+    }
+    //ターンを開始する
+    public IEnumerator TurnStart()
+    {
+        yield return nowTurn = StartCoroutine(turn());
     }
 
     //手札を生成
@@ -117,8 +123,6 @@ public class GameMaster : MonoBehaviour
 
         //次のターンに向けてセットアップを行う
         SetupNextTurn();
-        //ターンの始めに戻る
-        nowTurn = StartCoroutine(turn());
     }
 
     //次ターンに向けてのリセットと準備
@@ -149,17 +153,18 @@ public class GameMaster : MonoBehaviour
         }
         else if (Player.Instance.Life <= 0 || enemy.Life <= 0)
         {
-            if (nowTurn != null)
-                StopCoroutine(nowTurn);
-            if (segmentTurn != null)
-                StopCoroutine(segmentTurn);
-            StartCoroutine(ResultTurn());
+            //StartCoroutine(ResultTurn());
         }
     }
 
-    IEnumerator ResultTurn()
+    public IEnumerator ResultTurn()
     {
-        if(Player.Instance.Life <= 0)
+        if (nowTurn != null)
+            StopCoroutine(nowTurn);
+        if (segmentTurn != null)
+            StopCoroutine(segmentTurn);
+
+        if (Player.Instance.Life <= 0)
         {
             MessageText.TextIn("アナタは力尽きた");
         }

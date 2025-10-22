@@ -123,4 +123,9 @@ public class Enemy : MonoBehaviour
         _act = true;
         DecreaseLife = false;
     }
+
+    public void EnemyDestroy()
+    {
+        Destroy(gameObject);
+    }
 }
