@@ -22,7 +22,18 @@ public class Enemy : MonoBehaviour
     public EnemyBase Base { get; private set; }
     public StatusEffectGenerator EffectGenerator { get => effectGenerator; set => effectGenerator = value; }
     public bool DecreaseLife { get => _decreaseLife; set => _decreaseLife = value; }
-    public int Life { get => _life; set => _life = value; }
+    public int Life 
+    { 
+        get => _life;
+        set
+        {
+            if (_life != value)
+            {
+                _life = value;
+                LifeDecrease();
+            }
+        }
+    }
     public int Attack { get => _attack; set => _attack = value; }
     public int Defense { get => _defense; set => _defense = value; }
     public int MagicDefense { get => _magicDefense; set => _magicDefense = value; }
@@ -61,7 +72,7 @@ public class Enemy : MonoBehaviour
 
 
     //HPが減ったら揺れる
-    private void Update()
+    private void LifeDecrease()
     {
         if (_life < _pastLife)
         {
@@ -71,6 +82,7 @@ public class Enemy : MonoBehaviour
             DecreaseLife = true;
         }
     }
+
     //エネミーの強力攻撃までのカウントダウン
     public void EnemyCountDown()
     {

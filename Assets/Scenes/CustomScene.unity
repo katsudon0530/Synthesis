@@ -390,17 +390,17 @@ MonoBehaviour:
   _onClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1820168019}
-        m_TargetAssemblyTypeName: GameButton, Assembly-CSharp
-        m_MethodName: OnObjectButton
-        m_Mode: 2
+      - m_Target: {fileID: 5011696997743569134}
+        m_TargetAssemblyTypeName: RulePanel, Assembly-CSharp
+        m_MethodName: ActivePanel
+        m_Mode: 6
         m_Arguments:
-          m_ObjectArgument: {fileID: 1731809987}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
   _interactable: 1
   _colorChangeTime: 0.1
@@ -662,11 +662,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2011570034}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1731809987 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6650715944033600854, guid: c835870a25328554e946d3c321d7f4c8, type: 3}
-  m_PrefabInstance: {fileID: 5011696997743569133}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1731809988 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3420696366651746042, guid: c835870a25328554e946d3c321d7f4c8, type: 3}
@@ -684,7 +679,6 @@ GameObject:
   - component: {fileID: 1820168016}
   - component: {fileID: 1820168015}
   - component: {fileID: 1820168014}
-  - component: {fileID: 1820168019}
   m_Layer: 5
   m_Name: CustomUI
   m_TagString: Untagged
@@ -778,18 +772,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1820168019
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1820168013}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0d45bc678ea99b488a42a6efea20786, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1897735930
 GameObject:
   m_ObjectHideFlags: 0
@@ -954,7 +936,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 60364050523772977, guid: 699e483f1d9f6e4499e5bf812846d0c8, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 200.00002
+      value: 200.00089
       objectReference: {fileID: 0}
     - target: {fileID: 726817574752184289, guid: 699e483f1d9f6e4499e5bf812846d0c8, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1182,6 +1164,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c835870a25328554e946d3c321d7f4c8, type: 3}
+--- !u!114 &5011696997743569134 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3331985792854126795, guid: c835870a25328554e946d3c321d7f4c8, type: 3}
+  m_PrefabInstance: {fileID: 5011696997743569133}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fed6bc0c80b269c4385fa55082fbe2cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5897239378704286901
 PrefabInstance:
   m_ObjectHideFlags: 0

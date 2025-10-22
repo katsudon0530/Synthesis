@@ -502,8 +502,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8047963975879662551}
   m_HandleRect: {fileID: 3166112839288394757}
   m_Direction: 2
-  m_Value: -0.0000018310546
-  m_Size: 0.75
+  m_Value: 0
+  m_Size: 0.74999994
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -691,7 +691,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 200.00037}
+  m_AnchoredPosition: {x: 0, y: 200.00003}
   m_SizeDelta: {x: 0, y: 800}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &4085589663480282179
@@ -708,7 +708,7 @@ GameObject:
   - component: {fileID: 4272695163986327739}
   m_Layer: 5
   m_Name: DeckListPanel
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1220,7 +1220,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 425.00003}
+  m_AnchoredPosition: {x: 0, y: 425.0001}
   m_SizeDelta: {x: 0, y: 800}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &7293068940715665298
@@ -1422,7 +1422,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3787499104661744961}
   m_HandleRect: {fileID: 726817574752184289}
   m_Direction: 2
-  m_Value: 0
+  m_Value: -0.0000012207016
   m_Size: 0.93749994
   m_NumberOfSteps: 0
   m_OnValueChanged:

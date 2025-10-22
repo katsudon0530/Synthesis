@@ -16,6 +16,10 @@ public class GameUI : MonoBehaviour
     {
         switch (state)
         {
+            case TurnState.battle:
+            case TurnState.synthesis:
+                BattleUI();
+                break;
             case TurnState.cardSet:
                 ResetUI();
                 break;
@@ -34,10 +38,22 @@ public class GameUI : MonoBehaviour
         MessageText.Panel(false);
     }
 
+    //バトル中のボタンを消す
+    public void BattleUI()
+    {
+        submitButton.SetActive(false);
+        synthesisButton.SetActive(false);
+    }
+
 
     //デッキの残り枚数を表示する
     public void RestDeck()
     {
         RestText.text = $"残り{Deck.Instance.cardDeck.Count}枚";
+    }
+
+    private void OnDestroy()
+    {
+        GameMaster.OnStateChanged -= OnStateChanged;
     }
 }

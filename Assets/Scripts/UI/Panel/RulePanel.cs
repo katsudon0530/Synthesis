@@ -48,8 +48,8 @@ public class RulePanel : MonoBehaviour
         }
     }
 
-    public void OffPanel()
+    public void ActivePanel(bool set)
     {
-        gameObject.SetActive(false);
+        gameObject.SetActive(set);
     } 
 }

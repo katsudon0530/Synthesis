@@ -21,7 +21,8 @@ public class GameMaster : MonoBehaviour
 
     private Deck deck;
     private Enemy enemy;
-    private Coroutine nowTurn;
+    public static Coroutine nowTurn;
+    public static Coroutine segmentTurn;
 
     public static event Action OnGameOver;
     public static event Action<TurnState> OnStateChanged;
@@ -43,11 +44,14 @@ public class GameMaster : MonoBehaviour
         TurnCount = 1;
         Player.Instance.SetPlayer(handMax);
         enemy = enemyManager.GenerateEnemy(enemyNum);
-        deck.DeckSet();
+        deck.DeckSet();        
 
-        turnState = TurnState.cardSet;
-        
+        nowTurn = StartCoroutine(turn());
+    }
 
+    //ターンを開始する
+    private void TurnStart()
+    {
         nowTurn = StartCoroutine(turn());
     }
 
@@ -74,7 +78,7 @@ public class GameMaster : MonoBehaviour
         }
     }
 
-    IEnumerator turn()
+    public IEnumerator turn()
     {
         SetHand();
         ChangeState(TurnState.cardSet);
@@ -94,22 +98,22 @@ public class GameMaster : MonoBehaviour
         {
             case TurnState.battle:
                 //決定ボタンが押された場合
-                yield return StartCoroutine(cardManager.CardBattle(enemy));
+                yield return segmentTurn = StartCoroutine(cardManager.CardBattle(enemy));
                 break;
             case TurnState.synthesis:
                 //合成ボタンが押された場合
-                yield return StartCoroutine(cardManager.CardSynthesis());
+                yield return segmentTurn = StartCoroutine(cardManager.CardSynthesis());
                 break;
         }
         yield return new WaitForSeconds(0.7f);
         //敵に付与されている状態の処理
-        yield return StartCoroutine(enemyManager.EnemyEffectBoot(enemy));
+        yield return segmentTurn = StartCoroutine(enemyManager.EnemyEffectBoot(enemy));
 
         //エネミーの行動を行う
-        yield return StartCoroutine(enemyManager.EnemyTurn(enemy));
+        yield return segmentTurn = StartCoroutine(enemyManager.EnemyTurn(enemy));
 
         //自分に付与されている状態の処理
-        yield return StartCoroutine(Player.Instance.PlayerEffectBoot(enemy));
+        yield return segmentTurn = StartCoroutine(Player.Instance.PlayerEffectBoot(enemy));
 
         //次のターンに向けてセットアップを行う
         SetupNextTurn();
@@ -147,6 +151,8 @@ public class GameMaster : MonoBehaviour
         {
             if (nowTurn != null)
                 StopCoroutine(nowTurn);
+            if (segmentTurn != null)
+                StopCoroutine(segmentTurn);
             StartCoroutine(ResultTurn());
         }
     }
@@ -159,7 +165,7 @@ public class GameMaster : MonoBehaviour
         }
         Field.Instance.PlayerHand.SetActive(false);
         Field.Instance.BattleField.SetActive(false);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         OnGameOver?.Invoke();
     }
 }

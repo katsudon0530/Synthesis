@@ -10,6 +10,7 @@ public enum GameState
     singleGame,
     dungeon,
     result,
+    notSet,
 }
 
 public class GameManager : Singleton<GameManager>
@@ -24,6 +25,7 @@ public class GameManager : Singleton<GameManager>
         base.Awake();
 
         OnStateChanged += SceneChange;
+        gameState = GameState.notSet;
     }
 
     public static void ChangeState(GameState newState)

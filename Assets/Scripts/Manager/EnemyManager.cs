@@ -5,13 +5,14 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour
 {
     [SerializeField] EnemyGenerator enemyGenerator;
-    [SerializeField] EnemyFiled enemyFiled;
+    [SerializeField] GameObject enemyFiled;
 
     //エネミーを生成してフィールドにセット
     public Enemy GenerateEnemy(int enemyNum)
     {
         Enemy enemy = enemyGenerator.SpawnEnemy(enemyNum);
-        enemyFiled.AddEnemy(enemy);
+        enemy.transform.SetParent(enemyFiled.transform);
+        enemy.transform.localPosition = new Vector3(0, 0, 0);
         return enemy;
     }
 
