@@ -2,23 +2,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using static UnityEngine.CullingGroup;
 using static UnityEngine.UIElements.VisualElement;
 
-public enum FlowState
-{
-    move,
-    turn,
-    result,
-}
 public class DungeonManager : MonoBehaviour
 {
     [SerializeField] GameMaster gameMaster;
     [SerializeField] Dungeon dungeon;
+    [SerializeField] Text floorText;
+    [SerializeField] CanvasGroup floorPanel;
     private Enemy enemy;
-
-    public static FlowState flowState;
-    public static event Action<FlowState> OnStateChanged;
+    float fadeTime = 1f;
 
     private void Awake()
     {
@@ -37,17 +32,16 @@ public class DungeonManager : MonoBehaviour
 
     public IEnumerator DungeonMode()
     {
-        ;
         for (int i = 0; i < dungeon.Hierachies.Count; i++)
         {
-            if (enemy != null)
-                enemy.EnemyDestroy();
-            DungeonMove(i);
-            while (enemy.Life > 0)
+            //DungeonMove(i);
+            yield return StartCoroutine(Move(i, dungeon.Hierachies.Count));
+            while (enemy　!= null)
             {
                 yield return StartCoroutine(gameMaster.TurnStart());
             }
         }
+        yield return StartCoroutine(gameMaster.ResultTurn());
     }
 
 
@@ -56,15 +50,43 @@ public class DungeonManager : MonoBehaviour
         int dungeonEnemy = dungeon.Hierachies[hierachy].EnemyProbabilities[0].enemyBase.EnemyID;
         enemy = gameMaster.EnemySet(dungeonEnemy);
     }
-    
 
-    public static void ChangeState(FlowState newState)
+    public IEnumerator Move(int nowFloor, int allFloor)
     {
-        if (flowState != newState)
+        floorText.text = ($"フロア　{nowFloor}/{allFloor}");
+        yield return StartCoroutine(FadeIn());
+        yield return new WaitForSeconds(1f);
+        DungeonMove(nowFloor);
+        yield return new WaitForSeconds(1f);
+        yield return StartCoroutine(FadeOut());
+        yield break;
+    }
+
+    public IEnumerator FadeOut()
+    {
+        float time = 0f;
+        while (time < fadeTime)
         {
-            //Debug.Log($"[GameState] {turnState} → {newState}");
-            flowState = newState;
-            OnStateChanged?.Invoke(newState);
+            time += Time.deltaTime;
+            floorPanel.alpha = Mathf.Lerp(1f, 0f, time / fadeTime);
+            yield return null;
         }
+        floorPanel.alpha = 0f;
+        floorPanel.interactable = false;
+        floorPanel.blocksRaycasts = false;
+    }
+
+    public IEnumerator FadeIn()
+    {
+        float time = 0f;
+        while (time < fadeTime)
+        {
+            time += Time.deltaTime;
+            floorPanel.alpha = Mathf.Lerp(0f, 1f, time / fadeTime);
+            yield return null;
+        }
+        floorPanel.alpha = 1f;
+        floorPanel.interactable = true;
+        floorPanel.blocksRaycasts = true;
     }
 }

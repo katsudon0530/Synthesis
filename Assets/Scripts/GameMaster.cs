@@ -86,6 +86,7 @@ public class GameMaster : MonoBehaviour
 
     public IEnumerator turn()
     {
+        ChangeState(TurnState.start);
         SetHand();
         ChangeState(TurnState.cardSet);
         while (turnState == TurnState.cardSet)
@@ -111,7 +112,6 @@ public class GameMaster : MonoBehaviour
                 yield return segmentTurn = StartCoroutine(cardManager.CardSynthesis());
                 break;
         }
-        yield return new WaitForSeconds(0.7f);
         //敵に付与されている状態の処理
         yield return segmentTurn = StartCoroutine(enemyManager.EnemyEffectBoot(enemy));
 
@@ -131,7 +131,8 @@ public class GameMaster : MonoBehaviour
         Debug.Log($"敵のLife：{enemy.Life}");
 
         TurnCount += 1;
-        enemy.EnemyReSet();
+        if(enemy != null)
+            enemy.EnemyReSet();
         ChangeState(TurnState.end);
     }
 
@@ -145,25 +146,8 @@ public class GameMaster : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        if(Player.Instance == null || enemy == null)
-        {
-
-        }
-        else if (Player.Instance.Life <= 0 || enemy.Life <= 0)
-        {
-            //StartCoroutine(ResultTurn());
-        }
-    }
-
     public IEnumerator ResultTurn()
     {
-        if (nowTurn != null)
-            StopCoroutine(nowTurn);
-        if (segmentTurn != null)
-            StopCoroutine(segmentTurn);
-
         if (Player.Instance.Life <= 0)
         {
             MessageText.TextIn("アナタは力尽きた");

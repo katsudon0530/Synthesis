@@ -16,7 +16,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 437accca62cf30e45858f3048125d86f, type: 3}
   enemyName: "\u30B9\u30E9\u30A4\u30E0"
   type: 0
-  enemyLifeMax: 300
+  enemyLifeMax: 100
   baseAttack: 25
   baseDefense: 50
   baseMagicDefense: 20

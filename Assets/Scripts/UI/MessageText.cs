@@ -31,5 +31,6 @@ public class MessageText : MonoBehaviour
     {
         ReSet();
         messagePanel.SetActive(condition);
+        Debug.Log("asas");
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.CullingGroup;
 
 public class Player : Singleton<Player>
 {
@@ -72,14 +73,13 @@ public class Player : Singleton<Player>
 
     public IEnumerator PlayerEffectBoot(Enemy enemy)
     {
-        MessageText.Panel(true);
-
-
         if (effects.Count == 0)
         {
             Debug.Log("何もない");
             yield break;
         }
+
+        MessageText.Panel(true);
 
         foreach (StatusEffect effect in effects)
         {
@@ -97,13 +97,21 @@ public class Player : Singleton<Player>
     //次のターンでの関数のリセット
     public void SetupNext(TurnState state)
     {
-        if (state == TurnState.end)
+        switch (state)
         {
-            Field.Instance.DeleteCard();
-            Defens = 0;
-            GetComponent<EffectCount>().StatusEffectCount(effects);
-            Field.Instance.PlayerHand.SetActive(true);
+            case TurnState.end:
+                Defens = 0;
+                Field.Instance.DeleteCard();
+                GetComponent<EffectCount>().StatusEffectCount(effects);
+                break;
+            case TurnState.start:
+                Field.Instance.PlayerHand.SetActive(true);
+                break;
         }
 
+    }
+    private void OnDestroy()
+    {
+        GameMaster.OnStateChanged -= SetupNext;
     }
 }

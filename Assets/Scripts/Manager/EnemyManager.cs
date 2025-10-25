@@ -20,6 +20,12 @@ public class EnemyManager : MonoBehaviour
     //エネミーの行動
     public IEnumerator EnemyTurn(Enemy enemy)
     {
+        if (enemy.Life == 0)
+        {
+            enemy.EnemyDestroy();
+            yield break;
+        }
+
         MessageText.Panel(true);
 
         if (enemy.Act == false)
@@ -52,12 +58,12 @@ public class EnemyManager : MonoBehaviour
 
     public IEnumerator EnemyEffectBoot(Enemy enemy)
     {
-        MessageText.Panel(true);
-
-        if (enemy.Base.Effects.Count == 0)
+        if (enemy.Base.Effects.Count == 0 || enemy.Life == 0)
         {
             yield break;
         }
+
+        MessageText.Panel(true);
         
         foreach (StatusEffect effect in enemy.Base.Effects)
         {

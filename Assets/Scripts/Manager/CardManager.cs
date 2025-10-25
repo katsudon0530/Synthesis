@@ -45,6 +45,8 @@ public class CardManager : MonoBehaviour
 
         player.PastLife = player.Life;
         MessageText.Panel(false);
+
+        yield return new WaitForSeconds(0.5f);
     }
 
 
@@ -69,5 +71,7 @@ public class CardManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         MessageText.Panel(false);
+
+        yield return new WaitForSeconds(0.5f);
     }
 }
