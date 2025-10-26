@@ -10,7 +10,8 @@ public enum TurnState
     battle,
     synthesis,
     enemy,
-    end
+    end,
+    notSet,
 }
 
 public class GameMaster : MonoBehaviour
@@ -46,13 +47,12 @@ public class GameMaster : MonoBehaviour
         TurnCount = 1;
         deck.DeckSet();
         Player.Instance.SetPlayer(handMax);
-
-        //TurnStart();
+        turnState = TurnState.notSet;
     }
 
-    public Enemy EnemySet(int num)
+    public Enemy EnemySet(int id)
     {
-        enemy = enemyManager.GenerateEnemy(num);
+        enemy = enemyManager.GenerateEnemy(id);
         return enemy;
     }
     //ターンを開始する
@@ -64,7 +64,6 @@ public class GameMaster : MonoBehaviour
     //手札を生成
     private void SetHand()
     {
-        int cardsum;
         int deckCount = deck.cardDeck.Count;
         int handCount = Field.Instance.Hand.Count;
 
@@ -74,7 +73,7 @@ public class GameMaster : MonoBehaviour
             deckCount = deck.cardDeck.Count;
         }
 
-        cardsum = handMax - handCount;
+        int cardsum = handMax - handCount;
         if (cardsum > deckCount)
             cardsum = deckCount;
 
@@ -86,8 +85,9 @@ public class GameMaster : MonoBehaviour
 
     public IEnumerator turn()
     {
-        ChangeState(TurnState.start);
         SetHand();
+        ChangeState(TurnState.start);
+
         ChangeState(TurnState.cardSet);
         while (turnState == TurnState.cardSet)
         {
@@ -97,8 +97,6 @@ public class GameMaster : MonoBehaviour
 
         //カードが選択され、決定か合成が押されるまで待機
         yield return new WaitUntil(() => turnState != TurnState.cardSet);
-
-        Field.Instance.PlayerHand.SetActive(false);
 
         //どちらのボタンが押されたのかを判別してそのアクションを実行
         switch (turnState)
@@ -152,8 +150,6 @@ public class GameMaster : MonoBehaviour
         {
             MessageText.TextIn("アナタは力尽きた");
         }
-        Field.Instance.PlayerHand.SetActive(false);
-        Field.Instance.BattleField.SetActive(false);
         yield return new WaitForSeconds(1f);
         OnGameOver?.Invoke();
     }

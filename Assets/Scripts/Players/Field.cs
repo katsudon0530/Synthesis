@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 using UnityEngine.XR;
+using static UnityEngine.CullingGroup;
 using static UnityEngine.GraphicsBuffer;
+using CardMove;
 
 public class Field : Singleton<Field>
 {
@@ -22,6 +24,31 @@ public class Field : Singleton<Field>
     public GameObject BattleField { get => _battleField; set => _battleField = value; }
     public GameObject PlayerHand { get => _playerHand; set => _playerHand = value; }
 
+    protected override void Awake()
+    {
+        base.Awake();
+
+        GameMaster.OnStateChanged += OnStateChanged;
+    }
+
+    private void OnStateChanged(TurnState state)
+    {
+        switch (state)
+        {
+            case TurnState.synthesis:
+            case TurnState.battle:
+                PlayerHand.SetActive(false);
+                break;
+            case TurnState.end:
+                DeleteCard();
+                break;
+            case TurnState.start:
+                PlayerHand.SetActive(true);
+                BattleField.SetActive(true);
+                StartCoroutine(StartHand());
+                break;
+        }
+    }
 
     //カードをフィールドにセットする
     public void StandSet(Card card)
@@ -75,20 +102,14 @@ public class Field : Singleton<Field>
         _hand.Sort((card0, card1) => card0.Base.ID - card1.Base.ID);
         for (int i = 0; i < _hand.Count; i++)
         {
+            float posX = (i - _hand.Count / 2) * cardInterval;
             if (_hand.Count % 2 == 0)
-            {
-                float posX = (i - _hand.Count / 2) * cardInterval + cardInterval / 2;
-                _hand[i].transform.localPosition = new Vector3(posX, 0);
-            }
-            else
-            {
-                float posX = (i - _hand.Count / 2) * cardInterval;
-                _hand[i].transform.localPosition = new Vector3(posX, 0);
-            }
+                posX += cardInterval / 2;
+            _hand[i].transform.localPosition = new Vector3(posX, 0);
+
             Transform childTransform = _hand[i].transform.GetChild(0);
             Canvas canvas = childTransform.GetComponent<Canvas>();
             canvas.sortingOrder = i;
-
         }
     }
 
@@ -133,6 +154,31 @@ public class Field : Singleton<Field>
                 }
             }
         }
+    }
+
+    public IEnumerator StartHand()
+    {
+        CardMove.CardMove cardMove = new CardMove.CardMove();
+
+        for (int i = 0; i < _hand.Count; i++)
+        {
+            Vector2 pos = _playerHand.transform.position;
+
+            _hand[i].transform.localPosition = new Vector2((-_hand.Count / 2f) * cardInterval, 0f);
+
+            pos.x = (i - _hand.Count / 2) * cardInterval;
+            if (_hand.Count % 2 == 0)
+                pos.x += cardInterval / 2;
+
+            StartCoroutine(cardMove.Slide(_hand[i], pos, 0.5f));
+        }
+
+        yield return null;
+    }
+
+    private void OnDestroy()
+    {
+        GameMaster.OnStateChanged -= OnStateChanged;
     }
 
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UI;
 using UnityEngine;
 
+
 public class Synthesis : MonoBehaviour
 {
     [SerializeField] CardGenerator generator;
@@ -128,23 +129,6 @@ public class Synthesis : MonoBehaviour
 
         // 最後に目標の回転にぴったり合わせる
         card.transform.rotation = endRotation;
-    }
-
-    public IEnumerator CardSlide(Card card, Vector2 goal, float slideDuration)
-    {
-        float elapsedTime = 0.0f;
-
-        Vector2 start = card.transform.position;
-
-        while (elapsedTime < slideDuration)
-        {
-            elapsedTime += Time.deltaTime;
-
-            card.transform.position = Vector2.Lerp(start, goal, elapsedTime / slideDuration);
-            yield return null;
-        }
-        card.transform.position = goal;
-        yield break;
     }
 
 

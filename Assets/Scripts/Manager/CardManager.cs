@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using CardMove;
 
 public class CardManager : MonoBehaviour
 {
@@ -56,16 +57,17 @@ public class CardManager : MonoBehaviour
         MessageText.Panel(true);
 
         Vector2 goal = field.Stand[0].transform.position;
+        CardMove.CardMove cardMove = new CardMove.CardMove();
 
         for (int i = 1; i < field.Stand.Count; i++)
         {
-            StartCoroutine(synthesis.CardSlide(field.Stand[i], goal, 0.5f));
+            StartCoroutine(cardMove.Slide(field.Stand[i], goal, 0.5f));
         }
         yield return new WaitForSeconds(0.7f);
         goal = field.BattleField.transform.position;
         //合成カードに変化させほかのカードを壊す
         synthesis.CardSynthesis(field.Stand, deck.DeckAll);
-        yield return StartCoroutine(synthesis.CardSlide(field.Stand[0], goal, 0.7f));
+        yield return StartCoroutine(cardMove.Slide(field.Stand[0], goal, 0.7f));
         yield return new WaitForSeconds(0.2f);
         yield return StartCoroutine(synthesis.Close(field.Stand[0]));
         yield return new WaitForSeconds(1f);

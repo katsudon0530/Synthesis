@@ -101,11 +101,7 @@ public class Player : Singleton<Player>
         {
             case TurnState.end:
                 Defens = 0;
-                Field.Instance.DeleteCard();
                 GetComponent<EffectCount>().StatusEffectCount(effects);
-                break;
-            case TurnState.start:
-                Field.Instance.PlayerHand.SetActive(true);
                 break;
         }
 
