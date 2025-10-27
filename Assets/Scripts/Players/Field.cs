@@ -38,13 +38,15 @@ public class Field : Singleton<Field>
             case TurnState.synthesis:
             case TurnState.battle:
                 PlayerHand.SetActive(false);
+                cardGuide.SetActive(false);
                 break;
             case TurnState.end:
                 DeleteCard();
                 break;
             case TurnState.start:
-                PlayerHand.SetActive(true);
-                BattleField.SetActive(true);
+                
+                //BattleField.SetActive(true);
+                cardGuide.SetActive(true);
                 StartCoroutine(StartHand());
                 break;
         }
@@ -158,6 +160,8 @@ public class Field : Singleton<Field>
 
     public IEnumerator StartHand()
     {
+        PlayerHand.SetActive(true);
+
         CardMove.CardMove cardMove = new CardMove.CardMove();
 
         for (int i = 0; i < _hand.Count; i++)
