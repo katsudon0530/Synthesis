@@ -20,7 +20,7 @@ public class DungeonManager : MonoBehaviour
     {
         if (gameMaster == null)
         {
-            gameMaster = FindObjectOfType<GameMaster>();
+            gameMaster = FindAnyObjectByType<GameMaster>();
             if (gameMaster == null)
                 Debug.LogWarning("シーン上にgameMasterが存在していません");
         }

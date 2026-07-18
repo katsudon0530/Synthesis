@@ -13,16 +13,18 @@ public class Field : Singleton<Field>
 
     [SerializeField] GameObject _battleField;
     [SerializeField] GameObject _playerHand;
+    [SerializeField] GameObject _enemyField;
     [SerializeField] GameObject cardGuide;
     public float cardInterval;
 
     private List<Card> _hand = new();
     private List<Card> _stand = new();
 
+    private CardMove.CardMove cardMove = new CardMove.CardMove();
+
     public List<Card> Hand { get => _hand; set => _hand = value; }
     public List<Card> Stand { get => _stand; set => _stand = value; }
     public GameObject BattleField { get => _battleField; set => _battleField = value; }
-    public GameObject PlayerHand { get => _playerHand; set => _playerHand = value; }
 
     protected override void Awake()
     {
@@ -37,50 +39,44 @@ public class Field : Singleton<Field>
         {
             case TurnState.synthesis:
             case TurnState.battle:
-                PlayerHand.SetActive(false);
+                _playerHand.SetActive(false);
                 cardGuide.SetActive(false);
                 break;
             case TurnState.end:
                 DeleteCard();
                 break;
             case TurnState.start:
-                
-                //BattleField.SetActive(true);
                 cardGuide.SetActive(true);
                 StartCoroutine(StartHand());
                 break;
         }
     }
-
+    //手札の配置を決定
+    public void SettingHand(int handMax)
+    {
+        cardInterval *= (6f / handMax);
+    }
     //カードをフィールドにセットする
     public void StandSet(Card card)
     {
         if (_stand.Count == 3)
             return;
 
-        RemoveCard(card);
         CardSet(card, _stand, _battleField);
     }
 
     //カードをハンドにセットする
     public void HandSet(Card card)
     {
-        RemoveCard(card);
         CardSet(card, _hand, _playerHand);
         card.effectReSet();
-    }
-
-    //カードをリストから削除
-    private void RemoveCard(Card card)
-    {
-        foreach (var list in new[] { _hand, _stand })
-            list.Remove(card);
     }
 
     //リストにカードをセットして、位置を変更する
     public void CardSet(Card card, List<Card> cards, GameObject obj)
     {
-        RemoveCard(card);
+        _hand.Remove(card);
+        _stand.Remove(card);
         cards.Add(card);
         card.transform.SetParent(obj.transform);
         FieldPosition();
@@ -97,6 +93,34 @@ public class Field : Singleton<Field>
         _stand.Clear();
     }
 
+    //生成されたカードをリストに追加・カードクリック時の効果追加
+    public void SerCardToHand(Card card)
+    {
+        HandSet(card);
+        card.OnClickCard = SelectedCard;
+    }
+
+    //fieldカードクリック時のリアクション
+    public void SelectedCard(Card card)
+    {
+        if (card.Base.PlayCondition != true || GameMaster.turnState != TurnState.cardSet)
+            return;
+
+        if (card.transform.parent == _battleField.transform)
+        {
+            HandSet(card);
+        }
+        else if (Stand.Count >= 3)
+        {
+            return;
+        }
+        else if (card.transform.parent == _playerHand.transform)
+        {
+            StandSet(card);
+        }
+
+    }
+
 
     //リストの範囲をとってカードきれいに並べる
     public void HandPosition()
@@ -109,8 +133,7 @@ public class Field : Singleton<Field>
                 posX += cardInterval / 2;
             _hand[i].transform.localPosition = new Vector3(posX, 0);
 
-            Transform childTransform = _hand[i].transform.GetChild(0);
-            Canvas canvas = childTransform.GetComponent<Canvas>();
+            Canvas canvas = _hand[i].transform.GetChild(0).GetComponent<Canvas>();
             canvas.sortingOrder = i;
         }
     }
@@ -132,7 +155,6 @@ public class Field : Singleton<Field>
     }
 
 
-
     //どのエフェクトが付くかを判別する
     public void effectSwitch()
     {
@@ -142,10 +164,6 @@ public class Field : Singleton<Field>
 
             if (i == 0) { }
 
-            else if (_stand[i - 1] == null)
-            {
-                _stand[i].effectReSet();
-            }
             else
             {
                 string cardName = _stand[i - 1].Base.CardName;
@@ -160,9 +178,7 @@ public class Field : Singleton<Field>
 
     public IEnumerator StartHand()
     {
-        PlayerHand.SetActive(true);
-
-        CardMove.CardMove cardMove = new CardMove.CardMove();
+        _playerHand.SetActive(true);
 
         for (int i = 0; i < _hand.Count; i++)
         {

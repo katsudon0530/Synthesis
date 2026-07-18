@@ -13,7 +13,7 @@ OcclusionCullingSettings:
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 9
+  serializedVersion: 10
   m_Fog: 0
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
@@ -42,8 +42,8 @@ RenderSettings:
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 12
-  m_GIWorkflowMode: 1
+  serializedVersion: 13
+  m_BakeOnSceneLoad: 0
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -66,9 +66,6 @@ LightmapSettings:
     m_LightmapParameters: {fileID: 0}
     m_LightmapsBakeMode: 1
     m_TextureCompression: 1
-    m_FinalGather: 0
-    m_FinalGatherFiltering: 1
-    m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
     m_MixedBakeMode: 2
     m_BakeBackend: 0
@@ -422,7 +419,7 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3020422506440047420, guid: 95fe5f63b00c7074cbd61ab9b2af78bd, type: 3}
-      propertyPath: Base.Array.data[0]
+      propertyPath: 'Base.Array.data[0]'
       value: 101
       objectReference: {fileID: 0}
     - target: {fileID: 3899415080198161672, guid: 95fe5f63b00c7074cbd61ab9b2af78bd, type: 3}
@@ -936,7 +933,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 60364050523772977, guid: 699e483f1d9f6e4499e5bf812846d0c8, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 200.00089
+      value: 200.00014
       objectReference: {fileID: 0}
     - target: {fileID: 726817574752184289, guid: 699e483f1d9f6e4499e5bf812846d0c8, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1383,6 +1380,10 @@ PrefabInstance:
     - target: {fileID: 6280519857315205975, guid: 4990cfb2bea80324c8b3b5d81265093f, type: 3}
       propertyPath: _onClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7538030570593785289, guid: 4990cfb2bea80324c8b3b5d81265093f, type: 3}
+      propertyPath: _text
+      value: "\u30C0\u30F3\u30B8\u30E7\u30F3"
       objectReference: {fileID: 0}
     - target: {fileID: 9122184565918966660, guid: 4990cfb2bea80324c8b3b5d81265093f, type: 3}
       propertyPath: m_Name

@@ -31,7 +31,7 @@ public class Synthesis : MonoBehaviour
         //合成したカードを手札に生成
         Deck.Add(id);
         Card synthesisCard = generator.Spawn(id);
-        Player.Instance.SerCardToHand(synthesisCard);
+        Field.Instance.SerCardToHand(synthesisCard);
 
         //デッキから合成したカードを削除
         for (int i = 0; i < cards.Count; i++)

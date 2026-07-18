@@ -6,22 +6,17 @@ public class CardManager : MonoBehaviour
 {
 
     [SerializeField] Synthesis synthesis;
-    private Deck deck;
-    private Field field;
+    private Deck deck => Deck.Instance;
+    private Field field => Field.Instance;
+    private Player player => Player.Instance;
 
-    public void Awake()
-    {
-        deck = Deck.Instance;
-        field = Field.Instance;
-    }
+    private CardMove.CardMove cardMove = new CardMove.CardMove();
 
 
     //カードバトル・勝敗判定
     public IEnumerator CardBattle(Enemy enemy)
     {
         MessageText.Panel(true);
-
-        Player player = Player.Instance;
 
         yield return new WaitForSeconds(1.2f);
         for (int i = 0; i < field.Stand.Count; i++)
@@ -57,7 +52,7 @@ public class CardManager : MonoBehaviour
         MessageText.Panel(true);
 
         Vector2 goal = field.Stand[0].transform.position;
-        CardMove.CardMove cardMove = new CardMove.CardMove();
+        //CardMove.CardMove cardMove = new CardMove.CardMove();
 
         for (int i = 1; i < field.Stand.Count; i++)
         {

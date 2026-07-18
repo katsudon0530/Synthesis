@@ -21,23 +21,23 @@ public class GameMaster : MonoBehaviour
     private EnemyManager enemyManager;
     private CardManager cardManager;
 
-    private Deck deck;
+    private Deck deck => Deck.Instance;
+    private Player player => Player.Instance;
+    private Field field => Field.Instance;
     private Enemy enemy;
-    public static Coroutine nowTurn;
-    public static Coroutine segmentTurn;
+    public Coroutine nowTurn;
+    public Coroutine segmentTurn;
 
     public static event Action OnGameOver;
     public static event Action<TurnState> OnStateChanged;
     public static TurnState turnState { get; private set; }
 
     public static int TurnCount;
-    public static int enemyNum = 101;
 
     private void Awake()
     {
         enemyManager = GetComponent<EnemyManager>();
         cardManager = GetComponent<CardManager>();
-        deck = Deck.Instance;
         Set();
     }
 
@@ -46,15 +46,16 @@ public class GameMaster : MonoBehaviour
     {
         TurnCount = 1;
         deck.DeckSet();
-        Player.Instance.SetPlayer(handMax);
+        player.SetPlayer();
+        field.SettingHand(handMax);
         turnState = TurnState.notSet;
     }
 
     public Enemy EnemySet(int id)
     {
-        enemy = enemyManager.GenerateEnemy(id);
-        return enemy;
+        return enemyManager.GenerateEnemy(id);
     }
+
     //ターンを開始する
     public IEnumerator TurnStart()
     {
@@ -65,7 +66,7 @@ public class GameMaster : MonoBehaviour
     private void SetHand()
     {
         int deckCount = deck.cardDeck.Count;
-        int handCount = Field.Instance.Hand.Count;
+        int handCount = field.Hand.Count;
 
         if (deckCount == 0 && handCount == 0)
         {
@@ -79,7 +80,8 @@ public class GameMaster : MonoBehaviour
 
         for (int i = 0; i < cardsum; i++)
         {
-            deck.Draw();
+            var card = deck.Draw();
+            field.SerCardToHand(card);
         }
     }
 
@@ -91,7 +93,7 @@ public class GameMaster : MonoBehaviour
         ChangeState(TurnState.cardSet);
         while (turnState == TurnState.cardSet)
         {
-            Player.Instance.PlayConditionCheck(enemy, deck); 
+            player.PlayConditionCheck(enemyManager.currentEnemy, field.Hand); 
             yield return null; 
         }
 
@@ -103,7 +105,7 @@ public class GameMaster : MonoBehaviour
         {
             case TurnState.battle:
                 //決定ボタンが押された場合
-                yield return segmentTurn = StartCoroutine(cardManager.CardBattle(enemy));
+                yield return segmentTurn = StartCoroutine(cardManager.CardBattle(enemyManager.currentEnemy));
                 break;
             case TurnState.synthesis:
                 //合成ボタンが押された場合
@@ -111,13 +113,13 @@ public class GameMaster : MonoBehaviour
                 break;
         }
         //敵に付与されている状態の処理
-        yield return segmentTurn = StartCoroutine(enemyManager.EnemyEffectBoot(enemy));
+        yield return segmentTurn = StartCoroutine(enemyManager.EnemyEffectBoot());
 
         //エネミーの行動を行う
-        yield return segmentTurn = StartCoroutine(enemyManager.EnemyTurn(enemy));
+        yield return segmentTurn = StartCoroutine(enemyManager.EnemyTurn());
 
         //自分に付与されている状態の処理
-        yield return segmentTurn = StartCoroutine(Player.Instance.PlayerEffectBoot(enemy));
+        yield return segmentTurn = StartCoroutine(player.PlayerEffectBoot(enemyManager.currentEnemy));
 
         //次のターンに向けてセットアップを行う
         SetupNextTurn();
@@ -126,11 +128,9 @@ public class GameMaster : MonoBehaviour
     //次ターンに向けてのリセットと準備
     void SetupNextTurn()
     {
-        Debug.Log($"敵のLife：{enemy.Life}");
-
         TurnCount += 1;
-        if(enemy != null)
-            enemy.EnemyReSet();
+
+        enemyManager.EndSet();
         ChangeState(TurnState.end);
     }
 
@@ -146,7 +146,7 @@ public class GameMaster : MonoBehaviour
 
     public IEnumerator ResultTurn()
     {
-        if (Player.Instance.Life <= 0)
+        if (player.Life <= 0)
         {
             MessageText.TextIn("アナタは力尽きた");
         }

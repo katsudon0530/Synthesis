@@ -6,36 +6,39 @@ public class EnemyManager : MonoBehaviour
 {
     [SerializeField] EnemyGenerator enemyGenerator;
     [SerializeField] GameObject enemyFiled;
+    public Enemy currentEnemy { get; private set; }
 
     //エネミーを生成してフィールドにセット
     public Enemy GenerateEnemy(int enemyNum)
     {
-        Enemy enemy = enemyGenerator.SpawnEnemy(enemyNum);
-        enemy.transform.SetParent(enemyFiled.transform);
-        enemy.transform.localPosition = new Vector3(0, 0, 0);
-        return enemy;
+        currentEnemy = enemyGenerator.SpawnEnemy(enemyNum);
+        currentEnemy.transform.SetParent(enemyFiled.transform);
+        currentEnemy.transform.localPosition = Vector3.zero;
+        return currentEnemy;
     }
 
 
     //エネミーの行動
-    public IEnumerator EnemyTurn(Enemy enemy)
+    public IEnumerator EnemyTurn()
     {
-        if (enemy.Life == 0)
+        if (currentEnemy == null)
+            yield break;
+        if (currentEnemy.Life == 0)
         {
-            enemy.EnemyDestroy();
+            currentEnemy.EnemyDestroy();
             yield break;
         }
 
         MessageText.Panel(true);
 
-        if (enemy.Act == false)
+        if (currentEnemy.Act == false)
         {
-            MessageText.TextIn($"{enemy.Base.Name}は動けない！");
+            MessageText.TextIn($"{currentEnemy.Base.Name}は動けない！");
         }
         else
         {
             //敵の攻撃
-            List<ActionList> list = enemy.Base.ActionLists;
+            List<ActionList> list = currentEnemy.Base.ActionLists;
             float num = Random.Range(0f, 100f);
             float per = 0;
             for (int i = 0;i < list.Count; i++)
@@ -43,38 +46,46 @@ public class EnemyManager : MonoBehaviour
                 per += list[i].percent;
                 if (per > num)
                 {
-                    yield return StartCoroutine(list[i].enemyAction.Execute(enemy));
+                    yield return StartCoroutine(list[i].enemyAction.Execute(currentEnemy));
                     break;
                 }
             } 
         }
 
         yield return new WaitForSeconds(1.5f);
-        enemy.EnemyCountDown();
+        currentEnemy.EnemyCountDown();
         MessageText.Panel(false);
     }
 
 
 
-    public IEnumerator EnemyEffectBoot(Enemy enemy)
+    public IEnumerator EnemyEffectBoot()
     {
-        if (enemy.Base.Effects.Count == 0 || enemy.Life == 0)
+        if (currentEnemy.Base.Effects.Count == 0 || currentEnemy.Life == 0)
         {
             yield break;
         }
 
         MessageText.Panel(true);
         
-        foreach (StatusEffect effect in enemy.Base.Effects)
+        foreach (StatusEffect effect in currentEnemy.Base.Effects)
         {
             if(effect != null)
             {
-                yield return StartCoroutine(effect.Base.EffectDetails.Execute(effect, enemy));
+                yield return StartCoroutine(effect.Base.EffectDetails.Execute(effect, currentEnemy));
             }
         }
         MessageText.Panel(false);
         yield return new WaitForSeconds(1.0f);
 
         yield break;
+    }
+
+    public void EndSet()
+    {
+        Debug.Log($"敵のLife：{currentEnemy.Life}");
+
+        if (currentEnemy != null)
+            currentEnemy.EnemyReSet();
     }
 }

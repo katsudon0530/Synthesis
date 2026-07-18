@@ -23,51 +23,21 @@ public class Player : Singleton<Player>
     public int PastLife { get => pastLife; set => pastLife = value; }
     public List<StatusEffect> Effects { get => effects; set => effects = value; }
 
-    public void SetPlayer(int handMax)
+    public void SetPlayer()
     {
         life = lifeMax;
-        Field.Instance.cardInterval *= (6f / handMax);
         if(GetComponent<EffectCount>() == null)
             gameObject.AddComponent<EffectCount>();
         GameMaster.OnStateChanged += SetupNext;
     }
 
-    //生成されたカードをリストに追加・カードクリック時の効果追加
-    public void SerCardToHand(Card card)
+
+    public void PlayConditionCheck(Enemy enemy, List<Card> cards)
     {
-        Field.Instance.HandSet(card);
-        card.OnClickCard = SelectedCard;
-    }
-
-    //カードクリック時のリアクション
-    public void SelectedCard(Card card)
-    {
-        if (card.Base.PlayCondition != true || GameMaster.turnState != TurnState.cardSet)
-            return;
-
-        if (card.transform.parent == Field.Instance.BattleField.transform)
-        {
-            Field.Instance.HandSet(card);
-        }
-        else if (Field.Instance.Stand.Count >= 3)
-        {
-            return;
-        }
-        else if (card.transform.parent == Field.Instance.PlayerHand.transform)
-        {
-            Field.Instance.StandSet(card);
-        }
-
-    }
-
-    public void PlayConditionCheck(Enemy enemy, Deck deck)
-    {
-        var cards = Field.Instance.Hand;
         for (int i = 0; i < cards.Count; i++)
         {
             cards[i].Base.UniqueEffect.PlayCondition(cards[i], enemy);
         }
-        
     }
 
 

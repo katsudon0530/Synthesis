@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 使ってない
+/// </summary>
 public class Hand : Singleton<Hand>
 {
     protected override bool IsPersistent => false;

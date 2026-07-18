@@ -31,11 +31,11 @@ public class Deck : Singleton<Deck>
     }
 
     //カードを手札に生成する
-    public void Draw()
+    public Card Draw()
     {
         int num = UnityEngine.Random.Range(0, cardDeck.Count);
         Card card = generator.GetComponent<CardGenerator>().Spawn(cardDeck[num]);
         cardDeck.RemoveAt(num);
-        Player.Instance.SerCardToHand(card);
+        return card;
     }
 }

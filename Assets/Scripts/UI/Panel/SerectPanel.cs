@@ -7,11 +7,16 @@ using UnityEngine.SceneManagement;
 public class SerectPanel : MonoBehaviour
 {
     //セレクトパネルを非表示
-    public void EnemyButton(int enemyID)
+    public void DungeonButton()
     {
-        GameMaster.enemyNum = enemyID;
         string currentScene = SceneManager.GetActiveScene().name;
         if(currentScene != "GameScene")
             SceneManager.LoadScene("GameScene");
+    }
+    public void EnemyButton()
+    {
+        string currentScene = SceneManager.GetActiveScene().name;
+        if (currentScene != "EnemyScene")
+            SceneManager.LoadScene("EnemyScene");
     }
 }

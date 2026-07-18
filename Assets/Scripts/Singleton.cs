@@ -20,7 +20,7 @@ public class Singleton<T> : MonoBehaviour where T : Component
             {
                 if (_instance == null)
                 {
-                    _instance = (T)FindObjectOfType(typeof(T));
+                    _instance = FindAnyObjectByType<T>();
 
                     if (_instance == null)
                     {
@@ -39,7 +39,7 @@ public class Singleton<T> : MonoBehaviour where T : Component
         if (_instance != null)
             return _instance;
 
-        _instance = FindObjectOfType<T>();
+        _instance = FindAnyObjectByType<T>();
         if (_instance == null)
         {
             // Addressables で読み込み
