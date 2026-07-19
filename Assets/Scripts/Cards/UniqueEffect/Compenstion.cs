@@ -8,9 +8,9 @@ public class CompenstionEffect : UniqueEffect
     [SerializeField] int CompenstionLife;
     public override void PlayCondition(Card card, Enemy enemy)
     {
-        card.Base.PlayCondition = false;
+        card.PlayCondition = false;
         if (Player.Instance.Life > CompenstionLife)
-            card.Base.PlayCondition = true;
+            card.PlayCondition = true;
     }
     //カードの効果処理
     public override IEnumerator Execute(Card card, Card flontCard, Enemy enemy)
