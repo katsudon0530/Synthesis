@@ -8,7 +8,7 @@ public class ReflectorEffect : UniqueEffect
     [SerializeField] StatusEffectBase effectBase;
     public override void PlayCondition(Card card, Enemy enemy)
     {
-        card.Base.PlayCondition = true;
+        card.PlayCondition = true;
     }
 
     //カードの効果処理

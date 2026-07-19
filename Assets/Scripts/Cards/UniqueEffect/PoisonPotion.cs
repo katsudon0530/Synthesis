@@ -9,7 +9,7 @@ public class PosonPotionEffect : UniqueEffect
     
     public override void PlayCondition(Card card, Enemy enemy)
     {
-        card.Base.PlayCondition = true;
+        card.PlayCondition = true;
     }
     //カードの効果処理
     public override IEnumerator Execute(Card card, Card flontCard, Enemy enemy)
