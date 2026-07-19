@@ -13,8 +13,9 @@ public class SerectPanel : MonoBehaviour
         if(currentScene != "GameScene")
             SceneManager.LoadScene("GameScene");
     }
-    public void EnemyButton()
+    public void EnemyButton(int enemyID)
     {
+        GameData.Instance.serectEnemyID = enemyID;
         string currentScene = SceneManager.GetActiveScene().name;
         if (currentScene != "EnemyScene")
             SceneManager.LoadScene("EnemyScene");

@@ -29,7 +29,12 @@ public class SimpleModeManager : MonoBehaviour
 
     public IEnumerator DungeonMode()
     {
-        //enemy = gameMaster.EnemySet(aaaa);
+        if(GameData.Instance.serectEnemyID == 0)
+        {
+            GameData.Instance.serectEnemyID = 101;
+        }
+        
+        enemy = gameMaster.EnemySet(GameData.Instance.serectEnemyID);
 
         while (enemy != null)
         {
