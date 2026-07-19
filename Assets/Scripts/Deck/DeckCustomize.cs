@@ -8,15 +8,13 @@ public class DeckCustomize : MonoBehaviour
     [SerializeField] CardGenerator generator;
     [SerializeField] GameObject deckContents;
     [SerializeField] GameObject cardContents;
-    [SerializeField] GameObject Contents;
-    [SerializeField] GameObject Contents2;
-    [SerializeField] GameObject ScrollScale;
     [SerializeField] GameObject CardList;
     [SerializeField] ButtonUI exitButton;
 
-    [SerializeField] int DeckWidth = 5;
-    [SerializeField] int DeckHeight = 270;
-    [SerializeField] float cardInterval = 210;
+    [Header("デッキカスタムリスト")]
+    [SerializeField] CardLayoutSetting deckSetting;
+    [Header("カスタムカードリスト")]
+    [SerializeField] CardLayoutSetting cardSetting;
 
     public List<Card> LookDeck;
     public List<Card> LookCards;
@@ -52,15 +50,18 @@ public class DeckCustomize : MonoBehaviour
     {
         if (!deck.OnCustomize)
             return;
+        if (card.Base.SynthesisType != SynthesisType.Normal)
+            return;
         if (card.transform.parent == deckContents.transform)
         {
             int dest = deck.DeckAll.FindIndex(number => number == card.Base.ID);
             deck.DeckAll.RemoveAt(dest);
 
+            dest = LookDeck.FindIndex(number => number.InstanceId == card.InstanceId);
             Destroy(LookDeck[dest].gameObject);
             LookDeck.RemoveAt(dest);
 
-            deckArignment();
+            Alignment(LookDeck,deckSetting);
         }
         else if (deck.DeckAll.Count < 15 && card.transform.parent == cardContents.transform)
         {
@@ -70,7 +71,7 @@ public class DeckCustomize : MonoBehaviour
             newCard.transform.SetParent(deckContents.transform);
             LookDeck.Add(newCard);
 
-            deckArignment();
+            Alignment(LookDeck, deckSetting);
         }
 
         CustomizeCompletion();
@@ -99,10 +100,9 @@ public class DeckCustomize : MonoBehaviour
             LookDeck.Add(card);
             card.transform.SetParent(deckContents.transform);
             SerCardToCustom(card);
-
         }
 
-        deckArignment();
+        Alignment(LookDeck, deckSetting);
     }
 
     //カスタマイズするためのカードを表示する
@@ -118,98 +118,59 @@ public class DeckCustomize : MonoBehaviour
 
         foreach (CardBase i in generator.CardBases)
         {
-            if (i.SynthesisType == SynthesisType.Normal)
-            {
-                Card card = generator.Spawn(i.ID);
-                LookCards.Add(card);
-                card.transform.SetParent(cardContents.transform);
-                SerCardToCustom(card);
-            }
+            Card card = generator.Spawn(i.ID);
+            card.transform.localScale = Vector3.one * 0.8f;
+            LookCards.Add(card);
+            card.transform.SetParent(cardContents.transform);
+            SerCardToCustom(card);
         }
-        CustomCardArignment();
+        Alignment(LookCards, cardSetting);
     }
-
-    //デッキをソートして配置する
-    public void deckArignment()
+    //リストのカードを指定されたコンテンツに並べる
+    public void Alignment(List<Card> cardList, CardLayoutSetting set)
     {
-        Vector2 currentScale;
         int posX;
         float posY;
-        int DeckLookCount = DeckWidth;
+        int CardLookCount = set.Width;
 
-        int a = (LookDeck.Count + DeckWidth - 1) / DeckWidth;
-        LookDeck.Sort((card0, card1) => card0.Base.ID - card1.Base.ID);
-        deck.DeckAll.Sort();
+        int a = (cardList.Count + set.Width - 1) / set.Width;
+        cardList.Sort((card0, card1) => card0.Base.ID - card1.Base.ID);
 
         //スクロール縦幅の設定
-        currentScale = Contents.GetComponent<RectTransform>().sizeDelta;
-        currentScale.y = DeckHeight * a + 50;
-        Contents.GetComponent<RectTransform>().sizeDelta = currentScale;
+        set.Contents.sizeDelta = new Vector2(set.Contents.sizeDelta.x, set.Height * a + 50);
 
         //横の幅を設定する
-        currentScale = ScrollScale.GetComponent<RectTransform>().sizeDelta;
-        currentScale.x = 240f * DeckLookCount;
-        ScrollScale.GetComponent<RectTransform>().sizeDelta = currentScale;
-        ScrollScale.transform.localPosition = new Vector3(currentScale.x / 2 - 825, -25);
+        set.Scroll.sizeDelta = new Vector2(set.CardWidth * CardLookCount, set.Scroll.sizeDelta.y);
+        //set.Scroll.localPosition = new Vector3(240f * CardLookCount / 2 + 350, -120);
 
         for (int i = 0; i < a; i++)
         {
             if (a % 2 == 0)
             {
-                posY = (float)((i - a / 2) * -DeckHeight - DeckHeight / 2);
+                posY = (float)((i - a / 2) * -set.Height - set.Height / 2);
             }
             else
             {
-                posY = (float)((i - a / 2) * -DeckHeight);
+                posY = (float)((i - a / 2) * - set.Height);
             }
 
-            if (LookDeck.Count <= ((i + 1) * DeckWidth))
+            if (cardList.Count <= ((i + 1) * set.Width))
             {
-                DeckLookCount = LookDeck.Count - i * DeckWidth;
+                CardLookCount = cardList.Count - i * set.Width;
                 ;
             }
-            for (int j = 0; j < DeckLookCount; j++)
+            for (int j = 0; j < CardLookCount; j++)
             {
-                if (DeckWidth % 2 == 0)
+                if (set.Width % 2 == 0)
                 {
-                    posX = (int)((j - DeckWidth / 2) * cardInterval + cardInterval / 2);
+                    posX = (int)((j - set.Width / 2) * set.Interval + set.Interval / 2);
                 }
                 else
                 {
-                    posX = (int)((j - DeckWidth / 2) * cardInterval);
+                    posX = (int)((j - set.Width / 2) * set.Interval);
                 }
-                LookDeck[j + i * DeckWidth].transform.localPosition = new Vector3(posX, posY);
+                cardList[j + i * set.Width].transform.localPosition = new Vector3(posX, posY);
             }
-        }
-    }
-
-    //カスタマイズカードを並べる
-    public void CustomCardArignment()
-    {
-        Vector2 currentScale;
-        float posY;
-
-        LookCards.Sort((card0, card1) => card0.Base.ID - card1.Base.ID);
-
-        //スクロール縦幅の設定
-        currentScale = Contents2.GetComponent<RectTransform>().sizeDelta;
-        currentScale.y = DeckHeight * LookCards.Count + 50;
-        Contents2.GetComponent<RectTransform>().sizeDelta = currentScale;
-
-        for (int i = 0; i < LookCards.Count; i++)
-        {
-            if (LookCards.Count % 2 == 0)
-            {
-                posY = (float)((i - LookCards.Count / 2) * -DeckHeight - DeckHeight / 2);
-            }
-            else
-            {
-                posY = (float)((i - LookCards.Count / 2) * -DeckHeight);
-            }
-
-
-            LookCards[i].transform.localPosition = new Vector3(0, posY);
-
         }
     }
 
@@ -230,4 +191,16 @@ public class DeckCustomize : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
+}
+
+[System.Serializable]
+public class CardLayoutSetting
+{
+    public int CardWidth;
+    public int Width;
+    public int Height;
+    public float Interval;
+
+    public RectTransform Scroll;
+    public RectTransform Contents;
 }
