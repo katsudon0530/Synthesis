@@ -103,7 +103,7 @@ public class Field : Singleton<Field>
     //fieldカードクリック時のリアクション
     public void SelectedCard(Card card)
     {
-        if (card.Base.PlayCondition != true || GameMaster.turnState != TurnState.cardSet)
+        if (card.PlayCondition != true || GameMaster.turnState != TurnState.cardSet)
             return;
 
         if (card.transform.parent == _battleField.transform)

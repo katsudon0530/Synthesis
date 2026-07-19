@@ -13,7 +13,6 @@ public class CardBase : ScriptableObject
     [SerializeField] int id;
     [SerializeField] Sprite icon;
     [SerializeField] Color color;
-    [SerializeField] bool playCondition;
     [TextArea]
     [SerializeField] string description;
     [TextArea]
@@ -36,7 +35,6 @@ public class CardBase : ScriptableObject
     public UniqueEffect UniqueEffect { get => uniqueEffect; set => uniqueEffect = value; }
     public List<FlontBuff> FlontBuff { get => flontBuff; set => flontBuff = value; }
     public CardStatus CardStatus { get => cardStatus; set => cardStatus = value; }
-    public bool PlayCondition { get => playCondition; set => playCondition = value; }
 }
 
 public enum CardType
