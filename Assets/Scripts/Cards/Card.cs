@@ -1,80 +1,38 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using TMPro;
 
-public class Card : MonoBehaviour
+public class Card : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler
 {
 
     [SerializeField] Image Frame;
     [SerializeField] Image nameFrame;
-    [SerializeField] Text nameText;
+    [SerializeField] TMP_Text nameText;
     [SerializeField] Image icon;
     [SerializeField] Color npColor;
-    [SerializeField] Text descriotionText;
-    [SerializeField] GameObject panel;
-    [SerializeField] GameObject hidePanel;
+    [SerializeField] TMP_Text descriotionText;
     [SerializeField] GameObject SynthesisPanel;
     [SerializeField] GameObject effectUp;
     [SerializeField] GameObject effectDown;
     GameObject windowGenerator;
     CardWindow ThisWindow;
 
-    private GraphicRaycaster _raycaster;
     private RectTransform _rect;
     public CardBase Base { get; private set; }
+    public string InstanceId { get; private set; } = System.Guid.NewGuid().ToString();
+    public bool PlayCondition { get; set; }
 
     public UnityAction<Card> OnClickCard;
 
     private Vector2 originalSize;
     private Vector2 originalPosition;
 
-    /// <summary>
-    ///　キーがボタンオブジェクト内にあるかどうかのフラグ
-    /// </summary>
-    private bool _onCursor;
-
-    /// <summary>
-    ///　キーが押されているかどうかのフラグ
-    /// </summary>
-    private bool _onPress = false;
-
-    private bool OnCursor
-    {
-        get => _onCursor;
-        set
-        {
-            if (_onCursor != value) // カーソルがボタン上にあるか判定しているboolの値が切り替わったとき
-            {
-                if (value && _onPress)
-                {
-                    _onCursor = false; //ボタンを押しながら入ると変更しない
-                }
-                else
-                {
-                    _onCursor = value; // 変更を適用
-                }
-
-                if (_onCursor)
-                {
-                    PointerEnter();
-                }
-                else if (!_onCursor)
-                {
-                    PointerExit();
-                }
-            
-            }
-        }
-    }
 
     private void Start()
     {
         windowGenerator = GameObject.FindWithTag("WindowGenerator");
-        _raycaster = GetComponentInChildren<Canvas>().GetComponent<GraphicRaycaster>();
-        if (_raycaster == null)
-            Debug.LogError("Canvas に GraphicRaycaster が必要です！");
         _rect = GetComponentInChildren<Canvas>().GetComponent<RectTransform>();
         if (_rect == null)
             Debug.LogError("Canvas に RectTransform が必要です！");
@@ -92,8 +50,16 @@ public class Card : MonoBehaviour
         nameFrame.color = cardBase.Color;
         Frame.color = cardBase.Color;
         SynthesisPanel.SetActive(false);
-        Base.PlayCondition = true;
+        PlayCondition = true;
         effectReSet();
+    }
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        HoverOn();
+    }
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        HoverOff();
     }
 
     //カードクリック時のリアクション先の参照
@@ -102,30 +68,10 @@ public class Card : MonoBehaviour
         OnClickCard?.Invoke(this);
     }
 
-    //カードにマウスカーソルが入った時の反応
-    public void PointerEnter()
-    {
-        _rect.anchoredPosition += new Vector2(0, 0.1f);
-        _rect.sizeDelta *= 1.1f;
-        GetComponentInChildren<Canvas>().sortingLayerName = "overLay";
-        ThisWindow = windowGenerator.GetComponent<WindowGenerator>().SpawnWindow(Base);
-    }
-
-
-    //カードからマウスカーソルが出た時のリアクション
-    public void PointerExit()
-    {
-        _rect.anchoredPosition = originalPosition;
-        _rect.sizeDelta = originalSize;
-        GetComponentInChildren<Canvas>().sortingLayerName = "Default";
-        if (ThisWindow != null)
-            Destroy(ThisWindow.gameObject);
-    }
 
     void Update()
     {
-        OnMouseCursor();
-        if (!Base.PlayCondition)
+        if (!PlayCondition)
         {
             Frame.color = npColor;
             nameFrame.color = npColor;
@@ -161,26 +107,28 @@ public class Card : MonoBehaviour
         }
     }
 
-
-    private void OnMouseCursor()
+    /// <summary>
+    /// カード選択中のホバー
+    /// </summary>
+    public void HoverOn()
     {
-        PointerEventData pointerData
-            = new PointerEventData(EventSystem.current) { position = Input.mousePosition };
-        List<RaycastResult> results = new List<RaycastResult>();
-        _raycaster.Raycast(pointerData, results);
-        EventSystem.current.RaycastAll(pointerData, results);
-
-        OnCursor = CheckCursor(results);
+        _rect.anchoredPosition += new Vector2(0, 0.1f);
+        _rect.sizeDelta *= 1.1f;
+        GetComponentInChildren<Canvas>().sortingLayerName = "overLay";
+        ThisWindow = windowGenerator.GetComponent<WindowGenerator>().SpawnWindow(Base);
     }
 
     /// <summary>
-    ///　マウスカーソルがボタン上にあるかどうかを判定する
+    /// カード選択中のホバー
     /// </summary>
-    private bool CheckCursor(List<RaycastResult> results)
+    public void HoverOff()
     {
-        return results.Count > 0 && results[0].gameObject == panel;
+        _rect.anchoredPosition = originalPosition;
+        _rect.sizeDelta = originalSize;
+        GetComponentInChildren<Canvas>().sortingLayerName = "Default";
+        if (ThisWindow != null)
+            Destroy(ThisWindow.gameObject);
     }
-
 
     //カードのハイドパネルを非表示にする
     public void Open()
