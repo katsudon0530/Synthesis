@@ -1,14 +1,15 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class EffectWindow : MonoBehaviour
 {
     [SerializeField] Image windowFrame;
     [SerializeField] Image iconFrame;
-    [SerializeField] Text effectName;
-    [SerializeField] Text effectText;
-    [SerializeField] Text effectCount;
-    [SerializeField] Text effectGrants;
+    [SerializeField] TMP_Text effectName;
+    [SerializeField] TMP_Text effectText;
+    [SerializeField] TMP_Text effectCount;
+    [SerializeField] TMP_Text effectGrants;
     [SerializeField] Image icon;
 
 

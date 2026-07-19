@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class CardWindow : MonoBehaviour
 {
     [SerializeField] Image WindowFrame;
-    [SerializeField] Text CardName;
-    [SerializeField] Text CardType;
-    [SerializeField] Text CardText;
+    [SerializeField] TMP_Text CardName;
+    [SerializeField] TMP_Text CardType;
+    [SerializeField] TMP_Text CardText;
     [SerializeField] Image CardImage;
 
 

@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class RulePanel : MonoBehaviour
 {
-    [SerializeField] Text ruleText;
+    [SerializeField] TMP_Text ruleText;
     [TextArea]
     [SerializeField] List<string> ruleAllText;
     [SerializeField] GameObject proceedButton;

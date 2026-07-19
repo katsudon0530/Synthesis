@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerLife : MonoBehaviour
 {
-    [SerializeField] Text playerLifeText;
+    [SerializeField] TMP_Text playerLifeText;
     private Player player;
 
     private void Start()

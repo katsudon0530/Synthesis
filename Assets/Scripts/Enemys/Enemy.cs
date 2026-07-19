@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Enemy : MonoBehaviour
 {
     [SerializeField] Image icon;
-    [SerializeField] Text descriotionText;
-    [SerializeField] Text countText;
+    [SerializeField] TMP_Text descriotionText;
+    [SerializeField] TMP_Text countText;
 
     private StatusEffectGenerator effectGenerator;
     private EnemyLifeContlloer enemyLifeContlloer;

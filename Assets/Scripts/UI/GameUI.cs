@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class GameUI : MonoBehaviour
 {
     [SerializeField] GameObject submitButton;
     [SerializeField] GameObject synthesisButton;
-    [SerializeField] Text RestText;
+    [SerializeField] TMP_Text RestText;
 
     private void Awake()
     {

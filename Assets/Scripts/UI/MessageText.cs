@@ -1,15 +1,16 @@
 ﻿using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class MessageText : MonoBehaviour
 {
-    static Text message;
+    static TMP_Text message;
     static GameObject messagePanel;
 
     public void Awake()
     {
-        message = GetComponentInChildren<Text>();
+        message = GetComponentInChildren<TMP_Text>();
         if(message == null)
         {
             Debug.LogError("Textが入っていません");

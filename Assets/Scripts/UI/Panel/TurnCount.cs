@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class TurnCount : MonoBehaviour
 {
-    [SerializeField] Text TurnText;
+    [SerializeField] TMP_Text TurnText;
 
     void Update()
     {
-        TurnText.text = $"ターン {GameMaster.TurnCount}";
+        TurnText.text = $"ターン {GameData.Instance.gameTurn}";
     }
 }

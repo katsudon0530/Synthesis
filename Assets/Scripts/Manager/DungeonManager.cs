@@ -5,12 +5,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using static UnityEngine.CullingGroup;
 using static UnityEngine.UIElements.VisualElement;
+using TMPro;
 
 public class DungeonManager : MonoBehaviour
 {
     [SerializeField] GameMaster gameMaster;
     [SerializeField] Dungeon dungeon;
-    [SerializeField] Text floorText;
+    [SerializeField] TMP_Text floorText;
     [SerializeField] CanvasGroup floorPanel;
     private Enemy enemy;
     float fadeInTime = 0.3f;

@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class Result : MonoBehaviour
 {
-    [SerializeField] Text resultText;
-    [SerializeField] Text TurnResultText;
+    [SerializeField] TMP_Text resultText;
+    [SerializeField] TMP_Text TurnResultText;
 
     //リザルトパネルを非表示化
     public void Awake()
@@ -33,7 +34,7 @@ public class Result : MonoBehaviour
         if (result == "WIN")
         {
             TurnResultText.gameObject.SetActive(true);
-            TurnResultText.text = $"経過ターン：{GameMaster.TurnCount}";
+            TurnResultText.text = $"経過ターン：{GameData.Instance.gameTurn}";
         }
         else
         {

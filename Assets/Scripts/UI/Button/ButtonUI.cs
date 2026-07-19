@@ -5,6 +5,7 @@ using UnityEngine.Serialization;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
+using TMPro;
 
 
 namespace UI
@@ -36,7 +37,7 @@ namespace UI
         [TextArea(3, 10)]
         [SerializeField]
         private string _text;
-        private Text _displayText;
+        private TMP_Text _displayText;
 
         #region ImageColorSettings
 
@@ -153,7 +154,7 @@ namespace UI
                 Debug.LogError("Canvas に GraphicRaycaster が必要です！");
             _image.color = DefaultColor;
             //_onClick.AddListener(ForDebug);
-            _displayText = transform.GetComponentInChildren<Text>();
+            _displayText = transform.GetComponentInChildren<TMP_Text>();
             if (_displayText == null)
             {
                 Debug.LogWarning("Textコンポーネントが見つかりません");
