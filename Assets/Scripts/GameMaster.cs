@@ -24,15 +24,13 @@ public class GameMaster : MonoBehaviour
     private Deck deck => Deck.Instance;
     private Player player => Player.Instance;
     private Field field => Field.Instance;
-    private Enemy enemy;
+
     public Coroutine nowTurn;
     public Coroutine segmentTurn;
 
     public static event Action OnGameOver;
     public static event Action<TurnState> OnStateChanged;
     public static TurnState turnState { get; private set; }
-
-    public static int TurnCount;
 
     private void Awake()
     {
@@ -44,7 +42,7 @@ public class GameMaster : MonoBehaviour
     //ゲームスタート時のセットアップ内容
     public void Set()
     {
-        TurnCount = 1;
+        GameData.Instance.gameTurn = 1;
         deck.DeckSet();
         player.SetPlayer();
         field.SettingHand(handMax);
@@ -128,7 +126,7 @@ public class GameMaster : MonoBehaviour
     //次ターンに向けてのリセットと準備
     void SetupNextTurn()
     {
-        TurnCount += 1;
+        GameData.Instance.gameTurn += 1;
 
         enemyManager.EndSet();
         ChangeState(TurnState.end);
