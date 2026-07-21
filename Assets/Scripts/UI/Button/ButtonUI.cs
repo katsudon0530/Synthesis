@@ -186,7 +186,8 @@ namespace UI
                 return;
 
             _onPress = true;
-            StopCoroutine(_colorCoroutine);
+            if (_colorCoroutine != null)
+                StopCoroutine(_colorCoroutine);
             _image.color = (OnClickedColor);
             _displayText.color = (OnClickedTextColor);
 
