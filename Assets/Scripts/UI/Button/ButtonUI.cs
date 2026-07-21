@@ -4,13 +4,12 @@ using UnityEngine.Events;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using System.Collections.Generic;
 using TMPro;
 
 
 namespace UI
 {
-    public class ButtonUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+    public class ButtonUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler
     {
         private Image _image;
 
@@ -22,11 +21,10 @@ namespace UI
         private UnityEvent _onClick;
         public UnityEvent Onclick { get => _onClick; set => _onClick = value; }
 
-        private GraphicRaycaster _raycaster;
 
         [Header("ボタンの有効化")]
         [SerializeField]
-        public bool _interactable;
+        private bool _interactable;
 
         [FormerlySerializedAs("colorChangeTime")]
         [Header("色が切り替わるための遷移時間")]
@@ -84,60 +82,23 @@ namespace UI
         /// </summary>
         private Coroutine _colorCoroutine;
 
-        private bool OnCursor
-        {
-            get => _onCursor;
-            set
-            {
-                if (_onCursor != value)　// カーソルがボタン上にあるか判定しているboolの値が切り替わったとき
-                {
-                    if (value && _onPress)
-                    {
-                        _onCursor = false; //ボタンを押しながら入ると変更しない
-                    }
-                    else
-                    {
-                        _onCursor = value;　// 変更を適用
-                    }
-
-                    if (_interactable)
-                    {
-                        if (_colorCoroutine != null)
-                        {
-                            StopCoroutine(_colorCoroutine);
-                            // 色の変更の遷移中であるときに_onCursorが切り替わった時に現在の遷移を止める　
-                        }
-
-                        //色の切り替え開始　遷移中のコルーチンを変数に保存(遷移中であるかどうかの判定のため)
-                        if (_onCursor)
-                        {
-                            _colorCoroutine = StartCoroutine(ChangeColor(OnCursorColor, OnCursorTextColor));
-                        }
-                        else if (!_onCursor)
-                        {
-                            _colorCoroutine = StartCoroutine(ChangeColor(DefaultColor, DefaultTextColor));
-                        }
-                    }
-                }
-            }
-        }
-
         public bool Interactable
         {
             get => _interactable;
             set
             {
-                if (_interactable != value)
-                {
-                    _interactable = value; // 変更を適用
+                if (_interactable == value)
+                    return;
 
-                    //フラグに応じて色を変更する
-                    _image.color = (_interactable ? DefaultColor : DisableColor);
-                    _displayText.color = (_interactable ? DefaultTextColor : DisableTextColor);
-                }
+                _interactable = value;
+                _onPress = false;
+
+                if(_colorCoroutine != null)
+                    StopCoroutine(_colorCoroutine);
+                _image.color = _interactable ? DefaultColor : DisableColor;
+                _displayText.color = _interactable ? DefaultTextColor : DisableTextColor;
             }
         }
-
         private void Awake()
         {
             Init();
@@ -149,11 +110,7 @@ namespace UI
         private void Init()
         {
             _image = GetComponent<Image>();
-            _raycaster = GetComponentInParent<Canvas>().GetComponent<GraphicRaycaster>();
-            if (_raycaster == null)
-                Debug.LogError("Canvas に GraphicRaycaster が必要です！");
             _image.color = DefaultColor;
-            //_onClick.AddListener(ForDebug);
             _displayText = transform.GetComponentInChildren<TMP_Text>();
             if (_displayText == null)
             {
@@ -166,14 +123,37 @@ namespace UI
             }
         }
 
-        void ForDebug()
+        private void StartChangeColor(Color imageColor, Color textColor)
         {
-            Debug.Log($"{gameObject.name}がクリックされました");
-        }
+            if (_colorCoroutine != null)
+            {
+                StopCoroutine(_colorCoroutine);
+            }
 
-        private void Update()
+            _colorCoroutine = StartCoroutine(ChangeColor(imageColor, textColor));
+
+        }
+        /// <summary>
+        ///　カーソルが入ってきた時の処理
+        /// </summary>
+        public void OnPointerEnter(PointerEventData eventData)
         {
-            OnMouseCursor();
+            _onCursor = true;
+
+            if(_interactable && !_onPress)
+                StartChangeColor(OnCursorColor, OnCursorTextColor);
+
+        }
+        /// <summary>
+        ///　カーソルが出た時の処理
+        /// </summary>
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            _onCursor = false;
+
+            if (_interactable)
+                StartChangeColor(DefaultColor, DefaultTextColor);
+
         }
 
         /// <summary>
@@ -181,17 +161,19 @@ namespace UI
         /// </summary>
         public void OnPointerUp(PointerEventData eventData)
         {
-            _onPress = false;
-            if (_interactable && _onCursor)
-            {
-                if (_colorCoroutine != null)
-                {
-                    StopCoroutine(_colorCoroutine);
-                    // 色の変更の遷移中であるときに_onCursorが切り替わった時に現在の遷移を止める　
-                }
+            if(!_interactable)
+                return;
 
-                _colorCoroutine = StartCoroutine(ChangeColor(OnCursorColor, OnCursorTextColor));
+            _onPress = false;
+
+            if (_onCursor)
+            {
+                StartChangeColor(OnCursorColor, OnCursorTextColor);
                 ActionInvoke();
+            }
+            else
+            {
+                StartChangeColor(DefaultColor, DefaultTextColor);
             }
         }
 
@@ -200,12 +182,13 @@ namespace UI
         /// </summary>
         public void OnPointerDown(PointerEventData eventData)
         {
-            if (_interactable)
-            {
-                _onPress = true;
-                _image.color = (_onCursor ? OnClickedColor : DefaultColor);
-                _displayText.color = (_onCursor ? OnClickedTextColor : DefaultTextColor);
-            }
+            if (!_interactable)
+                return;
+
+            _onPress = true;
+            StopCoroutine(_colorCoroutine);
+            _image.color = (OnClickedColor);
+            _displayText.color = (OnClickedTextColor);
 
         }
 
@@ -220,28 +203,6 @@ namespace UI
                 _onClick.Invoke();
                 //　Actionを発火（Actionの中身がnullの場合を考慮）
             }
-        }
-
-        /// <summary>
-        ///　マウスカーソルがボタン上にあれば真を入れる
-        /// </summary>
-        private void OnMouseCursor()
-        {
-            PointerEventData pointerData
-                = new PointerEventData(EventSystem.current){ position = Input.mousePosition};
-            List<RaycastResult> results = new List<RaycastResult>();
-            _raycaster.Raycast(pointerData, results);
-
-            OnCursor = CheckCursor(results);
-        }
-
-        /// <summary>
-        ///　マウスカーソルがボタン上にあるかどうかを判定する
-        /// </summary>
-        private bool CheckCursor(List<RaycastResult> results)
-        {
-
-            return results.Count > 0 && results[0].gameObject == gameObject;
         }
 
         /// <summary>
@@ -271,6 +232,27 @@ namespace UI
             _displayText.color = targetTextColor;
 
             _colorCoroutine = null;　// 遷移が終わったので中身を空にする
+        }
+
+        private void OnDisable()
+        {
+            _onCursor = false;
+            _onPress = false;
+
+            if (_colorCoroutine != null)
+            {
+                StopCoroutine(_colorCoroutine);
+                _colorCoroutine = null;
+            }
+        }
+
+        private void OnEnable()
+        {
+            if (_image == null || _displayText == null)
+                return;
+
+            _image.color = _interactable ? DefaultColor : DisableColor;
+            _displayText.color = _interactable ? DefaultTextColor : DisableTextColor;
         }
     }
 }
