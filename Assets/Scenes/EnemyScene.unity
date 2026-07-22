@@ -1724,7 +1724,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   windowPrefab: {fileID: 6978698961054909989, guid: cd5e3131a73ddf8438535a8ecc3993c8, type: 3}
-  xy: {x: 5.5, y: 2.5}
+  xy: {x: 5.5, y: 3}
 --- !u!114 &991976652
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2104,7 +2104,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 60364050523772977, guid: 699e483f1d9f6e4499e5bf812846d0c8, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 200.0001
+      value: 200.00029
       objectReference: {fileID: 0}
     - target: {fileID: 126149868876948446, guid: 699e483f1d9f6e4499e5bf812846d0c8, type: 3}
       propertyPath: m_Size
@@ -2180,7 +2180,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5738984694801739947, guid: 699e483f1d9f6e4499e5bf812846d0c8, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 420.0003
+      value: 420.00095
       objectReference: {fileID: 0}
     - target: {fileID: 7448394977269115591, guid: 699e483f1d9f6e4499e5bf812846d0c8, type: 3}
       propertyPath: m_Pivot.x
