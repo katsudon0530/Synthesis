@@ -8,7 +8,7 @@ public class NaughtEffect : UniqueEffect
 {
     public override void PlayCondition(Card card, Enemy enemy)
     {
-        card.PlayCondition = false;
+        card.PlayCondition = true;
     }
 
     //カードの効果処理
