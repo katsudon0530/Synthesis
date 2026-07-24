@@ -11,9 +11,9 @@ public class HealEffect : UniqueEffect
     }
 
     //カードの効果処理
-    public override IEnumerator Execute(Card card, Card flontCard, Enemy enemy)
+    public override IEnumerator Execute(BattleContext battle)
     {
-        int healValue = (int)FlontBuff(card, flontCard);
+        int healValue = (int)FlontBuff(battle.card, battle.flontCard);
         Player player = Player.Instance;
 
         if ((player.Life + healValue) > player.LifeMax)

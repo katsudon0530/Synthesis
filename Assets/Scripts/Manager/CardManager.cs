@@ -30,7 +30,9 @@ public class CardManager : MonoBehaviour
             card.transform.position += Vector3.up * 0.2f;
 
             //カードの効果処理
-            yield return StartCoroutine(card.Base.UniqueEffect.Execute(card, flontCard, enemy));
+            BattleContext context = new BattleContext();
+            context.SetContext(card, flontCard, enemy);
+            yield return StartCoroutine(card.Base.UniqueEffect.Execute(context));
 
             yield return new WaitForSeconds(1.2f);
         }

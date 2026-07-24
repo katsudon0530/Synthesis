@@ -12,16 +12,16 @@ public class PosonPotionEffect : UniqueEffect
         card.PlayCondition = true;
     }
     //カードの効果処理
-    public override IEnumerator Execute(Card card, Card flontCard, Enemy enemy)
+    public override IEnumerator Execute(BattleContext battle)
     {
 
         MessageText.TextIn($"毒ポーションを投げつけた！");
         yield return new WaitForSeconds(1.0f);
 
         //すでに毒状態が付与されていた場合
-        if (enemy.Base.Effects.Exists(e => e.Base == effectBase))
+        if (battle.target.Base.Effects.Exists(e => e.Base == effectBase))
         {
-            StatusEffect effect = enemy.Base.Effects.Find(e => e.Base == effectBase);
+            StatusEffect effect = battle.target.Base.Effects.Find(e => e.Base == effectBase);
             effect.CountTurn = effectBase.EffectCount;
             effect.CountGrant++;
             Debug.Log(effect.CountGrant);
@@ -31,7 +31,7 @@ public class PosonPotionEffect : UniqueEffect
         }
 
         //毒状態を付与する
-        MessageText.TextIn(enemy.EffectGenerator.EnemyGrantEffect(enemy, effectBase));
+        MessageText.TextIn(battle.target.EffectGenerator.EnemyGrantEffect(battle.target, effectBase));
 
         yield break;
     }

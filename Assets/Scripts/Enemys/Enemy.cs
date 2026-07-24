@@ -84,6 +84,31 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public int ReceiveDamage(int hit,DamageType damageType)
+    {
+        int typeDefense = 0;
+        switch (damageType)
+        {
+            case DamageType.Attack:
+                typeDefense = Defense;
+                break;
+            case DamageType.Magic:
+                typeDefense = MagicDefense;
+                break;
+            case DamageType.True:
+                typeDefense = 0;
+                break;
+        }
+        
+        int damage = (int)(hit * (1f - typeDefense / 100f));
+        Life -= damage;
+        if (Life < 0)
+        {
+            Life = 0;
+        }
+        return damage;
+    }
+
     //エネミーの強力攻撃までのカウントダウン
     public void EnemyCountDown()
     {
@@ -129,4 +154,11 @@ public class Enemy : MonoBehaviour
     {
         Destroy(gameObject);
     }
+}
+
+public enum DamageType
+{
+    Attack,
+    Magic,
+    True
 }

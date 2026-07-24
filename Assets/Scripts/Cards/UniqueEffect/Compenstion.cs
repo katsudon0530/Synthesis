@@ -13,24 +13,18 @@ public class CompenstionEffect : UniqueEffect
             card.PlayCondition = true;
     }
     //カードの効果処理
-    public override IEnumerator Execute(Card card, Card flontCard, Enemy enemy)
+    public override IEnumerator Execute(BattleContext battle)
     {
         Player player = Player.Instance;
-        int attackValue = FlontBuff(card, flontCard);
+        int attackValue = FlontBuff(battle.card, battle.flontCard);
 
         player.Life -= CompenstionLife;
         MessageText.TextIn($"{CompenstionLife}HPの代償を払った！");
         yield return new WaitForSeconds(1.0f);
 
         int Hit = (int)(attackValue * Random.Range(0.8f, 1.2f));
-        float defense = 1f - enemy.Defense / 100f;
-        int damage = (int)(Hit * defense);
-        enemy.Life -= damage;
+        int damage = battle.DamegeCalculation(Hit, DamageType.Attack);
         MessageText.TextIn($"{damage}ダメージ与えた");
-        if (enemy.Life < 0)
-        {
-            enemy.Life = 0;
-        }
 
         yield break;
     }

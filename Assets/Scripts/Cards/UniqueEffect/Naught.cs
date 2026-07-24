@@ -12,9 +12,9 @@ public class NaughtEffect : UniqueEffect
     }
 
     //カードの効果処理
-    public override IEnumerator Execute(Card card, Card flontCard, Enemy enemy)
+    public override IEnumerator Execute(BattleContext battle)
     {
-        int naughtValue = (int)FlontBuff(card, flontCard);
+        int naughtValue = (int)FlontBuff(battle.card, battle.flontCard);
 
         MessageText.TextIn("何も起こらない");
 

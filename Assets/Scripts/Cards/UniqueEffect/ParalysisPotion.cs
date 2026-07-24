@@ -13,13 +13,13 @@ public class ParalysisPotionEffect : UniqueEffect
         card.PlayCondition = true;
     }
     //カードの効果処理
-    public override IEnumerator Execute(Card card, Card flontCard, Enemy enemy)
+    public override IEnumerator Execute(BattleContext battle)
     {
 
         MessageText.TextIn($"麻痺ポーションを投げつけた！");  
         yield return new WaitForSeconds(1.0f);
 
-        MessageText.TextIn(enemy.EffectGenerator.EnemyGrantEffect(enemy, effectBase));
+        MessageText.TextIn(battle.target.EffectGenerator.EnemyGrantEffect(battle.target, effectBase));
 
         yield break;
     }

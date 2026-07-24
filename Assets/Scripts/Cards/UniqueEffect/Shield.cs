@@ -11,9 +11,9 @@ public class ShieldEffect : UniqueEffect
     }
 
     //カードの効果処理
-    public override IEnumerator Execute(Card card, Card flontCard, Enemy enemy)
+    public override IEnumerator Execute(BattleContext battle)
     {
-        int difenseValue = (int)FlontBuff(card, flontCard);
+        int difenseValue = (int)FlontBuff(battle.card, battle.flontCard);
         Player player = Player.Instance;
 
         player.Defens += difenseValue;

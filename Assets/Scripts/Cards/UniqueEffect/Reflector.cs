@@ -12,9 +12,9 @@ public class ReflectorEffect : UniqueEffect
     }
 
     //カードの効果処理
-    public override IEnumerator Execute(Card card, Card flontCard, Enemy enemy)
+    public override IEnumerator Execute(BattleContext battle)
     {
-        int difenseValue = (int)FlontBuff(card, flontCard);
+        int difenseValue = (int)FlontBuff(battle.card, battle.flontCard);
         Player player = Player.Instance;
 
         player.Defens += difenseValue;
@@ -26,7 +26,7 @@ public class ReflectorEffect : UniqueEffect
         MessageText.TextIn($"{player.Defens}ぼうぎょがあがった");
 
         //すでに反射状態が付与されていた場合
-        if (enemy.Base.Effects.Exists(e => e.Base == effectBase))
+        if (battle.target.Base.Effects.Exists(e => e.Base == effectBase))
         {
             //StatusEffect effect = enemy.Base.Effects.Find(e => e.Base == effectBase);
             MessageText.TextIn($"すでに反射状態だ！");
@@ -34,7 +34,7 @@ public class ReflectorEffect : UniqueEffect
             yield break;
         }
 
-        MessageText.TextIn(enemy.EffectGenerator.PlayerGrantEffect(player, effectBase));
+        MessageText.TextIn(battle.target.EffectGenerator.PlayerGrantEffect(player, effectBase));
 
 
         yield break;
