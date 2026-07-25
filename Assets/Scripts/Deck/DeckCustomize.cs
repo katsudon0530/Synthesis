@@ -116,9 +116,9 @@ public class DeckCustomize : MonoBehaviour
         if (LookCards != null)
             LookCards.Clear();
 
-        foreach (CardBase i in generator.CardBases)
+        List<Card> allCards = generator.AllCardsSpawn();
+        foreach (Card card in allCards)
         {
-            Card card = generator.Spawn(i.ID);
             card.transform.localScale = Vector3.one * 0.8f;
             LookCards.Add(card);
             card.transform.SetParent(cardContents.transform);

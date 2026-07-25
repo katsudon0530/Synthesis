@@ -32,9 +32,9 @@ public class CardBase : ScriptableObject
     public string Explanation { get => explanation; set => explanation = value; }
     public Color Color { get => color; set => color = value; }
     public SynthesisType SynthesisType { get => synthesisType; set => synthesisType = value; }
-    public UniqueEffect UniqueEffect { get => uniqueEffect; set => uniqueEffect = value; }
-    public List<FlontBuff> FlontBuff { get => flontBuff; set => flontBuff = value; }
-    public CardStatus CardStatus { get => cardStatus; set => cardStatus = value; }
+    public UniqueEffect UniqueEffect { get => uniqueEffect; }
+    public List<FlontBuff> FlontBuff { get => flontBuff;}
+    public CardStatus CardStatus { get => cardStatus;}
 }
 
 public enum CardType
@@ -64,6 +64,21 @@ public class CardStatus
     public float Magic_Status { get => magic_Status; set => magic_Status = value; }
     public float Defense_Status { get => defense_Status; set => defense_Status = value; }
     public float Heal_Status { get => heal_Status; set => heal_Status = value; }
+
+    public void MultiplyAllStatus(float multiplier)
+    {
+        Attack_Status *= multiplier;
+        Magic_Status *= multiplier;
+        Defense_Status *= multiplier;
+        Heal_Status *= multiplier;
+    }
+    public CardStatus(CardStatus source)
+    {
+        Attack_Status = source.Attack_Status;
+        Magic_Status = source.Magic_Status;
+        Defense_Status = source.Defense_Status;
+        Heal_Status = source.Heal_Status;
+    }
 }
 
 

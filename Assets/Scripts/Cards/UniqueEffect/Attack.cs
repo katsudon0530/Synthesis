@@ -12,39 +12,13 @@ public class AttackEffect : UniqueEffect
     //カードの効果処理
     public override IEnumerator Execute(BattleContext battle)
     {
-        int attackValue = FlontBuff(battle.card, battle.flontCard);
+        CardStatus buffStatus = FlontBuff(battle.card);
 
-        int Hit = (int)(attackValue * Random.Range(0.8f, 1.2f));
+        int Hit = (int)(buffStatus.Attack_Status * Random.Range(0.8f, 1.2f));
         int damage = battle.DamegeCalculation(Hit,DamageType.Attack);
 
-        MessageText.TextIn($"{damage}ダメージ与えた");
+        battle.log.SendMessage($"{damage}ダメージ与えた");
 
         yield break;
-    }
-    //一枚前のカードの追加効果処理
-    public int FlontBuff(Card card, Card flontCard)
-    {
-        
-        float attackValue = (int)card.Base.CardStatus.Attack_Status;
-        
-        
-        if (flontCard == null)
-        {
-            return (int)attackValue;
-        }
-        else
-        {
-            string cardName = flontCard.Base.CardName;
-            FlontBuff foundBuff = card.Base.FlontBuff.Find(buff => buff.flontCard == cardName);
-
-            if (foundBuff == null)
-            {
-                return (int)attackValue;
-            }
-            attackValue *= foundBuff.buff;
-            return (int)attackValue;
-        }
-        
-
     }
 }

@@ -13,40 +13,16 @@ public class HealEffect : UniqueEffect
     //カードの効果処理
     public override IEnumerator Execute(BattleContext battle)
     {
-        int healValue = (int)FlontBuff(battle.card, battle.flontCard);
         Player player = Player.Instance;
+        CardStatus buffStatus = FlontBuff(battle.card);
 
-        if ((player.Life + healValue) > player.LifeMax)
+        if ((player.Life + buffStatus.Heal_Status) > player.LifeMax)
         {
-            healValue = player.LifeMax - player.Life;
+            buffStatus.Heal_Status = player.LifeMax - player.Life;
         }
-        player.Life += healValue;
-        MessageText.TextIn($"{healValue}HPかいふくした");
+        player.Life += (int)buffStatus.Heal_Status;
+        battle.log.SendMessage($"{(int)buffStatus.Heal_Status}HPかいふくした");
 
         yield break;
-    }
-
-    //一枚前のカードの追加効果処理
-    public float FlontBuff(Card card, Card flontCard)
-    {
-        float healValue = card.Base.CardStatus.Heal_Status;
-
-        if (flontCard == null)
-        {
-            return healValue;
-        }
-        else
-        {
-            string cardName = flontCard.Base.CardName;
-            FlontBuff foundBuff = card.Base.FlontBuff.Find(buff => buff.flontCard == cardName);
-
-            if (foundBuff == null)
-            {
-                return (int)healValue;
-            }
-            healValue *= foundBuff.buff;
-            return healValue;
-        }
-
     }
 }

@@ -1,16 +1,17 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class BattleContext
 {
     public Card card;
-    public Card flontCard;
     public Enemy target;
+    public BattleLog log;
 
-    public void SetContext(Card setCard,Card setFlontCard,Enemy SetEnemy)
+    public void SetContext(Card setCard,Enemy SetEnemy, BattleLog battleLog)
     {
         card = setCard;
-        flontCard = setFlontCard;
         target = SetEnemy;
+        log = battleLog;
     }
     public int DamegeCalculation(int hit,DamageType type)
     {

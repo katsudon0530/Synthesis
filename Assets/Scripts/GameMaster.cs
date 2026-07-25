@@ -17,6 +17,7 @@ public enum TurnState
 public class GameMaster : MonoBehaviour
 {
     [SerializeField] int handMax;
+    [SerializeField] BattleLog battleLog;
 
     private EnemyManager enemyManager;
     private CardManager cardManager;
@@ -35,7 +36,9 @@ public class GameMaster : MonoBehaviour
     private void Awake()
     {
         enemyManager = GetComponent<EnemyManager>();
+        enemyManager.Initialize(battleLog);
         cardManager = GetComponent<CardManager>();
+        cardManager.Initialize(battleLog);
         Set();
     }
 
@@ -146,7 +149,7 @@ public class GameMaster : MonoBehaviour
     {
         if (player.Life <= 0)
         {
-            MessageText.TextIn("アナタは力尽きた");
+            battleLog.SendMessage("アナタは力尽きた");
         }
         yield return new WaitForSeconds(1f);
         OnGameOver?.Invoke();

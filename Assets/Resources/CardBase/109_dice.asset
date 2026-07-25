@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95f359ba17d92a642aa2d30fdfb5f2af, type: 3}
+  m_Name: 109_dice
+  m_EditorClassIdentifier: Assembly-CSharp::CardBase
+  displayName: "\u30B5\u30A4\u30B3\u30ED"
+  cardName: dice
+  synthesisType: 0
+  type: 3
+  id: 109
+  icon: {fileID: 21300000, guid: eb5923996ff746f419a4028a29141744, type: 3}
+  color: {r: 1, g: 1, b: 1, a: 1}
+  description: "\u904B\u3060\u3081\u3057"
+  explanation: "\u30B5\u30A4\u30B3\u30ED\u3092\u632F\u3063\u3066\u51FA\u305F\u76EE\u306B\u3088\u3063\u3066\u52B9\u679C\u304C\u5909\u5316\u3059\u308B\n6\u304C\u51FA\u305F\u3089\u5927\u5F53\u305F\u308A\uFF01"
+  cardStatus:
+    attack_Status: 20
+    magic_Status: 30
+    defense_Status: 20
+    heal_Status: 20
+  uniqueEffect: {fileID: 11400000, guid: c4eb58ba263a5b14abd4ac74e14c89d3, type: 2}
+  flontBuff:
+  - buff: 0.5
+    flontCard: dice

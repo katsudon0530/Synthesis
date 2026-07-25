@@ -7,6 +7,7 @@ public class MessageText : MonoBehaviour
 {
     static TMP_Text message;
     static GameObject messagePanel;
+    [SerializeField] private BattleLog battleLog;
 
     public void Awake()
     {
@@ -23,14 +24,20 @@ public class MessageText : MonoBehaviour
     {
         message.text = nowText;   
     }
-    public static void ReSet()
-    {
-        message.text = "";
-    }
 
     public static void Panel(bool condition)
     {
-        ReSet();
+        message.text = "";
         messagePanel.SetActive(condition);
+    }
+    
+    private void OnEnable()
+    {
+        battleLog.OnMessage += TextIn;
+    }
+
+    private void OnDisable()
+    {
+        battleLog.OnMessage -= TextIn;
     }
 }

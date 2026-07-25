@@ -1060,6 +1060,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   handMax: 6
+  battleLog: {fileID: 11400000, guid: 2aa45a3ba7eea59498e87b02fa55ceee, type: 2}
 --- !u!4 &675590291
 Transform:
   m_ObjectHideFlags: 0
@@ -1088,7 +1089,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyGenerator: {fileID: 1626623170}
-  enemyFiled: {fileID: 1324895147}
 --- !u!114 &675590297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1663,6 +1663,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: aa60e80c91966f04db049b79324380b7, type: 2}
   - {fileID: 11400000, guid: 55e426a4e90704c4aa95d8af8612d902, type: 2}
   - {fileID: 11400000, guid: 5902370756f7a1843a26c6ace5500a07, type: 2}
+  - {fileID: 11400000, guid: af9423cc46ceaab46893e09e0cf736a1, type: 2}
 --- !u!4 &959393679
 Transform:
   m_ObjectHideFlags: 0
@@ -1864,11 +1865,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44d1e761c9c870b4ab7963f38c0cf064, type: 3}
---- !u!1 &1324895147 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2961255112681721089, guid: 5103cb1735dbcf948855712e5bf930c7, type: 3}
-  m_PrefabInstance: {fileID: 994792981286913279}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1531111759
 GameObject:
   m_ObjectHideFlags: 0
@@ -2104,7 +2100,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 60364050523772977, guid: 699e483f1d9f6e4499e5bf812846d0c8, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 200.00029
+      value: 200.00009
       objectReference: {fileID: 0}
     - target: {fileID: 126149868876948446, guid: 699e483f1d9f6e4499e5bf812846d0c8, type: 3}
       propertyPath: m_Size
@@ -2180,7 +2176,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5738984694801739947, guid: 699e483f1d9f6e4499e5bf812846d0c8, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 420.00095
+      value: 420.00012
       objectReference: {fileID: 0}
     - target: {fileID: 7448394977269115591, guid: 699e483f1d9f6e4499e5bf812846d0c8, type: 3}
       propertyPath: m_Pivot.x
@@ -3444,10 +3440,6 @@ PrefabInstance:
       propertyPath: SynthesisButton
       value: 
       objectReference: {fileID: 552289098}
-    - target: {fileID: 2966344272842931741, guid: 5103cb1735dbcf948855712e5bf930c7, type: 3}
-      propertyPath: cardInterval
-      value: 1.8
-      objectReference: {fileID: 0}
     - target: {fileID: 7795882012657929213, guid: 5103cb1735dbcf948855712e5bf930c7, type: 3}
       propertyPath: m_Name
       value: Field
@@ -3456,10 +3448,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
-    - target: {fileID: 7946917882321975427, guid: 5103cb1735dbcf948855712e5bf930c7, type: 3}
-      propertyPath: m_SortingOrder
-      value: -20
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

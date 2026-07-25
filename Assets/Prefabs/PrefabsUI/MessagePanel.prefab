@@ -226,3 +226,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 061dfa1b71055d94298dc88fdcf574de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  battleLog: {fileID: 11400000, guid: 2aa45a3ba7eea59498e87b02fa55ceee, type: 2}

@@ -5,18 +5,16 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour
 {
     [SerializeField] EnemyGenerator enemyGenerator;
-    [SerializeField] GameObject enemyFiled;
+    private BattleLog battleLog;
     public Enemy currentEnemy { get; private set; }
 
     //エネミーを生成してフィールドにセット
     public Enemy GenerateEnemy(int enemyNum)
     {
         currentEnemy = enemyGenerator.SpawnEnemy(enemyNum);
-        currentEnemy.transform.SetParent(enemyFiled.transform);
-        currentEnemy.transform.localPosition = Vector3.zero;
+        Field.Instance.SetEnemy(currentEnemy);
         return currentEnemy;
     }
-
 
     //エネミーの行動
     public IEnumerator EnemyTurn()
@@ -33,7 +31,7 @@ public class EnemyManager : MonoBehaviour
 
         if (currentEnemy.Act == false)
         {
-            MessageText.TextIn($"{currentEnemy.Base.Name}は動けない！");
+            battleLog.SendMessage($"{currentEnemy.Base.Name}は動けない！");
         }
         else
         {
@@ -87,5 +85,10 @@ public class EnemyManager : MonoBehaviour
 
         if (currentEnemy != null)
             currentEnemy.EnemyReSet();
+    }
+
+    public void Initialize(BattleLog masterLog)
+    {
+        this.battleLog = masterLog;
     }
 }

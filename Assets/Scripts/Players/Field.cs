@@ -195,6 +195,12 @@ public class Field : Singleton<Field>
 
         yield return null;
     }
+    //エネミーをフィールドにセット
+    public void SetEnemy(Enemy enemy)
+    {
+        enemy.transform.SetParent(_enemyField.transform);
+        enemy.transform.localPosition = Vector3.zero;
+    }
 
     private void OnDestroy()
     {

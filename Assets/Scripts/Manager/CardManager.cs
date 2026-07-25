@@ -6,6 +6,7 @@ public class CardManager : MonoBehaviour
 {
 
     [SerializeField] Synthesis synthesis;
+    private BattleLog battleLog;
     private Deck deck => Deck.Instance;
     private Field field => Field.Instance;
     private Player player => Player.Instance;
@@ -22,16 +23,12 @@ public class CardManager : MonoBehaviour
         for (int i = 0; i < field.Stand.Count; i++)
         {
             Card card = field.Stand[i];
-            Card flontCard = null;
-            if (i != 0)
-            {
-                flontCard = field.Stand[i - 1];
-            }
+
             card.transform.position += Vector3.up * 0.2f;
 
             //カードの効果処理
             BattleContext context = new BattleContext();
-            context.SetContext(card, flontCard, enemy);
+            context.SetContext(card, enemy, battleLog);
             yield return StartCoroutine(card.Base.UniqueEffect.Execute(context));
 
             yield return new WaitForSeconds(1.2f);
@@ -72,5 +69,10 @@ public class CardManager : MonoBehaviour
         MessageText.Panel(false);
 
         yield return new WaitForSeconds(0.5f);
+    }
+
+    public void Initialize(BattleLog masterLog)
+    {
+        this.battleLog = masterLog;
     }
 }

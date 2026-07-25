@@ -14,34 +14,10 @@ public class NaughtEffect : UniqueEffect
     //カードの効果処理
     public override IEnumerator Execute(BattleContext battle)
     {
-        int naughtValue = (int)FlontBuff(battle.card, battle.flontCard);
 
-        MessageText.TextIn("何も起こらない");
+        battle.log.SendMessage("何も起こらない");
 
         yield break;
     }
 
-    //一枚前のカードの追加効果処理
-    public float FlontBuff(Card card, Card flontCard)
-    {
-        string cardName = card.Base.CardName;
-        float naughtValue = card.Base.CardStatus.Heal_Status;
-
-        if (flontCard == null)
-        {
-            return naughtValue;
-        }
-        else
-        {
-            FlontBuff foundBuff = flontCard.Base.FlontBuff.Find(buff => buff.flontCard == cardName);
-
-            if (foundBuff == null)
-            {
-                return (int)naughtValue;
-            }
-            naughtValue *= foundBuff.buff;
-            return naughtValue;
-        }
-
-    }
 }

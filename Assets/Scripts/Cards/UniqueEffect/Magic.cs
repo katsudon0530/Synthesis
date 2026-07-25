@@ -14,37 +14,13 @@ public class MagicEffect : UniqueEffect
     //カードの効果処理
     public override IEnumerator Execute(BattleContext battle)
     {
-        int magicValue = (int)FlontBuff(battle.card, battle.flontCard);
+        CardStatus buffStatus = FlontBuff(battle.card);
 
-        int Hit = (int)(magicValue * Random.Range(0.8f, 1.2f));
+        int Hit = (int)(buffStatus.Magic_Status * Random.Range(0.8f, 1.2f));
         int damage = battle.DamegeCalculation(Hit, DamageType.Magic);
 
-        MessageText.TextIn($"{damage}魔法ダメージあたえた");
+        battle.log.SendMessage($"{damage}魔法ダメージあたえた");
 
         yield break;
-    }
-
-    //一枚前のカードの追加効果処理
-    public float FlontBuff(Card card, Card flontCard)
-    {
-
-        float magicValue = card.Base.CardStatus.Magic_Status;
-        if (flontCard == null)
-        {
-            return magicValue;
-        }
-        else
-        {
-            string cardName = flontCard.Base.CardName;
-            FlontBuff foundBuff = card.Base.FlontBuff.Find(buff => buff.flontCard == cardName);
-
-            if (foundBuff == null)
-            {
-                return (int)magicValue;
-            }
-            magicValue *= foundBuff.buff;
-            return magicValue;
-        }
-
     }
 }
