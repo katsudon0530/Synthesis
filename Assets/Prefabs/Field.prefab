@@ -491,7 +491,7 @@ MonoBehaviour:
   _playerHand: {fileID: 8888993248323454778}
   _enemyField: {fileID: 2961255112681721089}
   cardGuide: {fileID: 882732114190085566}
-  cardInterval: 1.8
+  cardInterval: 1.95
 --- !u!1 &8888993248323454778
 GameObject:
   m_ObjectHideFlags: 0

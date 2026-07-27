@@ -383,8 +383,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 650, y: -130}
-  m_SizeDelta: {x: 400, y: 600}
+  m_AnchoredPosition: {x: 630, y: -130}
+  m_SizeDelta: {x: 420, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9140634188550128698
 CanvasRenderer:
@@ -775,8 +775,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8047963975879662551}
   m_HandleRect: {fileID: 3166112839288394757}
   m_Direction: 2
-  m_Value: -0.0000024414062
-  m_Size: 0.75
+  m_Value: -0.0000003051757
+  m_Size: 0.74999994
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -964,7 +964,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 200.00049}
+  m_AnchoredPosition: {x: 0, y: 200.00009}
   m_SizeDelta: {x: 0, y: 800}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &4085589663480282179
@@ -1068,15 +1068,15 @@ MonoBehaviour:
   deckSetting:
     CardWidth: 240
     Width: 5
-    Height: 270
-    Interval: 210
+    Height: 290
+    Interval: 230
     Scroll: {fileID: 6605967489694178669}
     Contents: {fileID: 5738984694801739947}
   cardSetting:
     CardWidth: 190
     Width: 2
-    Height: 220
-    Interval: 170
+    Height: 260
+    Interval: 180
     Scroll: {fileID: 8217571406149064334}
     Contents: {fileID: 60364050523772977}
   LookDeck: []
@@ -1423,7 +1423,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 420.00034}
+  m_AnchoredPosition: {x: 0, y: 420.0001}
   m_SizeDelta: {x: 0, y: 800}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &7889724067987487147
@@ -1546,7 +1546,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3787499104661744961}
   m_HandleRect: {fileID: 726817574752184289}
   m_Direction: 2
-  m_Value: -0.0000076293827
+  m_Value: -0.0000015258765
   m_Size: 0.9499999
   m_NumberOfSteps: 0
   m_OnValueChanged:
