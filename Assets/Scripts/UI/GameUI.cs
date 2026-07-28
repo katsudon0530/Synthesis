@@ -24,7 +24,7 @@ public class GameUI : MonoBehaviour
             case TurnState.cardSet:
                 ResetUI();
                 break;
-
+            case TurnState.start:
             case TurnState.end:
                 RestDeck();
                 break;
