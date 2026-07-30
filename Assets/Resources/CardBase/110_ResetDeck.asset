@@ -12,19 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95f359ba17d92a642aa2d30fdfb5f2af, type: 3}
   m_Name: 110_ResetDeck
   m_EditorClassIdentifier: Assembly-CSharp::CardBase
-  displayName: 
-  cardName: 
+  displayName: "\u30EA\u30BB\u30C3\u30C8"
+  cardName: ResetDeck
   synthesisType: 0
-  type: 0
-  id: 0
-  icon: {fileID: 0}
-  color: {r: 0, g: 0, b: 0, a: 0}
-  description: 
-  explanation: 
+  type: 3
+  id: 110
+  icon: {fileID: 21300000, guid: 11c92a5cc7945954aac2f420a9f4e6fe, type: 3}
+  color: {r: 1, g: 1, b: 1, a: 1}
+  description: "\u3084\u308A\u76F4\u3057"
+  explanation: "\u3059\u3079\u3066\u306E\u30AB\u30FC\u30C9\u3092\u30C7\u30C3\u30AD\u306B\u623B\u3059\n\u3054\u5229\u7528\u306F\u8A08\u753B\u7684\u306B"
   cardStatus:
     attack_Status: 0
     magic_Status: 0
     defense_Status: 0
     heal_Status: 0
-  uniqueEffect: {fileID: 0}
+  uniqueEffect: {fileID: 11400000, guid: fba0ce26d3486284e89c603d7ceb9dc4, type: 2}
   flontBuff: []
