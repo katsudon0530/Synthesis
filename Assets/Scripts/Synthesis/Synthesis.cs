@@ -27,11 +27,8 @@ public class Synthesis : MonoBehaviour
         {
             id = TripleSearchID(cards[0].Base.ID, cards[1].Base.ID, cards[2].Base.ID);
         }
-        
-        //合成したカードを手札に生成
+
         Deck.Add(id);
-        Card synthesisCard = generator.Spawn(id);
-        Field.Instance.SerCardToHand(synthesisCard);
 
         //デッキから合成したカードを削除
         for (int i = 0; i < cards.Count; i++)
@@ -134,7 +131,7 @@ public class Synthesis : MonoBehaviour
 
     private void Update()
     {
-        if(Field.Instance.Stand.Count <= 1)
+        if(Field.Instance.Stand.Count <= 1 || GameData.Instance.synthesisCount == 0)
             SynthesisButton.Interactable = false;
         else
             SynthesisButton.Interactable = true;

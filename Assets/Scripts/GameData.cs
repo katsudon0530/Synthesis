@@ -7,5 +7,6 @@ public class GameData:Singleton<GameData>
     public int serectEnemyID {  get; set; }
     public int gameTurn { get; set; }
     public int dungeonFroor { get; set; }
+    public int synthesisCount { get; set; }
 
 }

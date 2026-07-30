@@ -7,6 +7,7 @@ public class GameUI : MonoBehaviour
     [SerializeField] GameObject submitButton;
     [SerializeField] GameObject synthesisButton;
     [SerializeField] TMP_Text RestText;
+    [SerializeField] TMP_Text synthesisCount;
 
     private void Awake()
     {
@@ -21,7 +22,9 @@ public class GameUI : MonoBehaviour
             case TurnState.synthesis:
                 BattleUI();
                 break;
+            case TurnState.notSet:
             case TurnState.cardSet:
+                RestSynthesis();
                 ResetUI();
                 break;
             case TurnState.start:
@@ -51,6 +54,12 @@ public class GameUI : MonoBehaviour
     public void RestDeck()
     {
         RestText.text = $"残り{Deck.Instance.cardDeck.Count}枚";
+    }
+
+    //合成の残り回数を表示する
+    public void RestSynthesis()
+    {
+        synthesisCount.text = $"あと{GameData.Instance.synthesisCount}回";
     }
 
     private void OnDestroy()

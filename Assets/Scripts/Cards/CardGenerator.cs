@@ -6,7 +6,6 @@ public class CardGenerator : MonoBehaviour
 {
 
     [SerializeField] Card cardPrefab;
-    [SerializeField] List<CardBase> cardBases;
     private Dictionary<int, CardBase> cardsById;
 
 

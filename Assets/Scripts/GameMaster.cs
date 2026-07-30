@@ -17,6 +17,7 @@ public enum TurnState
 public class GameMaster : MonoBehaviour
 {
     [SerializeField] int handMax;
+    [SerializeField] int synthesisCount;
     [SerializeField] BattleLog battleLog;
 
     private EnemyManager enemyManager;
@@ -46,6 +47,7 @@ public class GameMaster : MonoBehaviour
     public void Set()
     {
         GameData.Instance.gameTurn = 1;
+        GameData.Instance.synthesisCount = synthesisCount;
         deck.DeckSet();
         player.SetPlayer();
         field.SettingHand(handMax);
@@ -91,28 +93,30 @@ public class GameMaster : MonoBehaviour
         SetHand();
         ChangeState(TurnState.start);
 
-        ChangeState(TurnState.cardSet);
-        while (turnState == TurnState.cardSet)
+        while (true)
         {
-            player.PlayConditionCheck(enemyManager.currentEnemy, field.Hand); 
-            yield return null; 
-        }
+            ChangeState(TurnState.cardSet);
+            while (turnState == TurnState.cardSet)
+            {
+                player.PlayConditionCheck(enemyManager.currentEnemy, field.Hand);
+                yield return null;
+            }
 
-        //カードが選択され、決定か合成が押されるまで待機
-        yield return new WaitUntil(() => turnState != TurnState.cardSet);
+            if(turnState == TurnState.synthesis)
+            {
+                yield return segmentTurn = StartCoroutine(cardManager.CardSynthesis());
+                continue;
+            }
 
-        //どちらのボタンが押されたのかを判別してそのアクションを実行
-        switch (turnState)
-        {
-            case TurnState.battle:
-                //決定ボタンが押された場合
+            //決定ボタンが押された場合
+            if (turnState == TurnState.battle)
+            {
                 yield return segmentTurn = StartCoroutine(cardManager.CardBattle(enemyManager.currentEnemy));
                 break;
-            case TurnState.synthesis:
-                //合成ボタンが押された場合
-                yield return segmentTurn = StartCoroutine(cardManager.CardSynthesis());
-                break;
+            }
+
         }
+
         //敵に付与されている状態の処理
         yield return segmentTurn = StartCoroutine(enemyManager.EnemyEffectBoot());
 

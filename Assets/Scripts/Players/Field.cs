@@ -49,6 +49,11 @@ public class Field : Singleton<Field>
                 cardGuide.SetActive(true);
                 StartCoroutine(StartHand());
                 break;
+            case TurnState.cardSet:
+                ReturnHand();
+                cardGuide.SetActive(true);
+                StartCoroutine(StartHand());
+                break;
         }
     }
     //手札の配置を決定
@@ -91,6 +96,14 @@ public class Field : Singleton<Field>
             Destroy(_stand[i].gameObject);
         }
         _stand.Clear();
+    }
+    //場のカードをすべて手札に戻す
+    public void ReturnHand()
+    {
+        while (_stand.Count > 0)
+        {
+            HandSet(_stand[0]);
+        }
     }
 
     //生成されたカードをリストに追加・カードクリック時の効果追加
