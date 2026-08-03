@@ -34,9 +34,11 @@ public class DungeonManager : MonoBehaviour
 
     public IEnumerator DungeonMode()
     {
+        GameData.Instance.synthesisCount = 1;
         for (int i = 0; i < dungeon.Hierachies.Count; i++)
         {
             yield return StartCoroutine(Move(i, dungeon.Hierachies.Count));
+            GameData.Instance.synthesisCount ++;
             while (enemy　!= null)
             {
                 yield return StartCoroutine(gameMaster.TurnStart());

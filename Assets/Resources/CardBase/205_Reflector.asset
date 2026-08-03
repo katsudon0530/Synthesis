@@ -24,7 +24,7 @@ MonoBehaviour:
   cardStatus:
     attack_Status: 0
     magic_Status: 0
-    defense_Status: 50
+    defense_Status: 30
     heal_Status: 0
   uniqueEffect: {fileID: 11400000, guid: 763995c22f380cf4fa5c6a4110ceba4b, type: 2}
   flontBuff: []

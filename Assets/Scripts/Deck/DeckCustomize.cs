@@ -63,7 +63,7 @@ public class DeckCustomize : MonoBehaviour
 
             Alignment(LookDeck,deckSetting);
         }
-        else if (deck.DeckAll.Count < 15 && card.transform.parent == cardContents.transform)
+        else if (deck.DeckAll.Count < 20 && card.transform.parent == cardContents.transform)
         {
             deck.DeckAll.Add(card.Base.ID);
             Card newCard = generator.Spawn(card.Base.ID);
@@ -174,10 +174,10 @@ public class DeckCustomize : MonoBehaviour
         }
     }
 
-    //デッキが15枚以下の時戻るボタンを消す
+    //デッキが20枚以下の時戻るボタンを消す
     void CustomizeCompletion()
     {
-        if (deck.DeckAll.Count == 15)
+        if (deck.DeckAll.Count == 20)
         {
             exitButton.Interactable = true;
         }

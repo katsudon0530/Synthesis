@@ -22,7 +22,7 @@ MonoBehaviour:
   description: "\u5F37\u529B\u306A\u7269\u7406\u653B\u6483"
   explanation: "\u30EC\u30B7\u30D4\uFF1A\u5263\uFF0B\u5263\uFF0B\u5263\n\u8D85\u5F37\u5316\u3055\u308C\u305F\u5263\u3067\u653B\u6483\u3059\u308B\n\u5B8C\u6210\u3055\u308C\u305F\u52D5\u304D\u3067\u9632\u5FA1\u529B\u3082\u4E0A\u304C\u308B"
   cardStatus:
-    attack_Status: 60
+    attack_Status: 50
     magic_Status: 0
     defense_Status: 10
     heal_Status: 0

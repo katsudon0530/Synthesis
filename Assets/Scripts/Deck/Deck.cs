@@ -5,7 +5,7 @@ public class Deck : Singleton<Deck>
 {
     protected override bool IsPersistent => true;
 
-    public List<int> Base = new List<int> { 101, 101, 101, 101, 102, 102, 102, 102, 103, 103, 103, 103, 104, 104, 104};
+    public List<int> Base = new List<int> { 101, 101, 101, 101, 101, 102, 102, 102, 102, 103, 103, 103, 103, 104, 104, 104, 104, 108, 108, 110};
     public List<int> DeckAll;
     public List<int> cardDeck;
 
