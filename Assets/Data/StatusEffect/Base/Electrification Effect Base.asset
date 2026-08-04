@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35475d0052c925949b8a6cd6045a3ca5, type: 3}
   m_Name: Electrification Effect Base
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 766275c45c7a446478d6c5f50fea022b, type: 3}
+  icon: {fileID: 21300000, guid: f217527e00908034592534d7b6aa54d1, type: 3}
   displayName: "\u5E2F\u96FB"
   effectName: Electrification
   type: 1

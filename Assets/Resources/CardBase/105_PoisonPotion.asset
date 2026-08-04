@@ -17,9 +17,8 @@ MonoBehaviour:
   synthesisType: 0
   type: 3
   id: 105
-  icon: {fileID: 21300000, guid: 2c6721f5b2448c14a918417fc5159238, type: 3}
+  icon: {fileID: 21300000, guid: 914f3ce9e68d80e4eacce1dc755df4dd, type: 3}
   color: {r: 1, g: 1, b: 1, a: 1}
-  playCondition: 1
   description: "\u6BD2\u4ED8\u4E0E"
   explanation: "\u6BD2\u306E\u30DD\u30FC\u30B7\u30E7\u30F3\u3092\u76F8\u624B\u306B\u6295\u3052\u3064\u3051\u308B\n\u76F8\u624B\u306F\u6BD2\u72B6\u614B\u306B\u306A\u308B"
   cardStatus:

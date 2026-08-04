@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35475d0052c925949b8a6cd6045a3ca5, type: 3}
   m_Name: Poison Effect Base
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 2c6721f5b2448c14a918417fc5159238, type: 3}
+  icon: {fileID: 21300000, guid: 2eb2667022920f9498f9f0c5893eb80a, type: 3}
   displayName: "\u6BD2"
   effectName: PoisonEffect
   type: 1

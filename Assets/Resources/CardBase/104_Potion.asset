@@ -17,7 +17,7 @@ MonoBehaviour:
   synthesisType: 0
   type: 2
   id: 104
-  icon: {fileID: 21300000, guid: c1e43fb0bb601644f8d5de01ccff0da4, type: 3}
+  icon: {fileID: 21300000, guid: 78f0db4f397d4d343bcef9d60e42fa91, type: 3}
   color: {r: 1, g: 1, b: 1, a: 1}
   description: "\u56DE\u5FA9"
   explanation: "\u30DD\u30FC\u30B7\u30E7\u30F3\u3092\u98F2\u3093\u3067HP\u3092\u56DE\u5FA9\u3059\u308B\n\u81EA\u8EAB\u306EHP\u306F100\u4EE5\u4E0A\u306B\u306F\u306A\u3089\u306A\u3044"

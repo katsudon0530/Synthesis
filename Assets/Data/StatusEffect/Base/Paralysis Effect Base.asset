@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35475d0052c925949b8a6cd6045a3ca5, type: 3}
   m_Name: Paralysis Effect Base
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 79cf4e5d38669274eb44af90e0d1139a, type: 3}
+  icon: {fileID: 21300000, guid: d7bf2998cc39c274c94bc4529b1aa5c2, type: 3}
   displayName: "\u9EBB\u75FA"
   effectName: ParalysisEffect
   type: 1
