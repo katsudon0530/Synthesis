@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using NUnit.Framework;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class GameData:Singleton<GameData>
 {
@@ -8,5 +10,6 @@ public class GameData:Singleton<GameData>
     public int gameTurn { get; set; }
     public int dungeonFroor { get; set; }
     public int synthesisCount { get; set; }
+    public List<int> gameDeck { get; set; }
 
 }

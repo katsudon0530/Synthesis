@@ -126,6 +126,12 @@ public class GameMaster : MonoBehaviour
         //自分に付与されている状態の処理
         yield return segmentTurn = StartCoroutine(player.PlayerEffectBoot(enemyManager.currentEnemy));
 
+        //HPが０であればゲームオーバー
+        if (player.Life <= 0)
+        {
+            yield return segmentTurn = StartCoroutine(ResultTurn());
+        }
+
         //次のターンに向けてセットアップを行う
         SetupNextTurn();
     }

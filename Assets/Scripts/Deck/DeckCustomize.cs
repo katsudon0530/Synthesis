@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using static UnityEngine.CullingGroup;
 
 
 public class DeckCustomize : MonoBehaviour
@@ -54,8 +56,8 @@ public class DeckCustomize : MonoBehaviour
             return;
         if (card.transform.parent == deckContents.transform)
         {
-            int dest = deck.DeckAll.FindIndex(number => number == card.Base.ID);
-            deck.DeckAll.RemoveAt(dest);
+            int dest = deck.CustomDeck.FindIndex(number => number == card.Base.ID);
+            deck.CustomDeck.RemoveAt(dest);
 
             dest = LookDeck.FindIndex(number => number.InstanceId == card.InstanceId);
             Destroy(LookDeck[dest].gameObject);
@@ -63,9 +65,9 @@ public class DeckCustomize : MonoBehaviour
 
             Alignment(LookDeck,deckSetting);
         }
-        else if (deck.DeckAll.Count < 20 && card.transform.parent == cardContents.transform)
+        else if (deck.CustomDeck.Count < 20 && card.transform.parent == cardContents.transform)
         {
-            deck.DeckAll.Add(card.Base.ID);
+            deck.CustomDeck.Add(card.Base.ID);
             Card newCard = generator.Spawn(card.Base.ID);
             SerCardToCustom(newCard);
             newCard.transform.SetParent(deckContents.transform);
@@ -94,9 +96,20 @@ public class DeckCustomize : MonoBehaviour
         if(LookDeck != null)
             LookDeck.Clear();
 
-        for (int i = 0; i < deck.DeckAll.Count; i++)
+        List<int> viewDeck = new List<int>();
+        switch (deck.OnCustomize)
         {
-            Card card = generator.Spawn(deck.DeckAll[i]);
+            case true:
+                viewDeck = deck.CustomDeck;
+                break;
+            case false:
+                viewDeck = deck.DeckAll;
+                break;
+        }
+
+        for (int i = 0; i < viewDeck.Count; i++)
+        {
+            Card card = generator.Spawn(viewDeck[i]);
             LookDeck.Add(card);
             card.transform.SetParent(deckContents.transform);
             SerCardToCustom(card);
@@ -141,7 +154,6 @@ public class DeckCustomize : MonoBehaviour
 
         //横の幅を設定する
         set.Scroll.sizeDelta = new Vector2(set.CardWidth * CardLookCount, set.Scroll.sizeDelta.y);
-        //set.Scroll.localPosition = new Vector3(240f * CardLookCount / 2 + 350, -120);
 
         for (int i = 0; i < a; i++)
         {
@@ -177,7 +189,7 @@ public class DeckCustomize : MonoBehaviour
     //デッキが20枚以下の時戻るボタンを消す
     void CustomizeCompletion()
     {
-        if (deck.DeckAll.Count == 20)
+        if (deck.CustomDeck.Count == 20)
         {
             exitButton.Interactable = true;
         }

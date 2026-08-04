@@ -56,6 +56,7 @@ public class CardManager : MonoBehaviour
 
             for (int i = 1; i < field.Stand.Count; i++)
             {
+                field.Stand[i].effectReSet();
                 StartCoroutine(cardMove.Slide(field.Stand[i], goal, 0.5f));
             }
             yield return new WaitForSeconds(0.7f);
