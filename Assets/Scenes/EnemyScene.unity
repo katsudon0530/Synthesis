@@ -1116,10 +1116,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: playerLife
       objectReference: {fileID: 0}
-    - target: {fileID: 5656943727034153048, guid: e36d97c0f07c8fa44b4260a865bcff0a, type: 3}
-      propertyPath: m_TagString
-      value: UI
-      objectReference: {fileID: 0}
     - target: {fileID: 9055582461137081892, guid: e36d97c0f07c8fa44b4260a865bcff0a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1146,11 +1142,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9055582461137081892, guid: e36d97c0f07c8fa44b4260a865bcff0a, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 80
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 9055582461137081892, guid: e36d97c0f07c8fa44b4260a865bcff0a, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 80
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 9055582461137081892, guid: e36d97c0f07c8fa44b4260a865bcff0a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2221,7 +2217,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 60364050523772977, guid: 699e483f1d9f6e4499e5bf812846d0c8, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 200.00003
+      value: 200.00037
       objectReference: {fileID: 0}
     - target: {fileID: 126149868876948446, guid: 699e483f1d9f6e4499e5bf812846d0c8, type: 3}
       propertyPath: m_Size
@@ -2297,7 +2293,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5738984694801739947, guid: 699e483f1d9f6e4499e5bf812846d0c8, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 420.00003
+      value: 420.0007
       objectReference: {fileID: 0}
     - target: {fileID: 7448394977269115591, guid: 699e483f1d9f6e4499e5bf812846d0c8, type: 3}
       propertyPath: m_Pivot.x
